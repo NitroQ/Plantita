@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlantController;
+use App\Http\Controllers\PageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,5 @@ use App\Http\Controllers\PlantController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// client
+Route::get('/', [PageController::class, 'index'])->name('index');
