@@ -1,17 +1,18 @@
-<div class="container mx-auto flex justify-between bg-gray-400 py-5 px-20 w-full">
-    <p class="uppercase text-sm">
-        WHEN IT COMES TO PLANTS, IN
-        <span class="font-bold italic">TITA WE TRUST</span>
-    </p>
-    <div class="flex items-center gap-x-4">
-        <i class='bx bxl-facebook-circle text-2xl'></i>
-        <i class='bx bxl-tiktok text-2xl'></i>
-        <img src="{{ asset('images/twitter-logo.svg') }}" alt="Twitter logo">
-        <i class='bx bxl-instagram text-2xl'></i>
+
+<nav class="navbar w-full">
+    <div class="flex justify-between bg-gray-400 py-5 px-20 bg-culture">
+        <p class="uppercase text-sm">
+            WHEN IT COMES TO PLANTS, IN
+            <span class="font-bold italic">TITA WE TRUST</span>
+        </p>
+        <div class="flex items-center gap-x-4">
+            <i class='bx bxl-facebook-circle text-2xl'></i>
+            <i class='bx bxl-tiktok text-2xl'></i>
+            <img src="{{ asset('images/twitter-logo.svg') }}" alt="Twitter logo">
+            <i class='bx bxl-instagram text-2xl'></i>
+        </div>
     </div>
-</div>
-<nav class="navbar px-10 w-full bg-white border-2 border-red-500">
-    <div class="flex flex-1 items-center justify-between py-3 md:py-5 gap-10">
+    <div class="flex flex-1 items-center justify-between py-3 md:py-5 gap-10 px-10 bg-white shadow-bottom">
         <a class="navbar__logo">
             <img class="mr-auto" src="{{ asset('images/plantita-logo.svg') }}" alt="Plantita logo">
         </a>

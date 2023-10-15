@@ -18,9 +18,11 @@
 
 </head>
 
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden bg-background text-black">
     @include('layout.components.front-components.navbar')
-    @yield('content')
+    <section class="container mx-auto py-20">
+        @yield('content')
+    </section>
 </body>
 
 </html>
