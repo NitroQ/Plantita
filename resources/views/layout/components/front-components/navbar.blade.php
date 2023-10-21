@@ -1,60 +1,122 @@
-<nav class="navbar w-full">
-    <div class="flex items-center justify-between bg-gray-400 py-3 px-20 bg-culture">
+<nav class="bg-white border-gray-200 shadow-bottom fixed w-full">
+    <div
+        class="flex lg:flex-row flex-col items-center lg:justify-between bg-gray-400 py-3 lg:px-4 px-10 bg-culture gap-y-1 lg:gap-y-0">
         <p class="uppercase text-sm">
             WHEN IT COMES TO PLANTS, IN
             <span class="font-bold italic">TITA WE TRUST</span>
         </p>
         <div class="flex items-center gap-x-4">
-            <i class='bx bxl-facebook-circle text-2xl'></i>
-            <i class='bx bxl-tiktok text-2xl'></i>
+            <i class='bx bxl-facebook-circle text-3xl text-green'></i>
+            <i class='bx bxl-tiktok text-3xl text-green'></i>
             <img src="{{ asset('images/twitter-logo.svg') }}" alt="Twitter logo">
-            <i class='bx bxl-instagram text-2xl'></i>
+            <i class='bx bxl-instagram text-3xl text-green'></i>
         </div>
     </div>
-    <button data-collapse-toggle="navbar-default" type="button" class="block md:hidden ml-auto pr-5"
-        aria-controls="navbar-default" aria-expanded="false">
-        <i class='bx bx-menu text-3xl'></i>
-    </button>
-    <div class="hidden md:flex flex-1 items-center justify-between py-3 md:py-5 gap-10 px-10 bg-white shadow-bottom"
-        id="navbar-default">
-        <a class="navbar__logo">
-            <img class="mr-auto" src="{{ asset('images/plantita-logo.svg') }}" alt="Plantita logo">
+    <div class="flex flex-wrap items-center gap-x-5 py-4 px-10">
+        <a href="{{ route('index') }}">
+            <img src="{{ asset('images/plantita-logo.svg') }}" class="h-12 mr-3" alt="Plantita Logo" />
         </a>
-        <ul class="flex gap-x-5 navbar__links">
-            <li>
-                <a class="text-black " href="">Home</a>
-            </li>
-            <li>
-                <a class="text-black " href="">Plants</a>
-            </li>
-            <li>
-                <a class="text-black " href="">Essentials</a>
-            </li>
-            <li>
-                <a class="text-black " href="">About Us</a>
-            </li>
-            <li>
-                <a class="text-black " href="">Contact Us</a>
-            </li>
+        <div class="flex items-center ml-auto lg:order-2 gap-x-5">
+            <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
+                aria-expanded="false" class="block lg:hidden ml-auto pr-5">
+                <i class='bx bx-menu text-3xl'></i>
+            </button>
+            {{-- search input lg to xl screens --}}
+            <div class="relative hidden lg:block">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                    <i class='bx bx-search w-4 h-4 text-gray cursor-pointer'></i>
 
-        </ul>
-        <ul class="flex gap-x-3 navbar__links">
-            <li class="flex flex-col items-center justify-center">
-                <i class="bx bx-user font-bold text-3xl text-green"></i>
-                <a href="">Sign in</a>
-            </li>
-            <li class="flex flex-col items-center justify-center">
-                <i class="bx bx-search font-bold text-3xl text-green"></i>
-                <a href="">Search</a>
-            </li>
-            <li class="flex flex-col items-center justify-center">
-                <img src="{{ asset('images/water-can.svg') }}" alt="">
-                <a href="">Likes</a>
-            </li>
-            <li class="flex flex-col items-center justify-center">
-                <i class="bx bx-basket font-bold text-3xl text-green"></i>
-                <a href="">Basket</a>
-            </li>
-        </ul>
+                </div>
+                <input type="text" id="search-navbar"
+                    class="block w-80 p-2 pl-5 text-lg text-gray-900 border-none rounded-lg bg-culture"
+                    placeholder="Search something...">
+            </div>
+            <ul class="lg:flex hidden items-center gap-x-4">
+                <li>
+                    <a href="" class="flex flex-col gap-y-px items-center">
+                        <i class='bx bx-user text-2xl'></i>
+                        <span class="text-lg">
+                            Sign In
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex flex-col gap-y-1 items-center">
+                        <i class='bx bxs-heart text-2xl'></i>
+                        <span class="text-lg">
+                            Likes
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex flex-col gap-y-1 items-center">
+                        <i class='bx bx-basket text-2xl'></i>
+                        <span class="text-lg">
+                            Basket
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="items-center hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-search">
+            {{-- search input sm screens --}}
+
+            <div class="relative mt-3 lg:hidden">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                    <i class='bx bx-search w-4 h-4 text-gray cursor-pointer'></i>
+                </div>
+                <input type="text" id="search-navbar"
+                    class="block w-full mt-10 p-2 pl-5 text-lg text-gray-900 border-none rounded-lg bg-culture"
+                    placeholder="Search something...">
+            </div>
+
+            <ul
+                class="flex flex-col p-4 lg:p-0 mt-4 font-medium lg:flex-row lg:space-x-5 lg:mt-0 lg:border-0 lg:bg-white lg:items-center mr-auto">
+                <li>
+                    <a href="#"
+                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
+                        aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Plants</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Essentials</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">About
+                        us</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Contact
+                        Us</a>
+                </li>
+                <li class="lg:hidden block">
+                    <a href="">
+                        <span class="text-lg">
+                            Sign In
+                        </span>
+                    </a>
+                </li>
+                <li class="lg:hidden block">
+                    <a href="">
+                        <span class="text-lg">
+                            Likes
+                        </span>
+                    </a>
+                </li>
+                <li class="lg:hidden block">
+                    <a href="">
+                        <span class="text-lg">
+                            Basket
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
