@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Plantita | @yield('title')</title>
     {{-- Favicon --}}
-    {{-- <link rel="shortcut icon" href="{{asset('/')}}" type="image/x-icon"> --}}
+    <link rel="shortcut icon" href="{{ asset('images/favicon.svg') }}" type="image/x-icon">
     {{-- icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -19,11 +19,12 @@
 
 </head>
 
-<body class="antialiased overflow-x-hidden bg-background text-black">
+<body class="antialiased overflow-x-hidden bg-background text-black font-brandon-regular">
     @include('layout.components.front-components.navbar')
     <main class="container mx-auto py-20 px-10">
         @yield('content')
     </main>
+    @include('layout.components.front-components.footer')
     @yield('script')
 </body>
 
