@@ -71,7 +71,7 @@
             </div>
 
             <ul
-                class="flex flex-col p-4 lg:p-0 mt-4 font-medium lg:flex-row lg:space-x-5 lg:mt-0 lg:border-0 lg:bg-white lg:items-center mr-auto">
+                class="flex flex-col p-4 lg:p-0 mt-4 font-medium lg:flex-row lg:gap-x-5 lg:gap-y-0 gap-y-3 lg:mt-0 lg:border-0 lg:bg-white lg:items-center mr-auto">
                 <li>
                     <a href="#"
                         class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
@@ -96,21 +96,24 @@
                         Us</a>
                 </li>
                 <li class="lg:hidden block">
-                    <a href="">
+                    <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
+                        href="">
                         <span class="text-lg">
                             Sign In
                         </span>
                     </a>
                 </li>
                 <li class="lg:hidden block">
-                    <a href="">
+                    <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
+                        href="">
                         <span class="text-lg">
                             Likes
                         </span>
                     </a>
                 </li>
                 <li class="lg:hidden block">
-                    <a href="">
+                    <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
+                        href="">
                         <span class="text-lg">
                             Basket
                         </span>
