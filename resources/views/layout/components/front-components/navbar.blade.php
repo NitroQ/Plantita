@@ -1,15 +1,15 @@
 <nav class="bg-white border-gray-200 shadow-bottom fixed w-full">
     <div
-        class="flex lg:flex-row flex-col items-center lg:justify-between bg-gray-400 py-3 lg:px-4 px-10 bg-culture gap-y-1 lg:gap-y-0">
+        class="flex lg:flex-row flex-col items-center lg:justify-between bg-gray-400 py-1 lg:px-4 px-10 bg-culture gap-y-1 lg:gap-y-0">
         <p class="uppercase text-sm">
             WHEN IT COMES TO PLANTS, IN
             <span class="font-bold italic">TITA WE TRUST</span>
         </p>
         <div class="flex items-center gap-x-4">
-            <i class='bx bxl-facebook-circle text-3xl text-green'></i>
-            <i class='bx bxl-tiktok text-3xl text-green'></i>
+            <i class='bx bxl-facebook-circle text-2xl text-green'></i>
+            <i class='bx bxl-tiktok text-2xl text-green'></i>
             <img src="{{ asset('images/twitter-logo.svg') }}" alt="Twitter logo">
-            <i class='bx bxl-instagram text-3xl text-green'></i>
+            <i class='bx bxl-instagram text-2xl text-green'></i>
         </div>
     </div>
     <div class="flex flex-wrap items-center gap-x-5 py-4 px-10">
@@ -85,24 +85,7 @@
                     <a href="#"
                         class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Essentials</a>
                 </li>
-                <li>
-                    <a href="#"
-                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">About
-                        us</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Contact
-                        Us</a>
-                </li>
-                <li class="lg:hidden block">
-                    <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-                        href="">
-                        <span class="text-lg">
-                            Sign In
-                        </span>
-                    </a>
-                </li>
+
                 <li class="lg:hidden block">
                     <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
                         href="">
