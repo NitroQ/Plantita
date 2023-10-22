@@ -1,4 +1,4 @@
-<footer class="bg-white p-3 mx-auto">
+<footer class="bg-white mx-auto">
     <div class="w-full px-10 py-6 lg:py-8">
         <div class="grid lg:grid-cols-6 grid-cols-4 lg:gap-x-6 gap-5">
             <div class="col-span-3 flex flex-col items-start space-y-3">
@@ -71,5 +71,10 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="bg-culture text-center py-2">
+        <h5 class="text-green">
+            Copyright 2023 &copy; <span class="font-brandon-bold">Plantita e-Commerce</span>
+        </h5>
     </div>
 </footer>
