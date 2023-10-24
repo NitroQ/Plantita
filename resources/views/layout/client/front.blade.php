@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="container mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
+<body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
   <main class="relative py-20">
     @yield('content')
