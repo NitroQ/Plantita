@@ -16,7 +16,7 @@ module.exports = {
                 orange: "rgba(242, 68, 29, <alpha-value>)", //F2441D
                 culture: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
-              
+                white: "rgba(255, 255, 255, <alpha-value>)", //FFFFFF
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",

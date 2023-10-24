@@ -18,3 +18,14 @@ use App\Http\Controllers\PageController;
 
 // client
 Route::get('/', [PageController::class, 'index'])->name('index');
+
+
+
+
+
+// admin
+Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
+Route::get('/transactions', [PageController::class, 'transactions'])->name('transactions');
+Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/plantcare', [PageController::class, 'plantcare'])->name('plantcare');
+Route::get('/users', [PageController::class, 'users'])->name('users');
