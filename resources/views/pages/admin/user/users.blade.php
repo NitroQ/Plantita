@@ -44,9 +44,8 @@
             <td class="px-6 py-3">
               <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>
             </td>
-            <td class="px-6 py-3 space-x-2">
+            <td class="px-6 py-3">
               <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
-              <button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button>
             </td>
           </tr>
           <tr class="bg-white border-b border-gray/20">
@@ -62,9 +61,8 @@
             <td class="px-6 py-3">
               <span class="text-sm bg-blue/20 text-blue uppercase font-brandon-black px-3 py-2 rounded">Active</span>
             </td>
-            <td class="px-6 py-3 space-x-2">
-              <button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button>
-              <button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button>
+            <td class="px-6 py-3">
+              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
           </tr>
           <tr class="bg-white border-b border-gray/20">
@@ -80,9 +78,8 @@
             <td class="px-6 py-3">
               <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>
             </td>
-            <td class="px-6 py-3 space-x-2">
-              <button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button>
-              <button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button>
+            <td class="px-6 py-3">
+              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
           </tr>
           <tr class="bg-white border-b border-gray/20">
@@ -98,9 +95,8 @@
             <td class="px-6 py-3">
               <span class="text-sm bg-blue/20 text-blue uppercase font-brandon-black px-3 py-2 rounded">Active</span>
             </td>
-            <td class="px-6 py-3 space-x-2">
-              <button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button>
-              <button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button>
+            <td class="px-6 py-3">
+              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
           </tr>
         </tbody>
