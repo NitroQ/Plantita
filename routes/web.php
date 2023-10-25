@@ -16,16 +16,31 @@ use App\Http\Controllers\PageController;
 |
 */
 
-// client
+// CLIENT
 Route::get('/', [PageController::class, 'index'])->name('index');
 
 
-
-
-
-// admin
+// ADMIN
 Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
+
+// transactions
 Route::get('/transactions', [PageController::class, 'transactions'])->name('transactions');
+Route::get('/transactions/view', [PageController::class, 'viewTransaction'])->name('view-transaction');
+Route::get('/transactions/pending', [PageController::class, 'pending'])->name('pending');
+Route::get('/transactions/pack', [PageController::class, 'pack'])->name('pack');
+Route::get('/transactions/shipped', [PageController::class, 'shipped'])->name('shipped');
+
+// product management
 Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/products/add', [PageController::class, 'addProduct'])->name('add-product');
+Route::get('/products/view', [PageController::class, 'viewProduct'])->name('view-product');
+Route::get('/products/edit', [PageController::class, 'editProduct'])->name('edit-product');
+
+// plant care information
 Route::get('/plantcare', [PageController::class, 'plantcare'])->name('plantcare');
+Route::get('/plantcare/view', [PageController::class, 'viewPlantInfo'])->name('view-plantinfo');
+Route::get('/plantcare/edit', [PageController::class, 'editPlantInfo'])->name('edit-plantinfo');
+
+// user management
 Route::get('/users', [PageController::class, 'users'])->name('users');
+Route::get('/users/view', [PageController::class, 'viewUser'])->name('view-user');
