@@ -44,7 +44,7 @@
             <td class="px-6 py-3 font-brandon-bold">
               ₱1,500.00
             </td>
-            <td class="px-6 py-3 space-x-2">
+            <td class="px-4 lg:px-6 py-3 space-x-2">
               <a href="{{ route('view-transaction') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
               <a href="{{ route('pending') }}"><button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
@@ -65,7 +65,7 @@
             <td class="px-6 py-3 font-brandon-bold">
               ₱1,500.00
             </td>
-            <td class="px-6 py-3 space-x-2">
+            <td class="px-4 lg:px-6 py-3 space-x-2">
               <a href="{{ route('view-transaction') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
               <a href="{{ route('pack') }}"><button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
@@ -86,7 +86,7 @@
             <td class="px-6 py-3 font-brandon-bold">
               ₱1,500.00
             </td>
-            <td class="px-6 py-3 space-x-2">
+            <td class="px-4 lg:px-6 py-3 space-x-2">
               <a href="{{ route('view-transaction') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
               <a href="{{ route('shipped') }}"><button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>
@@ -107,7 +107,7 @@
             <td class="px-6 py-3 font-brandon-bold">
               ₱1,500.00
             </td>
-            <td class="px-6 py-3 space-x-2">
+            <td class="px-4 lg:px-6 py-3 space-x-2">
               <a href="{{ route('view-transaction') }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
               <a href=""><button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
             </td>

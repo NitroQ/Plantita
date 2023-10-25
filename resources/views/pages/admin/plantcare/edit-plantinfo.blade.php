@@ -7,7 +7,7 @@
           <h1 class="text-4xl font-brandon-bold">African Mask</h1>
       </div>
       <div class="grid grid-cols-4 gap-8 items-start">
-        <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
+        <div class="col-span-5 lg:col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
           <h3 class="text-2xl font-brandon-bold mb-3">Plant Care Information</h3>
           <div class="space-y-2">
             <label for="care-level" class="text-xl font-brandon-bold block">Care Level</label>
@@ -53,7 +53,7 @@
           </div>
           <button class="bg-green text-white py-2 rounded hover:bg-green/90"><a href="{{ route('view-plantinfo') }}" class="py-2 px-5">Save Details</a></button>
         </div>
-        <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
+        <div class="col-span-5 lg:col-span-2 order-first lg:order-last shadow-leftBottom p-5 rounded-md">
           <div class="flex justify-between mb-3">
             <h3 class="text-2xl font-brandon-bold">Plant Details</h3>
             <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>

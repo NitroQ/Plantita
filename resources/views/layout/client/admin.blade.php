@@ -12,7 +12,6 @@
   
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <!-- Styles -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -22,7 +21,7 @@
 
 <body class="bg-white font-brandon-regular text-black antialiased">
   @include('layout.components.admin-components.sidebar')
-  <main class="ml-96 py-12 p-16">
+  <main class="ml-20 lg:ml-96 py-12 lg:p-16 p-12">
     @yield('content')
   </main>
   @yield('script')

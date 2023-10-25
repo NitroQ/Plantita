@@ -7,7 +7,7 @@
     <h1 class="text-4xl font-brandon-bold">Transaction #123456789</h1>
   </div>
   <div class="grid grid-cols-5 gap-8 items-start">
-    <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
+    <div class="col-span-5 lg:col-span-2 shadow-leftBottom p-5 rounded-md">
       <div class="flex justify-between mb-3">
         <h3 class="text-2xl font-brandon-bold">Transaction Details</h3>
         <span class="text-sm bg-green/20 text-green uppercase font-brandon-black px-3 py-2 rounded">Shipped</span>
@@ -32,7 +32,7 @@
         </span>
       </div>
     </div>
-    <div class="col-span-3">
+    <div class="col-span-5 lg:col-span-3 order-first lg:order-last">
       <div class="p-10 rounded-lg bg-culture">
         <div class="grid grid-cols-5 items-center gap-y-5">
           <img src="{{ asset('images/products/plant-sample.webp') }}" class="pe-10 rounded-lg" />
