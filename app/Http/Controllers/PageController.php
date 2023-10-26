@@ -23,4 +23,60 @@ class PageController extends Controller
         "prods" => $products
       ]);
     }
+     
+    
+    // ADMIN
+     public function dashboard(){
+      return view('pages.admin.dashboard');
+  }
+
+  // transactions
+  public function transactions(){
+      return view('pages.admin.transactions.transactions');
+  }
+  public function viewTransaction(){
+      return view('pages.admin.transactions.view-transaction');
+  }
+  public function pending(){
+      return view('pages.admin.transactions.pending');
+  }
+  public function pack(){
+      return view('pages.admin.transactions.pack');
+  }
+  public function shipped(){
+      return view('pages.admin.transactions.shipped');
+  }
+
+  // product management
+  public function products(){
+      return view('pages.admin.products.products');
+  }
+  public function addProduct(){
+      return view('pages.admin.products.add-product');
+  }
+  public function viewProduct(){
+      return view('pages.admin.products.view-product');
+  }
+  public function editProduct(){
+      return view('pages.admin.products.edit-product');
+  }
+
+  // plant care informations
+  public function plantcare(){
+      return view('pages.admin.plantcare.plantcare');
+  }
+  public function viewPlantInfo(){
+      return view('pages.admin.plantcare.view-plantinfo');
+  }
+  public function editPlantInfo(){
+      return view('pages.admin.plantcare.edit-plantinfo');
+  }
+
+  // user management
+  public function users(){
+      return view('pages.admin.user.users');
+  }
+  public function viewUser(){
+      return view('pages.admin.user.view-user');
+  }
 }

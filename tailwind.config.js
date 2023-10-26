@@ -18,11 +18,17 @@ module.exports = {
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
                 silver: {
                   500: "rgba(130, 130, 130, <alpha-value>)"
-                }
+                },
               
+                white: "rgba(255, 255, 255, <alpha-value>)", //FFFFFF
+                blue: "rgba(17, 72, 95, <alpha-value>)", //11485F
+                yellow: "rgba(254, 202, 38, <alpha-value>)", //FECA26
+                lavender: "rgba(232, 232, 232, <alpha-value>)", //E8E8E8
+                sky: "rgba(101, 181, 255, <alpha-value>)", //65B5FF
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",
+                leftBottom: "0 1px 3px 0 rgba(0, 0, 0, 0.25)",
             },
             fontFamily: {
                 "brandon-black": ["Brandon Grotesque Black", "ui-monospace"],
