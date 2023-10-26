@@ -16,6 +16,9 @@ module.exports = {
                 orange: "rgba(242, 68, 29, <alpha-value>)", //F2441D
                 culture: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
+                silver: {
+                  500: "rgba(130, 130, 130, <alpha-value>)"
+                }
               
             },
             boxShadow: {
@@ -33,9 +36,6 @@ module.exports = {
             backgroundImage: {
               "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)"
             },
-            borderRadius: {
-              md: "0.625rem" //10px
-            }
         },
     },
     plugins: [require("flowbite/plugin")],
