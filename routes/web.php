@@ -18,3 +18,7 @@ use App\Http\Controllers\PageController;
 
 // client
 Route::get('/', [PageController::class, 'index'])->name('index');
+
+// entry pages
+Route::get('/signin', [PageController::class, 'signin'])->name('signin');
+Route::get('/signup', [PageController::class, 'signup'])->name('signup');

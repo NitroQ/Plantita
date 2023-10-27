@@ -16,7 +16,7 @@ module.exports = {
                 orange: "rgba(242, 68, 29, <alpha-value>)", //F2441D
                 culture: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
-              
+
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",
@@ -31,7 +31,8 @@ module.exports = {
                 ],
             },
             backgroundImage: {
-              "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)"
+              "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)",
+              "light-green-pattern-full":"linear-gradient(180deg, rgba(7, 70, 12, 0.30) 0%, rgba(2, 35, 5, 0.30) 100%)"
             },
             borderRadius: {
               md: "0.625rem" //10px

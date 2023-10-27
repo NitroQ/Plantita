@@ -1,3 +1,4 @@
+
 <nav class="bg-white border-gray-200 shadow-bottom sticky top-0 z-50 w-full">
   <div
     class="flex lg:flex-row flex-col items-center lg:justify-between bg-gray-400 py-1 lg:px-10 px-8 bg-culture gap-y-1 lg:gap-y-0">
@@ -33,11 +34,11 @@
       </div>
       <ul class="lg:flex hidden items-center gap-x-4">
         <li>
-          <a class="flex flex-col gap-y-px items-center">
+          <a class="flex flex-col gap-y-px items-center" href="{{ route('signin') }}">
             <i class='bx bx-user text-2xl'></i>
-            <span class="text-lg">
-              Sign In
-            </span>
+                <span class="text-lg">
+                    Sign In
+                </span>
           </a>
         </li>
         <li>
@@ -83,7 +84,7 @@
         </li>
         <li class="lg:hidden block">
           <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-            href="">
+          href="{{ route('signin') }}">
             <span class="text-lg">
               Sign In
             </span>
