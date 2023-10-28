@@ -5,21 +5,26 @@
       <div class="flex flex-col justify-center">
         <form class="max-w-[600px] w-full mx-auto text-center p-8 px-8 ">
           <h2 class="font-brandon-black text-green italic font-bold text-6xl">New Here?</h2>
-          <h4 class="font-brandon-regular text-gray font-normal text-xl mt-2">Join our community and embark on a green journey with us.</h4>
-          <div class="flex flex-col">
-            <input class="bg-white mt-2 border-none focus:border-green focus:outline-none" type="text" placeholder="Email Address"/>
-            <input class="bg-white mt-2 border-none focus:border-green focus:outline-none" type="password"placeholder="Password"/>
+          <h4 class="font-brandon-regular text-gray font-normal text-xl mb-6 mt-2">Join our community and embark on a green journey with us.</h4>
+          <div class="mb-2">
+            <input type="email" id="email" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Email Address" required>
           </div>
-          <div class="flex justify-between py-2">
-              <span class="text-gray italic">
-                <input class="border-gray rounded-sm" type="checkbox" name="" id="">
-                Remember Me
-              </span>
-              <span class="text-black font-bold">
-                Forgot Password
-              </span>
+          <div class="mb-2">
+            <input type="username" id="username" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Username" required>
           </div>
-          <button class="w-full my-5 py-2 bg-green rounded-md uppercase font-extrabold text-white">Sign In</button>
+          <div class="mb-2">
+            <input type="password" id="password" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Password" required>
+          </div>
+          <div class="mb-2">
+            <input type="password" id="confirm_password" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Confirm Password" required>
+          </div>
+          <div class="flex items-start py-2">
+            <div class="flex items-center h-5">
+              <input id="remember" type="checkbox" value="" class="w-4 h-4 text-green bg-gray-100 border-gray-300 rounded focus:ring-green" required>
+            </div>
+            <label for="remember" class="ml-2 text-md font-medium text-gray italic">Accept <a href="#" class="hover:underline dark:text-green">Terms and Conditions</a>.</label>
+          </div>
+          <button class="w-full my-5 py-2 bg-green rounded-md uppercase font-extrabold text-white">Sign Up</button>
           <div class="flex justify-center py-6 gap-2">
             <span class="text-gray">
               Already have an account?

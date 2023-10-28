@@ -21,11 +21,11 @@
 
 <body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
-  <main class="relative {{ request()->is('signin', 'signup') ? 'py-0' : 'py-20' }}">
+  <main class="relative {{ request()->is('signin', 'signup', 'contact') ? 'py-0' : 'py-20' }}">
     @yield('content')
  </main>
 
-  @if (!(\Request::is('signin') || \Request::is('signup')))
+  @if (!(\Request::is('signin') || \Request::is('signup') || \Request::is('contact')))
   @include('layout.components.front-components.footer')
   @endif
 

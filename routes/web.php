@@ -22,3 +22,6 @@ Route::get('/', [PageController::class, 'index'])->name('index');
 // entry pages
 Route::get('/signin', [PageController::class, 'signin'])->name('signin');
 Route::get('/signup', [PageController::class, 'signup'])->name('signup');
+
+// contact
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
