@@ -79,4 +79,14 @@ class PageController extends Controller
   public function viewUser(){
       return view('pages.admin.user.view-user');
   }
+   
+    // entry pages
+    public function signin()
+    {
+        return view('pages.signin');
+    }
+    public function signup()
+    {
+        return view('pages.signup');
+    }
 }

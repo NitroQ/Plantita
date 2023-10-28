@@ -25,6 +25,7 @@ module.exports = {
                 yellow: "rgba(254, 202, 38, <alpha-value>)", //FECA26
                 lavender: "rgba(232, 232, 232, <alpha-value>)", //E8E8E8
                 sky: "rgba(101, 181, 255, <alpha-value>)", //65B5FF
+
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",
@@ -40,7 +41,8 @@ module.exports = {
                 ],
             },
             backgroundImage: {
-              "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)"
+              "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)",
+              "light-green-pattern-full":"linear-gradient(180deg, rgba(7, 70, 12, 0.30) 0%, rgba(2, 35, 5, 0.30) 100%)"
             },
         },
     },
