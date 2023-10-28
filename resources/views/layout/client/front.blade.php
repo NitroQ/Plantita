@@ -25,7 +25,7 @@
     @yield('content')
  </main>
 
-  @if (!(\Request::is('signin') || \Request::is('signup') || \Request::is('contact')))
+  @if (!(\Request::is('signin') || \Request::is('signup')))
   @include('layout.components.front-components.footer')
   @endif
 

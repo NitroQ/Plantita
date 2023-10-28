@@ -29,10 +29,7 @@ module.exports = {
                 "brandon-black": ["Brandon Grotesque Black", "ui-monospace"],
                 "brandon-bold": ["Brandon Grotesque Bold", "ui-monospace"],
                 "brandon-medium": ["Brandon Grotesque Medium", "ui-monospace"],
-                "brandon-regular": [
-                    "Brandon Grotesque Regular",
-                    "ui-monospace",
-                ],
+                "brandon-regular": ["Brandon Grotesque Regular","ui-monospace",],
             },
             backgroundImage: {
               "light-green-pattern": "linear-gradient(180deg, rgba(9, 84, 15, 0.10) 0.91%, rgba(2, 35, 5, 0.70) 87.2%)",
