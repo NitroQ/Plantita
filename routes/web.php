@@ -25,3 +25,7 @@ Route::get('/signup', [PageController::class, 'signup'])->name('signup');
 
 // contact
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+// about
+Route::get('/about', [PageController::class, 'about'])->name('about');
+

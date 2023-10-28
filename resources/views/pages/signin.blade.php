@@ -3,7 +3,7 @@
 @section('content')
     <div class="grid grid-cols-1 sm:grid-cols-2 h-screen w-full py-0">
         <div class="hidden sm:block relative">
-          <img class="w-full h-full object-cover " src="{{ asset('images/entry/signin-cover.webp') }}" alt="watering can and plant">
+          <img class="w-full h-full object-cover" src="{{ asset('images/entry/signin-cover.webp') }}" alt="watering can and plant">
           <div class="absolute inset-0 bg-light-green-pattern-full opacity-100"></div>
         </div>
       <div class="flex flex-col justify-center">
