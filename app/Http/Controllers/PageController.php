@@ -89,4 +89,10 @@ class PageController extends Controller
     {
         return view('pages.signup');
     }
+
+    // contact page
+    public function contact()
+    {
+        return view('pages.contact');
+    }
 }
