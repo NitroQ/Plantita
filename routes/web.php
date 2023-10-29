@@ -18,6 +18,7 @@ use App\Http\Controllers\PageController;
 
 // CLIENT
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/product', [PageController::class, 'publicProduct'])->name('product');
 
 // ADMIN
 Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
