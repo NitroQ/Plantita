@@ -22,11 +22,10 @@ class PageController extends Controller
       return view('pages.index', [
         "prods" => $products
       ]);
-    }
-     
+    }   
     
     // ADMIN
-     public function dashboard(){
+  public function dashboard(){
       return view('pages.admin.dashboard');
   }
 
@@ -77,22 +76,37 @@ class PageController extends Controller
       return view('pages.admin.user.users');
   }
   public function viewUser(){
-      return view('pages.admin.user.view-user');
+    return view('pages.admin.user.view-user');
   }
    
-    // entry pages
-    public function signin()
-    {
-        return view('pages.signin');
-    }
-    public function signup()
-    {
-        return view('pages.signup');
-    }
+    // AUTH
+  public function signin(){
+      return view('pages.signin');
+  }
+      public function signup(){
+      return view('pages.signup');
+  }
 
-    // contact page
-    public function contact()
-    {
-        return view('pages.contact');
-    }
+      // contact page
+  public function contact(){
+      return view('pages.contact');
+  }
+
+  public function publicProduct() {
+    $products = [];
+
+      for ($i = 0; $i < 10; $i++) {
+        array_push($products, [
+          'productName' => 'Chinese Money Plant',
+          'content' => 'A tropical plant with striking foliage that resembles an...',
+          'productPrice' => '500',
+          'image' => asset('images/products/plant-sample.webp'),
+        ]);
+      }
+
+      return view('pages.products', [
+        "prods" => $products
+      ]);
+     
+  }
 }
