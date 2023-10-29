@@ -78,7 +78,7 @@
             aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#"
+          <a href="{{ route('product') }}"
             class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Products</a>
         </li>
         <li class="lg:hidden block">
