@@ -21,7 +21,7 @@
 
 <body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
-  <main class="relative {{ request()->is('signin', 'signup', 'contact') ? 'py-0' : 'py-20' }}">
+  <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation') ? 'py-0' : 'py-20' }}">
     @yield('content')
  </main>
 

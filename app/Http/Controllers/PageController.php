@@ -46,4 +46,10 @@ class PageController extends Controller
     {
         return view('pages.about');
     }
+
+    //prderconfirm page
+    public function orderConfirmation()
+    {
+        return view('pages.order-confirmation');
+    }
 }

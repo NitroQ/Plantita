@@ -16,6 +16,7 @@ module.exports = {
                 orange: "rgba(242, 68, 29, <alpha-value>)", //F2441D
                 culture: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
+                lightGray: "rgba(232, 232, 232, <alpha-value>)",// E8E8E8
 
                 silver: {
                   500: "rgba(130, 130, 130, <alpha-value>)"
@@ -24,6 +25,7 @@ module.exports = {
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",
+                cardShadow: "0px 1px 2px -1px rgba(0, 0, 0, 0.50), 0px 1px 3px 0px rgba(0, 0, 0, 0.25)",
             },
             fontFamily: {
                 "brandon-black": ["Brandon Grotesque Black", "ui-monospace"],
