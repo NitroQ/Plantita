@@ -32,3 +32,10 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 // order confirmation
 Route::get('/order-confirmation', [PageController::class, 'orderConfirmation'])->name('order-confirmation');
 
+// error pages
+Route::get('/product-failed', [PageController::class, 'productFailed'])->name('product-failed');
+Route::get('/product-cancelled', [PageController::class, 'productCancelled'])->name('product-cancelled');
+Route::get('/error404', [PageController::class, 'error404'])->name('error404');
+
+
+

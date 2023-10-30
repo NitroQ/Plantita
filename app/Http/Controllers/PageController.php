@@ -47,9 +47,23 @@ class PageController extends Controller
         return view('pages.about');
     }
 
-    //prderconfirm page
+    //orderconfirm page
     public function orderConfirmation()
     {
         return view('pages.order-confirmation');
+    }
+
+    //erro-failed pages
+    public function productFailed()
+    {
+        return view('pages.product-failed');
+    }
+    public function productCancelled()
+    {
+        return view('pages.product-cancelled');
+    }
+    public function error404()
+    {
+        return view('pages.error404');
     }
 }
