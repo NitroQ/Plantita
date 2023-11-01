@@ -24,10 +24,10 @@
   <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation' ,
     'product-failed', 'product-cancelled', 'error404') ? 'py-0' : 'py-20' }}">
     @yield('content')
- </main>
+  </main>
 
   @if (!(\Request::is('signin') || \Request::is('signup')))
-  @include('layout.components.front-components.footer')
+    @include('layout.components.front-components.footer')
   @endif
 
   @yield('script')
@@ -35,4 +35,3 @@
 </body>
 
 </html>
-

@@ -17,14 +17,20 @@ module.exports = {
                 culture: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 background: "rgba(244, 249, 245, <alpha-value>)", //F4F9F5
                 lightGray: "rgba(232, 232, 232, <alpha-value>)",// E8E8E8
-
                 silver: {
                   500: "rgba(130, 130, 130, <alpha-value>)"
-                }
+                },
+
+                white: "rgba(255, 255, 255, <alpha-value>)", //FFFFFF
+                blue: "rgba(17, 72, 95, <alpha-value>)", //11485F
+                yellow: "rgba(254, 202, 38, <alpha-value>)", //FECA26
+                lavender: "rgba(232, 232, 232, <alpha-value>)", //E8E8E8
+                sky: "rgba(101, 181, 255, <alpha-value>)", //65B5FF
 
             },
             boxShadow: {
                 bottom: "0px 11px 22px 0px rgba(0, 0, 0, 0.15)",
+                leftBottom: "0 1px 3px 0 rgba(0, 0, 0, 0.25)",
                 cardShadow: "0px 1px 2px -1px rgba(0, 0, 0, 0.50), 0px 1px 3px 0px rgba(0, 0, 0, 0.25)",
             },
             fontFamily: {
