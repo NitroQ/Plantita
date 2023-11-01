@@ -24,9 +24,9 @@
               <label for="checked-checkbox" class="ml-2 text-md font-medium text-gray italic">Remember Me</label>
             </div>
             {{-- FORGOT PASSWORD --}}
-            <div class="text-black font-bold">
+            {{-- <div class="text-black font-bold">
               Forgot Password
-            </div>
+            </div> --}}
             </div>
           {{-- SIGN IN BUTTON --}}
           <button class="w-full my-5 py-2 bg-green rounded-md uppercase font-extrabold text-white">Sign In</button>

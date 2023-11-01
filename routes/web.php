@@ -62,5 +62,8 @@ Route::get('/product-failed', [PageController::class, 'productFailed'])->name('p
 Route::get('/product-cancelled', [PageController::class, 'productCancelled'])->name('product-cancelled');
 Route::get('/error404', [PageController::class, 'error404'])->name('error404');
 
+// transaction - client
+Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
+
 
 

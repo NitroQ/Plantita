@@ -135,4 +135,10 @@ class PageController extends Controller
     {
         return view('pages.error404');
     }
+
+    // transaction page - client
+    public function transaction()
+    {
+        return view('pages.transaction');
+    }
 }

@@ -22,7 +22,7 @@
 <body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
   <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation' ,
-    'product-failed', 'product-cancelled', 'error404') ? 'py-0' : 'py-20' }}">
+    'product-failed', 'product-cancelled', 'error404', 'transaction') ? 'py-0' : 'py-20' }}">
     @yield('content')
   </main>
 
