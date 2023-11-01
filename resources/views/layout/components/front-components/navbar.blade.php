@@ -59,7 +59,7 @@
             </ul>
 
             {{-- FOR LOGIN --}}
-
+            {{-- User Dropdown menu --}}
             <div class="lg:block hidden">
 
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="flex items-center gap-x-1">
