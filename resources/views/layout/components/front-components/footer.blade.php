@@ -21,7 +21,7 @@
             <a href="">Home</a>
           </li>
           <li class="text-gray">
-            <a href="">About</a>
+            <a href="/about">About</a>
           </li>
           <li class="text-gray">
             <a href="">Plant</a>
@@ -30,7 +30,7 @@
             <a href="">Essentials</a>
           </li>
           <li class="text-gray">
-            <a href="">Contact Us</a>
+            <a href="/contact">Contact Us</a>
           </li>
         </ul>
       </div>

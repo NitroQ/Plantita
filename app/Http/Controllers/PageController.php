@@ -22,8 +22,8 @@ class PageController extends Controller
       return view('pages.index', [
         "prods" => $products
       ]);
-    }   
-    
+    }
+
     // ADMIN
   public function dashboard(){
       return view('pages.admin.dashboard');
@@ -78,7 +78,7 @@ class PageController extends Controller
   public function viewUser(){
     return view('pages.admin.user.view-user');
   }
-   
+
     // AUTH
   public function signin(){
       return view('pages.signin');
@@ -107,6 +107,32 @@ class PageController extends Controller
       return view('pages.products', [
         "prods" => $products
       ]);
-     
+
   }
+
+    // about page
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    //orderconfirm page
+    public function orderConfirmation()
+    {
+        return view('pages.order-confirmation');
+    }
+
+    //erro-failed pages
+    public function productFailed()
+    {
+        return view('pages.product-failed');
+    }
+    public function productCancelled()
+    {
+        return view('pages.product-cancelled');
+    }
+    public function error404()
+    {
+        return view('pages.error404');
+    }
 }
