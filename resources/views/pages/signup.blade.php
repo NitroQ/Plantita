@@ -7,6 +7,14 @@
         <form class="max-w-[600px] w-full mx-auto text-center p-8 px-8 ">
           <h2 class="font-brandon-black text-green italic font-bold text-6xl">New Here?</h2>
           <h4 class="font-brandon-regular text-gray font-normal text-xl mb-6 mt-2">Join our community and embark on a green journey with us.</h4>
+          <div class="grid md:grid-cols-6 gap-4 mb-2">
+            <div class="col-span-3">
+                <input type="text" id="firstName" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="First Name" required>
+            </div>
+            <div class="col-span-3">
+                <input type="text" id="lastName" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Last Name" required>
+            </div>
+            </div>
           <div class="mb-2">
             <input type="email" id="email" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Email Address" required>
           </div>
