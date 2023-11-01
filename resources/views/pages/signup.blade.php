@@ -32,7 +32,7 @@
             <div class="flex items-center h-5">
               <input id="remember" type="checkbox" value="" class="w-4 h-4 text-green bg-gray-100 border-gray-300 rounded focus:ring-green" required>
             </div>
-            <label for="remember" class="ml-2 text-md font-medium text-gray italic">Accept <a href="#" class="hover:underline dark:text-green">Terms and Conditions</a>.</label>
+            <label for="remember" class="ml-2 text-md font-medium text-gray italic">Accept <a href="/terms-conditions" class="hover:underline dark:text-green">Terms and Conditions</a>.</label>
           </div>
           {{-- SIGN UP BUTTON --}}
           <button class="w-full my-5 py-2 bg-green rounded-md uppercase font-extrabold text-white">Sign Up</button>

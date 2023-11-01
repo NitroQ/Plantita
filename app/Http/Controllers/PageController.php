@@ -141,4 +141,10 @@ class PageController extends Controller
     {
         return view('pages.transaction');
     }
+
+    // terms and conditions page - client
+    public function termsConditions()
+    {
+        return view('pages.terms-conditions');
+    }
 }

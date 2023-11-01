@@ -44,9 +44,13 @@ Route::get('/plantcare/edit', [PageController::class, 'editPlantInfo'])->name('e
 // user management
 Route::get('/users', [PageController::class, 'users'])->name('users');
 Route::get('/users/view', [PageController::class, 'viewUser'])->name('view-user');
+
 // entry pages
 Route::get('/signin', [PageController::class, 'signin'])->name('signin');
 Route::get('/signup', [PageController::class, 'signup'])->name('signup');
+
+// terms and conditions page
+Route::get('/terms-conditions', [PageController::class, 'termsConditions'])->name('terms-conditions');
 
 // contact
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
@@ -64,6 +68,7 @@ Route::get('/error404', [PageController::class, 'error404'])->name('error404');
 
 // transaction - client
 Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
+
 
 
 
