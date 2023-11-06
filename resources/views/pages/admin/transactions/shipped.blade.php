@@ -3,29 +3,29 @@
 @section('content')
 <section>
   <div class="flex mb-5">
-    <a href="{{ route('transactions') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green'></i></a>
+    <a href="{{ route('transactions') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green-200'></i></a>
     <h1 class="text-4xl font-brandon-bold">Transaction #123456789</h1>
   </div>
   <div class="grid grid-cols-5 gap-8 items-start">
     <div class="col-span-5 lg:col-span-2 shadow-leftBottom p-5 rounded-md">
       <div class="flex justify-between mb-3">
         <h3 class="text-2xl font-brandon-bold">Transaction Details</h3>
-        <span class="text-sm bg-green/20 text-green uppercase font-brandon-black px-3 py-2 rounded">Shipped</span>
+        <span class="text-sm bg-green-200/20 text-green-200 uppercase font-brandon-black px-3 py-2 rounded">Shipped</span>
       </div>
       <div class="grid grid-cols-5 gap-y-3 gap-x-5 items-start text-lg">
-        <div class="col-span-2 text-center font-brandon-bold py-1 bg-culture rounded-lg">Transaction Number</div>
+        <div class="col-span-2 text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Transaction Number</div>
         <p class="col-span-3 mt-1">#123456789</p>
-        <div class="col-span-2 text-center font-brandon-bold py-1 bg-culture rounded-lg">Transaction Date</div>
+        <div class="col-span-2 text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Transaction Date</div>
         <p class="col-span-3 mt-1">October 13, 2023</p>
-        <div class="col-span-2 text-center font-brandon-bold py-1 bg-culture rounded-lg">Shipping Method</div>
+        <div class="col-span-2 text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Shipping Method</div>
         <p class="col-span-3 mt-1">Personal Delivery</p>
-        <div class="col-span-2 text-center font-brandon-bold py-1 bg-culture rounded-lg">Shipping Details</div>
+        <div class="col-span-2 text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Shipping Details</div>
         <span class="col-span-3 mt-1">
           <p>Frank Vincent Gesmundo</p>
           <p>09423894723</p>
           <p>96 Kaliraya St. Cluster 19 G. Araneta Ave. Brgy. Tatalon, Quezon City, 1113</p>
         </span>
-        <div class="col-span-2 text-center font-brandon-bold py-1 bg-culture rounded-lg">Payment Method</div>
+        <div class="col-span-2 text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Payment Method</div>
         <span class="col-span-3 mt-1">
           <p>Maya Debit / Credit</p>
           <p>#1273459049084</p>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="col-span-5 lg:col-span-3 order-first lg:order-last">
-      <div class="p-10 rounded-lg bg-culture">
+      <div class="p-10 rounded-lg bg-gray-400">
         <div class="grid grid-cols-5 items-center gap-y-5">
           <img src="{{ asset('images/products/plant-sample.webp') }}" class="pe-10 rounded-lg" />
           <div class="col-span-3">

@@ -52,9 +52,9 @@
             </div> -->
             <div id="donut-chart"></div>
           </div>
-          <div class="col-span-3">
+          <div id="legend-table" class="col-span-3">
             <table class="w-full text-left">
-              <thead class="text-gray uppercase bg-culture font-brandon-bold">
+              <thead class="text-gray uppercase bg-gray-400 font-brandon-bold">
                 <tr>
                   <th scope="col" class="px-6 py-1 rounded-tl-lg rounded-bl-lg"></th>
                   <th scope="col" class="px-6 py-1">
@@ -71,7 +71,7 @@
               <tbody class="text-lg border-b border-gray/20">
                 <tr class="bg-white border-b border-gray/20">
                   <th scope="row" class="px-6 py-1 font-medium whitespace-nowrap">
-                    <div class="bg-green h-2 w-2 rounded-xl"></div>
+                    <div class="bg-green-200 h-2 w-2 rounded-xl"></div>
                   </th>
                   <td class="flex items-center px-6 py-1">
                     <img src="{{ asset('images/products/plant-sample.webp') }}" class="h-10 me-3" />
@@ -86,7 +86,7 @@
                 </tr>
                 <tr class="bg-white border-b border-gray/20">
                   <th scope="row" class="px-6 py-1 font-medium whitespace-nowrap">
-                    <div class="bg-blue h-2 w-2 rounded-xl"></div>
+                    <div class="bg-blue-100 h-2 w-2 rounded-xl"></div>
                   </th>
                   <td class="flex items-center px-6 py-1">
                     <img src="{{ asset('images/products/plant-sample.webp') }}" class="h-10 me-3" />
@@ -211,9 +211,9 @@
       <div class="shadow-leftBottom p-5 rounded-md space-y-3">
         <h3 class="text-2xl font-brandon-bold">Quick Access</h3>
         <div class="space-y-2">
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('transactions') }}">Check Transactions</a></button>
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('plantcare') }}">Manage Inventory</a></button>
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('products') }}">Modify Plant Care</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('transactions') }}">Check Transactions</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('plantcare') }}">Manage Inventory</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('products') }}">Modify Plant Care</a></button>
         </div>
       </div>
     </div>
@@ -223,29 +223,12 @@
 
 @section('script')
 <script>
-  // doughnut chart
-  // var ctx = document.getElementById('donut-chart').getContext('2d');
-
-  // var donutData = {
-  //   datasets: [{
-  //     data: [5, 10, 20, 15, 50],
-  //     backgroundColor: ["#E31B42", "#F2441D", "#11485F", "#FECA26", "#0A6611"],
-  //   }],
-  // };
-
-  // var myDonutChart = new Chart(ctx, {
-  //   type: 'doughnut',
-  //   data: donutData,
-  //   options: {
-  //     cutout: '70%',
-  //   },
-  // });
-
+  // DOUGHNUT CHART
   window.addEventListener("load", function() {
     const getChartOptions = () => {
         return {
-          series: [35.1, 23.5, 2.4, 5.4],
-          colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
+          series: [35.1, 23.5, 2.4, 5.4, 3.5],
+          colors: ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26"],
           chart: {
             width: "100%",
             type: "donut",
@@ -255,43 +238,18 @@
             lineCap: "",
           },
           plotOptions: {
-            // pie: {
-            //   donut: {
-            //     labels: { show: false },
-            //     size: "80%",
-            //   },
-            // },
-          },
-          grid: {
-            padding: {
-              top: -2,
+            pie: {
+              donut: {
+                labels: { show: false },
+                size: "70%",
+              },
             },
           },
           dataLabels: {
             enabled: false,
           },
           legend: {
-            enabled: false,
-          },
-          yaxis: {
-            labels: {
-              formatter: function (value) {
-                return value + "k"
-              },
-            },
-          },
-          xaxis: {
-            labels: {
-              formatter: function (value) {
-                return value  + "k"
-              },
-            },
-            axisTicks: {
-              show: false,
-            },
-            axisBorder: {
-              show: false,
-            },
+            show: false,
           },
         }
       }
@@ -299,34 +257,6 @@
       if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
         const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
         chart.render();
-
-        const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
-
-        function handleCheckboxChange(event, chart) {
-            const checkbox = event.target;
-            if (checkbox.checked) {
-                switch(checkbox.value) {
-                  case 'desktop':
-                    chart.updateSeries([15.1, 22.5, 4.4, 8.4]);
-                    break;
-                  case 'tablet':
-                    chart.updateSeries([25.1, 26.5, 1.4, 3.4]);
-                    break;
-                  case 'mobile':
-                    chart.updateSeries([45.1, 27.5, 8.4, 2.4]);
-                    break;
-                  default:
-                    chart.updateSeries([55.1, 28.5, 1.4, 5.4]);
-                }
-
-            } else {
-                chart.updateSeries([35.1, 23.5, 2.4, 5.4]);
-            }
-        }
-
-        checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', (event) => handleCheckboxChange(event, chart));
-        });
       }
   });
 

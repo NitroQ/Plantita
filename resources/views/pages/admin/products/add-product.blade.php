@@ -3,28 +3,28 @@
 @section('content')
 <section>
   <div class="flex mb-5">
-    <a href="{{ route('products') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green'></i></a>
+    <a href="{{ route('products') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green-200'></i></a>
     <h1 class="text-4xl font-brandon-bold">Add Product</h1>
   </div>
   <div class="grid grid-cols-4 gap-8 items-start">
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
       <form action="" class="grid grid-cols-2 gap-3">
-        <input type="text" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green/20 focus:border-green/20" placeholder="Product Name">
-        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green/20 focus:border-green/20" placeholder="In-Stock Quantity">
-        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green/20 focus:border-green/20" placeholder="Listed Price">
-        <input type="text" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green/20 focus:border-green/20" placeholder="Scientific Name">
-        <select id="product-type" class="border border-culture rounded-lg focus:ring-green/20 focus:border-green/20 block w-full px-3.5 py-2.5">
-          <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
-          <option value="Option 1">Option 1</option>
-          <option value="Option 2">Option 2</option>
-          <option value="Option 3">Option 3</option>
-          <option value="Option 4">Option 4</option>
+        <input type="text" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Product Name">
+        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="In-Stock Quantity">
+        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Listed Price">
+        <input type="text" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Scientific Name">
+        <select id="product-type" class="border border-gray-400 rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+          <option selected class="text-gray-500/70 bg-gray-400 hover:bg-green-200/20">Type</option>
+          <option value="Option 1" class="text-black">Option 1</option>
+          <option value="Option 2" class="text-black">Option 2</option>
+          <option value="Option 3" class="text-black">Option 3</option>
+          <option value="Option 4" class="text-black">Option 4</option>
         </select>
-        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green/20 focus:border-green/20" placeholder="Lifespan (if plants)">
-        <textarea id="message" rows="10" placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border border-culture rounded-lg resize-none focus:ring-green/20 focus:border-green/20"></textarea>
+        <input type="text" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Lifespan (if plants)">
+        <textarea id="message" rows="10" placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border border-gray-400 rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"></textarea>
       </form>
-      <button class="bg-green text-white py-2 rounded hover:bg-green/90"><a href="{{ route('products') }}" class="py-2 px-5">Add Product</a></button>
+      <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90"><a href="{{ route('products') }}" class="py-2 px-5">Add Product</a></button>
     </div>
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Images</h3>
@@ -36,7 +36,7 @@
               <p class="text-center">Drag and Drop here</p>
             </div>
             <p>or</p>
-            <label for="select-files" class="mt-2 bg-green text-sm text-white py-2 px-5 rounded hover:bg-green/90 cursor-pointer">
+            <label for="select-files" class="mt-2 bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">
               Select Files
               <input id="select-files" type="file" class="hidden" />
             </label>
