@@ -18,7 +18,7 @@ use App\Http\Controllers\PageController;
 
 // CLIENT
 Route::get('/', [PageController::class, 'index'])->name('index');
-
+Route::get('/product', [PageController::class, 'publicProduct'])->name('product');
 
 // ADMIN
 Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
@@ -44,3 +44,9 @@ Route::get('/plantcare/edit', [PageController::class, 'editPlantInfo'])->name('e
 // user management
 Route::get('/users', [PageController::class, 'users'])->name('users');
 Route::get('/users/view', [PageController::class, 'viewUser'])->name('view-user');
+// entry pages
+Route::get('/signin', [PageController::class, 'signin'])->name('signin');
+Route::get('/signup', [PageController::class, 'signup'])->name('signup');
+
+// contact
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');

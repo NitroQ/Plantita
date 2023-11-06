@@ -11,18 +11,26 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- Styles -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @yield('css')
 
 </head>
 
-<body class="container mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
+<body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
-  <main class="relative py-20">
+  <main class="relative {{ request()->is('signin', 'signup', 'contact') ? 'py-0' : 'py-20' }}">
     @yield('content')
   </main>
-  @include('layout.components.front-components.footer')
+
+  @if (!(\Request::is('signin') || \Request::is('signup')))
+    @include('layout.components.front-components.footer')
+  @endif
+
   @yield('script')
+
 </body>
 
 </html>
