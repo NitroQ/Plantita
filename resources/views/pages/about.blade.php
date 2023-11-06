@@ -3,9 +3,9 @@
 @section('content')
   <section class="container mx-auto max-w-screen-2xl px-10">
     <div>
-      <p class=" font-brandon-bold text-green text-3xl">About Us</p>
+      <p class=" font-brandon-bold text-green-200 text-3xl">About Us</p>
       <p class="text-5xl">Plantita: Cultivating Green Dreams for Over 5 Years</p>
-      <p class="text-5xl">- <span class="font-brandon-bold text-green text-5xl">A Remarkable Journey of Shared Passion</span></p>
+      <p class="text-5xl">- <span class="font-brandon-bold text-green-200 text-5xl">A Remarkable Journey of Shared Passion</span></p>
       <img class="rounded-xl mt-10" src="{{ asset('images/about/about-hero.webp') }}" alt="watering can and plant">
       <div class="grid grid-rows-1">
         <div class="grid grid-cols-1 2xl:grid-cols-6 mt-3">
@@ -17,7 +17,7 @@
               <p class="mt-2 mb-2 text-3xl">
                 In the heart of our story lies a passion for plants that has been nurtured over decades.
                 Plantita, much more than just an <span class="italic">e-commerce website</span>,
-                <span class="font-brandon-bold text-green">embodies the culmination of a lifelong love affair with nature.</span>
+                <span class="font-brandon-bold text-green-200">embodies the culmination of a lifelong love affair with nature.</span>
               </p>
               <p class="mt-2">
                 Our journey began over 5 years ago when a group of friends - Frank, Cass, Louie, Gabby, Raegan, and Niel -

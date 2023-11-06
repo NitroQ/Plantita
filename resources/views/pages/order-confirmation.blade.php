@@ -10,7 +10,7 @@
       <div class="grid grid-rows-1 pb-4">
         <img class="h-10 w-10" src="{{ asset('images/icons_logos/order-icon.svg') }}" alt="">
         <h2 class="font-brandon-black text-5xl italic py-4">Thank you so much!</h2>
-        <p class="font-brandon-reguar text-gray text-xl">Your order means a lot to us! Patienly wait for processing of your item.</p>
+        <p class="font-brandon-reguar text-gray-500 text-xl">Your order means a lot to us! Patienly wait for processing of your item.</p>
       </div>
       <div class="grid grid-rows-1 ">
         <div class="grid xl:grid-cols-6 grid-cols-1 gap-4">
@@ -29,13 +29,13 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray ">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
                     </div>
                   </div>
                 </div>
@@ -49,13 +49,13 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray ">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
                     </div>
                   </div>
                 </div>
@@ -69,13 +69,13 @@
                 <div class=" col-span-4 pr-6">
                   <div class="grid grid-rows-1">
                     <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                    <h4 class="font-brandon-regular text-lg text-gray ">A tropical plant with striking foliage that resembles an...</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
                     <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
                   </div>
                 </div>
                 <div class="col-span-1 flex justify-end">
                   <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
+                    <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
                   </div>
                 </div>
               </div>
@@ -84,7 +84,7 @@
             <div class="grid grid-rows-1  border-b-2 border-lightGray ">
               <div class="grid grid-cols-6 p-4 px-6">
                 <div class="col-span-5 flex justify-end px-2">
-                  <h4 class="font-brandon-regular text-2xl text-gray">Delivery Fee:</h4>
+                  <h4 class="font-brandon-regular text-2xl text-gray-500">Delivery Fee:</h4>
                 </div>
                 <div class="col-span-1 flex justify-end">
                   <h4 class="font-brandon-black text-2xl font-bold">₱250</h4>
@@ -95,10 +95,10 @@
             <div class="grid grid-rows-1">
               <div class="grid grid-cols-6 p-4 px-6">
                 <div class="col-span-5 ">
-                    <h4 class="font-brandon-regular text-2xl text-gray">Total</h4>
+                    <h4 class="font-brandon-regular text-2xl text-gray-500">Total</h4>
                 </div>
                 <div class="col-span-1 flex justify-end items-center">
-                    <h4 class="font-brandon-black text-2xl text-green font-bold">₱6,250</h4>
+                    <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱6,250</h4>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@
                     </div>
                   </div>
                   <div class="col-span-3 flex justify-start items-center">
-                    <h4 class="font-brandon-regular text-lg text-gray">#123456789</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500">#123456789</h4>
                   </div>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                     </div>
                   </div>
                   <div class="col-span-3 flex justify-start items-center">
-                    <h4 class="font-brandon-regular text-lg text-gray">October 16, 2023</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500">October 16, 2023</h4>
                   </div>
                 </div>
               </div>
@@ -145,7 +145,7 @@
                     </div>
                   </div>
                   <div class="col-span-3 flex justify-start items-center">
-                    <h4 class="font-brandon-regular text-lg text-gray">Personal Delivery</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500">Personal Delivery</h4>
                   </div>
                 </div>
               </div>
@@ -158,9 +158,9 @@
                         </div>
                     </div>
                     <div class="col-span-3">
-                      <h4 class="font-brandon-regular text-lg text-gray">Frank Vincent Gesmundo</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray">09236541256</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray w-48 pr-6">96 Kaliraya St. Cluster 19 G. Araneta Ave. Brgy. Tatalon, Quezon City, 1113</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500">Frank Vincent Gesmundo</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500">09236541256</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 w-48 pr-6">96 Kaliraya St. Cluster 19 G. Araneta Ave. Brgy. Tatalon, Quezon City, 1113</h4>
                     </div>
                 </div>
 
@@ -173,8 +173,8 @@
                         </div>
                     </div>
                     <div class="col-span-3">
-                      <h4 class="font-brandon-regular text-lg text-gray">Maya Debit / Credit</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray">#1273459049084</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500">Maya Debit / Credit</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500">#1273459049084</h4>
                     </div>
                 </div>
               </div>
@@ -184,10 +184,14 @@
             <div class="grid grid-rows-1">
               <div class="grid grid-cols-6 gap-4">
                 <div class="col-span-3">
-                  <button class="w-full my-5 py-2 bg-green rounded-md font-extrabold text-white">Check Transactions</button>
+                    <a href="{{ route('transaction') }}">
+                        <button class="w-full my-5 py-2 bg-green-200 rounded-md font-extrabold text-white">Check Transactions</button>
+                    </a>
                 </div>
                 <div class="col-span-3">
-                  <button class="w-full my-5 py-2 border border-lightGray bg-culture rounded-md font-extrabold text-green">Back To Home</button>
+                    <a href="{{ route('index') }}">
+                        <button class="w-full my-5 py-2 border border-gray-500 bg-gray-400 rounded-md font-extrabold text-green-200">Back To Home</button>
+                    </a>
                 </div>
               </div>
             </div>

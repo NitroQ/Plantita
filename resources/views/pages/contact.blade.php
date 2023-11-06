@@ -62,27 +62,27 @@
   <div class="sm:flex flex-col justify-center">
     {{-- CONTACT FORM --}}
     <form class="max-w-[500px] w-full mx-auto p-8 px-8">
-      <h2 class="font-brandon-black text-green italic text-6xl">Got Questions?</h2>
-      <h4 class="font-brandon-regular text-gray font-normal text-xl mt-2 mb-6">We're all ears - and leaves! Contact us today</h4>
+      <h2 class="font-brandon-black text-green-200 italic text-6xl">Got Questions?</h2>
+      <h4 class="font-brandon-regular text-gray-500 font-normal text-xl mt-2 mb-6">We're all ears - and leaves! Contact us today</h4>
       <div class="grid gap-2 mb-2 md:grid-cols-2">
         <div>
-          <input type="text" id="first_name" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="First Name" required>
+          <input type="text" id="first_name" class="placeholder-gray-500 bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5" placeholder="First Name" required>
         </div>
         <div>
-          <input type="text" id="last_name" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Last Name" required>
+          <input type="text" id="last_name" class="placeholder-gray-500 bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5" placeholder="Last Name" required>
         </div>
       </div>
       <div class="mb-2">
-        <input type="email" id="email" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Email Address" required>
+        <input type="email" id="email" class="placeholder-gray-500 bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5" placeholder="Email Address" required>
       </div>
       <div class="mb-2">
-        <input type="text" id="subject" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-2.5" placeholder="Subject" required>
+        <input type="text" id="subject" class="placeholder-gray-500 bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5" placeholder="Subject" required>
       </div>
       <div class="mb-2">
-        <input type="text" id="large-input" class="bg-white border-none rounded-lg focus:ring-green focus:border-green block w-full p-5" placeholder="Write your message..." required>
+        <input type="text" id="large-input" class="placeholder-gray-500 bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-5" placeholder="Write your message..." required>
       </div>
       {{-- SUBMIT BUTTON --}}
-      <button class="w-full my-5 py-2 bg-green rounded-md uppercase font-extrabold text-white">Submit</button>
+      <button class="w-full my-5 py-2 bg-green-200 rounded-md uppercase font-extrabold text-white">Submit</button>
     </form>
   </div>
 </div>

@@ -20,14 +20,14 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1 ">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray pr-6">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 pr-6">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-regular text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end text-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
-                      <p class="text-sm text-gray mt-2">+$250 (Shipping)</p>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
+                      <p class="text-sm text-gray-500 mt-2">+$250 (Shipping)</p>
                     </div>
                   </div>
                 </div>
@@ -35,12 +35,12 @@
             {{-- ORDER STATUS AND TOTAL --}}
             <div class="flex flex-col md:flex-row justify-between">
               <div class="flex  p-4">
-                <h4 class="font-brandon-regular text-xl text-gray mr-4">Order Status:</h4>
-                <span class="text-sm bg-green/20 text-green uppercase font-brandon-black px-3 py-2 rounded">Shipped</span>
+                <h4 class="font-brandon-regular text-xl text-gray-500 mr-4">Order Status:</h4>
+                <span class="text-sm bg-green-100 text-green-200 uppercase font-brandon-black px-3 py-2 rounded">Shipped</span>
               </div>
               <div class="flex p-4 items-center">
-                <h4 class="font-brandon-regular text-xl text-gray">Order Total:</h4>
-                <h4 class="font-brandon-bold text-xl text-green font-bold  ml-2">₱2,250</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500">Order Total:</h4>
+                <h4 class="font-brandon-bold text-xl text-green-200 font-bold  ml-2">₱2,250</h4>
                 <button class="text-sm p-2 bg-green rounded-md uppercase font-extrabold text-white ml-4">Products Received</button>
               </div>
             </div>
@@ -62,14 +62,14 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1 ">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray pr-6">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 pr-6">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-regular text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end text-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
-                      <p class="text-sm text-gray mt-2">+$250 (Shipping)</p>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
+                      <p class="text-sm text-gray-500 mt-2">+$250 (Shipping)</p>
                     </div>
                   </div>
                 </div>
@@ -77,12 +77,12 @@
             {{-- ORDER STATUS AND TOTAL --}}
             <div class="flex flex-col md:flex-row justify-between">
               <div class="flex  p-4">
-                <h4 class="font-brandon-regular text-xl text-gray mr-4">Order Status:</h4>
-                <span class="text-sm bg-blue/20 text-blue uppercase font-brandon-black px-3 py-2 rounded">Done</span>
+                <h4 class="font-brandon-regular text-xl text-gray-500 mr-4">Order Status:</h4>
+                <span class="text-sm bg-blue-100/10 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Done</span>
               </div>
               <div class="flex p-4 items-center">
-                <h4 class="font-brandon-regular text-xl text-gray">Order Total:</h4>
-                <h4 class="font-brandon-bold text-xl text-green font-bold  ml-2">₱2,250</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500">Order Total:</h4>
+                <h4 class="font-brandon-bold text-xl text-green-200 font-bold  ml-2">₱2,250</h4>
                 <button class="text-sm p-2 bg-green rounded-md uppercase font-extrabold text-white ml-4">Products Received</button>
               </div>
             </div>
@@ -104,14 +104,14 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1 ">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray pr-6">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 pr-6">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-regular text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end text-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
-                      <p class="text-sm text-gray mt-2">+$250 (Shipping)</p>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
+                      <p class="text-sm text-gray-500 mt-2">+$250 (Shipping)</p>
                     </div>
                   </div>
                 </div>
@@ -119,12 +119,12 @@
             {{-- ORDER STATUS AND TOTAL --}}
             <div class="flex flex-col md:flex-row justify-between">
               <div class="flex  p-4">
-                <h4 class="font-brandon-regular text-xl text-gray mr-4">Order Status:</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500 mr-4">Order Status:</h4>
                 <span class="text-sm bg-yellow/20 text-yellow uppercase font-brandon-black px-3 py-2 rounded">Packed</span>
               </div>
               <div class="flex p-4 items-center">
-                <h4 class="font-brandon-regular text-xl text-gray">Order Total:</h4>
-                <h4 class="font-brandon-bold text-xl text-green font-bold  ml-2">₱2,250</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500">Order Total:</h4>
+                <h4 class="font-brandon-bold text-xl text-green-200 font-bold  ml-2">₱2,250</h4>
                 <button class="text-sm p-2 bg-green rounded-md uppercase font-extrabold text-white ml-4">Products Received</button>
               </div>
             </div>
@@ -146,14 +146,14 @@
                   <div class=" col-span-4 pr-6">
                     <div class="grid grid-rows-1 ">
                       <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                      <h4 class="font-brandon-regular text-lg text-gray pr-6">A tropical plant with striking foliage that resembles an...</h4>
+                      <h4 class="font-brandon-regular text-lg text-gray-500 pr-6">A tropical plant with striking foliage that resembles an...</h4>
                       <h4 class="font-brandon-regular text-xl">Quantity: 4</h4>
                     </div>
                   </div>
                   <div class="col-span-1 flex justify-end text-end">
                     <div class="grid grid-rows-1">
-                      <h4 class="font-brandon-black text-2xl text-green font-bold">₱2000</h4>
-                      <p class="text-sm text-gray mt-2">+$250 (Shipping)</p>
+                      <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
+                      <p class="text-sm text-gray-500 mt-2">+$250 (Shipping)</p>
                     </div>
                   </div>
                 </div>
@@ -161,12 +161,12 @@
             {{-- ORDER STATUS AND TOTAL --}}
             <div class="flex flex-col md:flex-row justify-between">
               <div class="flex  p-4">
-                <h4 class="font-brandon-regular text-xl text-gray mr-4">Order Status:</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500 mr-4">Order Status:</h4>
                 <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Pending</span>
               </div>
               <div class="flex p-4 items-center">
-                <h4 class="font-brandon-regular text-xl text-gray">Order Total:</h4>
-                <h4 class="font-brandon-bold text-xl text-green font-bold  ml-2">₱2,250</h4>
+                <h4 class="font-brandon-regular text-xl text-gray-500">Order Total:</h4>
+                <h4 class="font-brandon-bold text-xl text-green-200 font-bold  ml-2">₱2,250</h4>
                 <button class="text-sm p-2 bg-green rounded-md uppercase font-extrabold text-white ml-4">Products Received</button>
               </div>
             </div>
