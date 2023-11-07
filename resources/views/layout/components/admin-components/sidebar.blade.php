@@ -18,11 +18,11 @@
             <img src="{{ asset('images/icons_logos/transactions-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Transactions</span>
           </a></li>
-        <li><a href="{{ route('products') }}" class="{{ request()->is('products') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+        <li><a href="{{ route('admin.products.index') }}" class="{{ request()->is('admin/products') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
             <img src="{{ asset('images/icons_logos/product-management-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Product Management</span>
           </a></li>
-        <li><a href="{{ route('plantcare') }}" class="{{ request()->is('plantcare') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+        <li><a href="{{ route('admin.plantcare.index') }}" class="{{ request()->is('admin/plantcare') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
             <img src="{{ asset('images/icons_logos/plant-care-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Plant Care Information</span>
           </a></li>

@@ -28,7 +28,7 @@
           </div>
       </div>
       <div class="col-span-5 lg:col-span-3 relative overflow-x-auto">
-        <table class="w-full text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-left text-gray-500">
           <thead class="text-gray uppercase bg-culture font-brandon-bold">
               <tr>
                 <th scope="col" class="px-6 py-3 rounded-tl-lg rounded-bl-lg">

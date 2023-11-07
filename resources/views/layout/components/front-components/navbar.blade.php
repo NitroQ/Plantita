@@ -32,6 +32,19 @@
           placeholder="Search something...">
       </div>
       <ul class="lg:flex hidden items-center gap-x-4">
+        @auth
+        <li>
+          <a class="flex flex-col gap-y-px items-center" href="{{ route('logout') }}">
+            <i class='bx bx-user text-2xl'></i>
+            <span class="text-lg">
+              Sign Out
+            </span>
+          </a>
+        </li>
+        <li>
+        @endauth
+
+        @guest
         <li>
           <a class="flex flex-col gap-y-px items-center" href="{{ route('signin') }}">
             <i class='bx bx-user text-2xl'></i>
@@ -41,6 +54,7 @@
           </a>
         </li>
         <li>
+        @endguest
           <a href="" class="flex flex-col gap-y-1 items-center">
             <i class='bx bxs-heart text-2xl'></i>
             <span class="text-lg">
@@ -81,15 +95,14 @@
           <a href="{{ route('product') }}"
             class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Products</a>
         </li>
-        <li class="lg:hidden block">
-          <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-            href="{{ route('signin') }}">
-            <span class="text-lg">
-              Sign In
-            </span>
-          </a>
-        </li>
-
+       <li class="lg:hidden block">
+        <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
+          href="{{ route('signin') }}">
+          <span class="text-lg">
+            Sign In
+          </span>
+        </a>
+      </li>
         <li class="lg:hidden block">
           <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
             href="">

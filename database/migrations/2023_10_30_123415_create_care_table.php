@@ -15,14 +15,16 @@ return new class extends Migration
     {
         Schema::create('care', function (Blueprint $table) {
             $table->id();
-            $table->integer('product')->unsigned();
-            $table->integer('care_level')->enum('1', '2', '3');
+            $table->unsignedBigInteger('product_id');
+            $table->string('care_level')->enum('Low', 'Medium', 'High');
             $table->string('care_description');
-            $table->string('watering_level')->enum('1', '2', '3');
+            $table->string('watering_level')->enum('Low', 'Medium', 'High');
             $table->string('watering_description');
-            $table->string('sun_level')->enum('1', '2', '3');
+            $table->string('sun_level')->enum('Low', 'Medium', 'High');
             $table->string('sun_description');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
         });
     }
 

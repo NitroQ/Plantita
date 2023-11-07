@@ -4,7 +4,7 @@
   <section>
     <h1 class="text-4xl font-brandon-bold mb-5">Transactions</h1>
     <div class="relative overflow-x-auto">
-      <table class="w-full text-left text-gray-500 dark:text-gray-400">
+      <table class="w-full text-left text-gray-500">
         <thead class="text-gray uppercase bg-culture font-brandon-bold">
           <tr>
             <th scope="col" class="px-6 py-3 rounded-tl-lg rounded-bl-lg">

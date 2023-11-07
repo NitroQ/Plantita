@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('address', function (Blueprint $table) {
             $table->id();
-            $table->integer('user')->unsigned();
+            $table->foreignUuid('user_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('company')->nullable();
@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('phone');
             $table->boolean('default')->default(true);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

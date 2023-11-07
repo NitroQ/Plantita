@@ -15,9 +15,11 @@ class Product extends Model
         'name',
         'category',
         'scientific_name',
+        'lifespan',
         'quantity',
         'price',
         'description',
+        'status',
         'image',
     ];
 
