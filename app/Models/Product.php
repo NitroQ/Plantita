@@ -21,6 +21,12 @@ class Product extends Model
         'description',
         'status',
         'image',
+        'care_level',
+        'care_description',
+        'watering_level',
+        'watering_description',
+        'sun_level',
+        'sun_description',
     ];
 
 }

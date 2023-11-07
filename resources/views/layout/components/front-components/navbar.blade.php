@@ -11,53 +11,6 @@
             <img src="{{ asset('images/icons_logos/twitter-logo.svg') }}" alt="Twitter logo">
             <i class='bx bxl-instagram text-2xl text-green'></i>
         </div>
-<<<<<<< HEAD
-        <input type="text" id="search-navbar"
-          class="block w-80 p-2 pl-5 text-lg text-gray-900 border-none rounded-lg bg-culture"
-          placeholder="Search something...">
-      </div>
-      <ul class="lg:flex hidden items-center gap-x-4">
-        @auth
-        <li>
-          <a class="flex flex-col gap-y-px items-center" href="{{ route('logout') }}">
-            <i class='bx bx-user text-2xl'></i>
-            <span class="text-lg">
-              Sign Out
-            </span>
-          </a>
-        </li>
-        <li>
-        @endauth
-
-        @guest
-        <li>
-          <a class="flex flex-col gap-y-px items-center" href="{{ route('signin') }}">
-            <i class='bx bx-user text-2xl'></i>
-            <span class="text-lg">
-              Sign In
-            </span>
-          </a>
-        </li>
-        <li>
-        @endguest
-          <a href="" class="flex flex-col gap-y-1 items-center">
-            <i class='bx bxs-heart text-2xl'></i>
-            <span class="text-lg">
-              Likes
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="" class="flex flex-col gap-y-1 items-center">
-            <i class='bx bx-basket text-2xl'></i>
-            <span class="text-lg">
-              Basket
-            </span>
-          </a>
-        </li>
-      </ul>
-=======
->>>>>>> 5f34b52c13dc9c6432e6bc62a8a4f042b57da508
     </div>
     <div class="flex flex-wrap items-center gap-x-5 py-4 px-10">
         <a href="{{ route('index') }}">
@@ -152,44 +105,6 @@
                     placeholder="Search something...">
             </div>
 
-<<<<<<< HEAD
-      <ul
-        class="flex flex-col p-4 lg:p-0 mt-4 font-medium lg:flex-row lg:gap-x-5 lg:gap-y-0 gap-y-3 lg:mt-0 lg:border-0 lg:bg-white lg:items-center mr-auto">
-        <li>
-          <a href="{{ route('index') }}"
-            class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-            aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="{{ route('product') }}"
-            class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold">Products</a>
-        </li>
-       <li class="lg:hidden block">
-        <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-          href="{{ route('signin') }}">
-          <span class="text-lg">
-            Sign In
-          </span>
-        </a>
-      </li>
-        <li class="lg:hidden block">
-          <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-            href="">
-            <span class="text-lg">
-              Likes
-            </span>
-          </a>
-        </li>
-        <li class="lg:hidden block">
-          <a class="text-black text-lg duration-300 p-2 rounded-md hover:bg-green/20 hover:font-brandon-bold"
-            href="">
-            <span class="text-lg">
-              Basket
-            </span>
-          </a>
-        </li>
-      </ul>
-=======
             <ul
                 class="flex flex-col p-4 lg:p-0 mt-4 font-medium lg:flex-row lg:gap-x-5 lg:gap-y-0 gap-y-3 lg:mt-0 lg:border-0 lg:bg-white lg:items-center mr-auto">
                 <li>
@@ -260,6 +175,5 @@
                 </div>
             </div>
         </div>
->>>>>>> 5f34b52c13dc9c6432e6bc62a8a4f042b57da508
     </div>
 </nav>

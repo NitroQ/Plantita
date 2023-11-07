@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Care;
 use App\Models\Product;
 
 use Validator;
@@ -19,12 +18,10 @@ class CareController extends Controller
      */
     public function index()
     {
-        $products = Product::where('category', '==', 'plant')->get();
-        $care = Care::all();
+        $products = Product::where('category', 'plant')->get();
         return view('pages.admin.plantcare.index',
         [
             'products' => $products,
-            'care' => $care
         ]);
     }
 
@@ -56,11 +53,10 @@ class CareController extends Controller
      */
     public function show($id)
     {
-        $care = Care::firstWhere('product_id', $id);
+        $care = Product::find($id);
 
         return view('pages.admin.plantcare.view', [
             'care' => $care,
-            'id' => $id
         ]);
     }
 
@@ -72,11 +68,10 @@ class CareController extends Controller
      */
     public function edit($id)
     {
-        $care = Care::firstWhere('product_id', $id);
+        $care = Product::find($id);
 
         return view('pages.admin.plantcare.edit', [
             'care' => $care,
-            'id' => $id
         ]);
     }
 
@@ -108,17 +103,19 @@ class CareController extends Controller
         try{
             DB::beginTransaction();
 
-            $care = Care::updateOrCreate(
-                ['product_id' => $id],
-                [
-                    'care_level' => $validate['care_level'],
-                    'care_description' => $validate['care_description'],
-                    'watering_level' => $validate['watering_level'],
-                    'watering_description' => $validate['watering_description'],
-                    'sun_level' => $validate['sun_level'],
-                    'sun_description' => $validate['sun_description'],
-                ]
-            );
+            $care = Product::find($id);
+
+            $care->care_level = $validate['care_level'];
+            $care->care_description = $validate['care_description'];
+            $care->watering_level = $validate['watering_level'];
+            $care->watering_description = $validate['watering_description'];
+            $care->sun_level = $validate['sun_level'];
+            $care->sun_description = $validate['sun_description'];
+
+            $care->save();
+
+            DB::commit();
+
         }catch(\Exception $e){
             Log::error($e);
             DB::rollback();

@@ -3,23 +3,23 @@
 @section('content')
   <section>
     <div class="flex mb-5">
-      <a href="{{ route('products') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green-200'></i></a>
-      <h1 class="text-4xl font-brandon-bold">African Mask</h1>
+      <a href="{{ route('admin.products.index') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green-200'></i></a>
+      <h1 class="text-4xl font-brandon-bold">{{ $product->name }}</h1>
     </div>
     <div class="grid grid-cols-4 gap-8 items-start">
       <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
         <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
         <form action="" class="grid grid-cols-2 gap-3">
-          <input type="text" value="African Mask"
+          <input type="text" value="{{ $product->name }}"
             class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
             placeholder="Product Name" disabled>
           <input type="text" value="100"
             class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="In-Stock Quantity" disabled>
+            placeholder="In-Stock Quantity" value="{{ $product->quantity }}" disabled>
           <input type="text" value="500"
             class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="Listed Price" disabled>
-          <input type="text" value="Alocasia Polly"
+            placeholder="Listed Price" value="{{ $product->price }}" disabled>
+          <input type="text" value="{{ $product->scientific_name }}"
             class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
             placeholder="Scientific Name" disabled>
           <select id="product-type"
@@ -31,15 +31,14 @@
             <option value="Option 3">Option 3</option>
             <option value="Option 4">Option 4</option>
           </select>
-          <input type="text" value="Approximately 5 years"
+          <input type="text" value="{{ $product->lifespan }}"
             class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
             placeholder="Lifespan (if plants)" disabled>
           <textarea id="message" rows="10" placeholder="Plant Description"
             class="block px-3.5 py-2.5 col-span-2 border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20"
-            disabled>The African Mask plant, with its striking arrowhead-shaped leaves, adds a touch of exotic elegance to any space. Known for its unique pattern resembling an African tribal mask, this plant is a stunning choice for plant enthusiasts and interior décor enthusiasts alike.
-        </textarea>
+            disabled>{{ $product->description }}</textarea>
         </form>
-        <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90"><a href="{{ route('edit-product') }}"
+        <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90"><a href="{{ route('admin.products.edit',[$product->id]) }}"
             class="py-2 px-5">Edit Details</a></button>
       </div>
       <div class="col-span-2 shadow-leftBottom p-5 rounded-md">

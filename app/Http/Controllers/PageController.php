@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class PageController extends Controller
 {
@@ -48,19 +49,10 @@ class PageController extends Controller
   }
 
   public function publicProduct() {
-    $products = [];
-
-      for ($i = 0; $i < 10; $i++) {
-        array_push($products, [
-          'productName' => 'Chinese Money Plant',
-          'content' => 'A tropical plant with striking foliage that resembles an...',
-          'productPrice' => '500',
-          'image' => asset('images/products/plant-sample.webp'),
-        ]);
-      }
+    $products = Product::all();
 
       return view('pages.products', [
-        "prods" => $products
+        "products" => $products
       ]);
 
   }

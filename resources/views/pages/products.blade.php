@@ -99,9 +99,9 @@
                 <h5 class="text-base text-gray">20 results</h5>
             </div>
             <div class="grid lg:grid-cols-4 grid-cols-1">
-                @foreach ($prods as $p)
+                @foreach ($products as $p)
                     <div class="mb-5 mx-5">
-                        @component('layout.components.front-components.Product', $p)
+                        @component('layout.components.front-components.Product', ['p' => $p])
                         @endcomponent
                     </div>
                 @endforeach

@@ -1,66 +1,91 @@
 @extends('layout.client.admin')
 @section('title', 'Edit Product')
 @section('content')
-  <section>
-    <div class="flex mb-5">
-      <a href="{{ route('products') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green-200'></i></a>
-      <h1 class="text-4xl font-brandon-bold">African Mask</h1>
-    </div>
-    <div class="grid grid-cols-4 gap-8 items-start">
-      <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
-        <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
-        <form action="" class="grid grid-cols-2 gap-3">
-          <input type="text" value="African Mask"
-            class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="Product Name">
-          <input type="text" value="100"
-            class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="In-Stock Quantity">
-          <input type="text" value="500"
-            class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="Listed Price">
-          <input type="text" value="Alocasia Polly"
-            class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="Scientific Name">
-          <select id="product-type"
-            class="border border-lavender rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
-            <option class="text-gray bg-gray-400 hover:bg-green-200/20">Type</option>
-            <option selected value="Plants">Plants</option>
-            <option value="Option 2">Option 2</option>
-            <option value="Option 3">Option 3</option>
-            <option value="Option 4">Option 4</option>
-          </select>
-          <input type="text" value="Approximately 5 years"
-            class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
-            placeholder="Lifespan (if plants)">
-          <textarea id="message" rows="10" placeholder="Plant Description"
-            class="block px-3.5 py-2.5 col-span-2 border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20">The African Mask plant, with its striking arrowhead-shaped leaves, adds a touch of exotic elegance to any space. Known for its unique pattern resembling an African tribal mask, this plant is a stunning choice for plant enthusiasts and interior décor enthusiasts alike.</textarea>
-        </form>
-        <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90"><a href="{{ route('view-product') }}"
-            class="py-2 px-5">Save Details</a></button>
+<section>
+  <div class="flex mb-5">
+    <a href="{{ route('admin.products.index') }}"><i class='bx bx-chevron-left me-3 text-5xl text-green'></i></a>
+    <h1 class="text-4xl font-brandon-bold">Edit Product</h1>
+  </div>
+  <form action="{{ route('admin.products.update',[$product->id]) }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-4 gap-8 items-start">
+   {{ csrf_field() }}
+    <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
+      <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
+      <div class="grid grid-cols-2 gap-3">
+        <input type="text" name="name" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Product Name" value="{{ $product->name }}">
+        
+        <input type="number" name="quantity" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="In-Stock Quantity" value="{{ $product->quantity }}">
+        <input type="number" name="price" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Listed Price" value="{{ $product->price }}">
+        <input type="text" name="scientific_name" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Scientific Name" value="{{ $product->scientific_name }}">
+        <select id="product-type" name="category"  class="border border-gray-400 rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+          <option selected class="text-gray bg-culture hover:bg-green/20">Category</option>
+          <option value="plant">Plant</option>
+          <option value="essential">Essential</option>
+        </select>
+        <input type="text" name="lifespan" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Lifespan (if plants)" value="{{ $product->lifespan }}">
+        <textarea id="message" rows="10"  name="description"  placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border border-gray-400 rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70">{{ $product->description }}</textarea>
+        <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90">Update Product</button>
+      
       </div>
-      <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
-        <h3 class="text-2xl font-brandon-bold mb-3">Product Images</h3>
-        <div class="flex items-center justify-center w-full">
-          <label for="dropzone-file"
-            class="flex flex-col items-center justify-center w-full border-2 border-lavender border-dashed rounded-lg cursor-pointer">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <div class="flex items-center">
-                <i class='bx bx-cloud-upload text-2xl me-3'></i>
-                <p class="text-center">Drag and Drop here</p>
-              </div>
-              <p>or</p>
-              <label for="select-files"
-                class="mt-2 bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">
-                Select Files
-                <input id="select-files" type="file" class="hidden" />
-              </label>
+    </div>
+    <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
+      <h3 class="text-2xl font-brandon-bold mb-3">Product Images</h3>
+      <div class="flex items-center justify-center w-full">
+        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-lavender border-dashed rounded-lg cursor-pointer">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <div class="flex items-center">
+              <i class='bx bx-cloud-upload text-2xl me-3'></i>
+              <p class="text-center">Drag and Drop here</p>
             </div>
-            <input id="dropzone-file" type="file" class="hidden" />
-          </label>
-        </div>
-        <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
+            <p>or</p>
+            <p class="mt-2 bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">Select Files</p>
+          </div>
+          <input id="dropzone-file" type="file" class="hidden" name="images[]" multiple accept="image/*"/>
+        </label>
       </div>
+      <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
+      <div id="image-preview"></div>
     </div>
-  </section>
+    <span class="text-red-900">{{$errors->first('name')}}</span>
+    <span class="text-red-900">{{$errors->first('quantity')}}</span>
+    <span class="text-red-900">{{$errors->first('price')}}</span>
+    <span class="text-red-900">{{$errors->first('scientific_name')}}</span>
+    <span class="text-red-900">{{$errors->first('category')}}</span>
+    <span class="text-red-900">{{$errors->first('lifespan')}}</span>
+    <span class="text-red-900">{{$errors->first('description')}}</span>
+    <span class="text-red-900">{{$errors->first('image')}}</span>
+  </form>
+</section>
 @endsection
+
+@section('script')
+<script>
+  $(document).ready(function() {
+      // Watch for changes in the file input field
+      $('#dropzone-file').on('change', function(event) {
+          // Clear the existing previews
+          $('#image-preview').empty();
+  
+          // Get the selected files
+          var files = event.target.files;
+
+          console.log('hello')
+  
+          // Loop through the selected files and display previews
+          for (var i = 0; i < files.length; i++) {
+              var reader = new FileReader();
+              // Read the file as a data URL
+              reader.readAsDataURL(files[i]);
+              // When the reader has loaded the file, create a preview element
+              reader.onload = function(e) {
+                  // Create an image element for the preview
+                  var image = $('<img>').attr('src', e.target.result);
+                  
+                  // Append the image preview to the #image-preview div
+                  $('#image-preview').append(image);
+              };
+          }
+      });
+  });
+  </script>
+
+  @endsection

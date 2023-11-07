@@ -39,10 +39,11 @@
             <p>or</p>
             <p class="mt-2 bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">Select Files</p>
           </div>
-          <input id="dropzone-file" name="image" type="file" class="hidden" />
+          <input id="dropzone-file" type="file" class="hidden" name="images[]" multiple accept="image/*"/>
         </label>
       </div>
       <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
+      <div id="image-preview"></div>
     </div>
     <span class="text-red-900">{{$errors->first('name')}}</span>
     <span class="text-red-900">{{$errors->first('quantity')}}</span>
@@ -55,3 +56,36 @@
   </form>
 </section>
 @endsection
+
+@section('script')
+<script>
+  $(document).ready(function() {
+      // Watch for changes in the file input field
+      $('#dropzone-file').on('change', function(event) {
+          // Clear the existing previews
+          $('#image-preview').empty();
+  
+          // Get the selected files
+          var files = event.target.files;
+
+          console.log('hello')
+  
+          // Loop through the selected files and display previews
+          for (var i = 0; i < files.length; i++) {
+              var reader = new FileReader();
+              // Read the file as a data URL
+              reader.readAsDataURL(files[i]);
+              // When the reader has loaded the file, create a preview element
+              reader.onload = function(e) {
+                  // Create an image element for the preview
+                  var image = $('<img>').attr('src', e.target.result);
+                  
+                  // Append the image preview to the #image-preview div
+                  $('#image-preview').append(image);
+              };
+          }
+      });
+  });
+  </script>
+
+  @endsection

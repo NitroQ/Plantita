@@ -53,7 +53,7 @@ class ProductController extends Controller
             'lifespan'=> 'required',
             'price'=> 'required',
             'description'=> 'required|min:2',
-            'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'images.*'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ],[
             'name.required' => 'Name is required',
             'name.min' => 'Name must be at least 2 characters',
@@ -67,23 +67,28 @@ class ProductController extends Controller
             'price.required' => 'Price is required',
             'description.required' => 'Description is required',
             'description.min' => 'Description must be at least 2 characters',
-            'image.required' => 'Image is required',
-            'image.image' => 'Image must be an image',
-            'image.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'image.max' => 'Image must be less than 4MB',
+            'images.*.image' => 'Image must be an image',
+            'images.*.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'images.*.max' => 'Image must be less than 4MB',
         ]);
 
         try {
             DB::beginTransaction();
+            $imagePaths = [];
 
-            $image = $validator['image'];
-            $photo = uniqid().'.webp';
-            $destinationPath = 'uploads/products';
-
-            $imgFile = Image::make($image);
-            $imgFile->encode('webp', 80)->save($destinationPath . '/' . $photo);
-            
-            Product::firstOrCreate([
+            foreach ($validator['images'] as $image) {
+                $photo = uniqid() . '.webp';
+                $destinationPath = 'uploads/products';
+    
+                $imgFile = Image::make($image);
+                $imgFile->encode('webp', 80)->save($destinationPath . '/' . $photo);
+    
+                $imagePaths[] = $photo;
+            }
+    
+            $imagesString = implode(', ', $imagePaths);
+    
+            Product::create([
                 'name' => $validator['name'],
                 'category' => $validator['category'],
                 'scientific_name' => $validator['scientific_name'],
@@ -91,7 +96,7 @@ class ProductController extends Controller
                 'price' => $validator['price'],
                 'lifespan' => $validator['lifespan'],
                 'description' => $validator['description'],
-                'image' => $photo,
+                'image' => $imagesString,
             ]);
 
             DB::commit();
@@ -118,7 +123,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('pages.admin.products.show', compact('product'));
+        return view('pages.admin.products.view', compact('product'));
     }
 
     /**
@@ -130,7 +135,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('pages.admin.products.edit', compact('product'));
+        return view('pages.admin.products.update', compact('product'));
     }
 
     /**
@@ -149,7 +154,7 @@ class ProductController extends Controller
             'quantity'=> 'required',
             'price'=> 'required',
             'description'=> 'required|min:2',
-            'image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+            'images.*'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ],[
             'name.required' => 'Name is required',
             'name.min' => 'Name must be at least 2 characters',
@@ -162,9 +167,9 @@ class ProductController extends Controller
             'price.required' => 'Price is required',
             'description.required' => 'Description is required',
             'description.min' => 'Description must be at least 2 characters',
-            'image.image' => 'Image must be an image',
-            'image.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'image.max' => 'Image must be less than 4MB',
+            'images.*.image' => 'Image must be an image',
+            'images.*.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'images.*.max' => 'Image must be less than 4MB',
         ]);
 
         try{
@@ -173,14 +178,21 @@ class ProductController extends Controller
             $product = Product::find($id);
 
             if($request->hasFile('image')) {
-                $image = $validator['image'];
-                $photo = uniqid().'.webp';
-                $destinationPath ='uploads/products';
+                $imagePaths = [];
 
+            foreach ($validator['images'] as $image) {
+                $photo = uniqid() . '.webp';
+                $destinationPath = 'uploads/products';
+    
                 $imgFile = Image::make($image);
-                $imgFile->encode('webp', 50)->save($destinationPath . '/' . $photo);
+                $imgFile->encode('webp', 80)->save($destinationPath . '/' . $photo);
+    
+                $imagePaths[] = $photo;
+            }
+    
+            $imagesString = implode(', ', $imagePaths);
 
-                $product->image = $photo;
+            $product->image = $imagesString;
             }
 
             $product->name = $validator['name'];
