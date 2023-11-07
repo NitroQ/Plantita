@@ -9,6 +9,9 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                slate: {
+                    800: "rgba(37, 90, 96, <alpha-value>)",
+                },
                 green: {
                     100: "rgba(214, 230, 215, <alpha-value>)",
                     200: "rgba(10, 102, 17, <alpha-value>)",
@@ -31,7 +34,10 @@ module.exports = {
                 blue: {
                     100: "rgba(17, 72, 95, <alpha-value>)"
                 }, //11485F
-                yellow: "rgba(254, 202, 38, <alpha-value>)", //FECA26
+                yellow: {
+                    400: "rgba(254, 202, 38, <alpha-value>)",
+                    600: "rgba(237, 162, 51, <alpha-value>)",
+                } , //FECA26
                 lavender: "rgba(232, 232, 232, <alpha-value>)", //E8E8E8
                 sky: "rgba(101, 181, 255, <alpha-value>)", //65B5FF
 

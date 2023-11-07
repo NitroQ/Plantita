@@ -102,4 +102,7 @@ class PageController extends Controller
     {
         return view('pages.terms-conditions');
     }
+    public function productShow() {
+        return view('pages.view-product');
+    }
 }

@@ -21,7 +21,7 @@
                       <span class="font-brandon-bold italic">Plantita!</span>
                   </p>
                   <a href="http://"
-                      class="flex-none text-md inline-block rounded-md bg-green px-4 py-2 font-brandon-bold uppercase w-32 text-center text-white">SHOP
+                      class="flex-none text-md inline-block rounded-md bg-green-200 px-4 py-2 font-brandon-bold uppercase w-32 text-center text-white">SHOP
                       NOW</a>
               </div>
               <div

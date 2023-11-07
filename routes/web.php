@@ -24,6 +24,7 @@ use App\Http\Controllers\UserController;
 // CLIENT
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/product', [PageController::class, 'publicProduct'])->name('product');
+Route::get('/products/view', [PageController::class, 'productShow'])->name('products.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // AUTHENTICATION
