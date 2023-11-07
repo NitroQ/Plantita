@@ -31,20 +31,25 @@
         </tr>
       </thead>
       <tbody class="text-lg border-b border-gray/20">
+        @foreach($products as $pc)
         <tr class="bg-white border-b border-gray/20">
           <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-            123456789
+            {{ $pc->id }}
           </th>
           <td class="px-6 py-3">
-            African Mask
+            {{ $pc->name }}
           </td>
           <td class="px-6 py-3">
-            100
+            {{ $pc->quantity }}
           </td>
           <td class="px-6 py-3">
-            <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>
+            <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">{{ array_search($pc->id, $care) ? 'Active' : 'Inactive' }}</span>
           </td>
           <td class="px-6 py-3 space-x-2">
+<<<<<<< HEAD:resources/views/pages/admin/plantcare/index.blade.php
+            <a href="{{ route('admin.plantcare.view',[$pc->id]) }}"><button><i class='bx bxs-show bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
+            <a href="{{ route('admin.plantcare.edit',[$pc->id]) }}"><button><i class='bx bxs-pencil bg-culture p-2 rounded hover:bg-green/20'></i></button></a>
+=======
             <a href="{{ route('view-plantinfo') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
             <a href="{{ route('edit-plantinfo') }}"><button><i class='bx bxs-pencil bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
           </td>
@@ -101,8 +106,10 @@
           <td class="px-6 py-3 space-x-2">
             <button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button>
             <button><i class='bx bxs-pencil bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button>
+>>>>>>> 5f34b52c13dc9c6432e6bc62a8a4f042b57da508:resources/views/pages/admin/plantcare/plantcare.blade.php
           </td>
         </tr>
+
       </tbody>
     </table>
     <div class="flex items-center space-x-3 my-5">

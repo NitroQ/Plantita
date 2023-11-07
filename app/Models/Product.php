@@ -5,17 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PlantModel extends Model
+class Product extends Model
 {
     use HasFactory;
 
-    protected $table = 'plants';
+    protected $table = 'product';
 
     protected $fillable = [
         'name',
-        'description',
+        'category',
+        'scientific_name',
+        'lifespan',
+        'quantity',
         'price',
+        'description',
+        'status',
         'image',
-        'category_id',
     ];
+
 }

@@ -24,10 +24,6 @@ class PageController extends Controller
       ]);
     }
 
-    // ADMIN
-  public function dashboard(){
-      return view('pages.admin.dashboard');
-  }
 
   // transactions
   public function transactions(){
@@ -44,47 +40,6 @@ class PageController extends Controller
   }
   public function shipped(){
       return view('pages.admin.transactions.shipped');
-  }
-
-  // product management
-  public function products(){
-      return view('pages.admin.products.products');
-  }
-  public function addProduct(){
-      return view('pages.admin.products.add-product');
-  }
-  public function viewProduct(){
-      return view('pages.admin.products.view-product');
-  }
-  public function editProduct(){
-      return view('pages.admin.products.edit-product');
-  }
-
-  // plant care informations
-  public function plantcare(){
-      return view('pages.admin.plantcare.plantcare');
-  }
-  public function viewPlantInfo(){
-      return view('pages.admin.plantcare.view-plantinfo');
-  }
-  public function editPlantInfo(){
-      return view('pages.admin.plantcare.edit-plantinfo');
-  }
-
-  // user management
-  public function users(){
-      return view('pages.admin.user.users');
-  }
-  public function viewUser(){
-    return view('pages.admin.user.view-user');
-  }
-
-    // AUTH
-  public function signin(){
-      return view('pages.signin');
-  }
-      public function signup(){
-      return view('pages.signup');
   }
 
       // contact page

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class PlantController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class PlantController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('pages.admin.user.index', compact('users'));
     }
 
     /**
@@ -45,7 +47,8 @@ class PlantController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.admin.user.view', compact('user'));
     }
 
     /**

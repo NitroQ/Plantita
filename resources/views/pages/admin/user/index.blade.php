@@ -31,74 +31,27 @@
           </tr>
         </thead>
         <tbody class="text-lg border-b border-gray/20">
+          @foreach($users as $u)
           <tr class="bg-white border-b border-gray/20">
             <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-              123456789
+              {{ $u->id }}
             </th>
             <td class="px-6 py-3">
-              @frankfn
+              {{ $u->username  }}
             </td>
             <td class="px-6 py-3">
-              frankvincent@gmail.com
+              {{ $u->email  }}
             </td>
             <td class="px-6 py-3">
-              <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>
-            </td>
-            <td class="px-6 py-3">
-              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
-            </td>
-          </tr>
-          <tr class="bg-white border-b border-gray/20">
-            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-              123456789
-            </th>
-            <td class="px-6 py-3">
-              @frankfn
-            </td>
-            <td class="px-6 py-3">
-              frankvincent@gmail.com
-            </td>
-            <td class="px-6 py-3">
+              {{-- <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span> --}}
               <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span>
             </td>
             <td class="px-6 py-3">
               <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
             </td>
           </tr>
-          <tr class="bg-white border-b border-gray/20">
-            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-              123456789
-            </th>
-            <td class="px-6 py-3">
-              @frankfn
-            </td>
-            <td class="px-6 py-3">
-              frankvincent@gmail.com
-            </td>
-            <td class="px-6 py-3">
-              <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span>
-            </td>
-            <td class="px-6 py-3">
-              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
-            </td>
-          </tr>
-          <tr class="bg-white border-b border-gray/20">
-            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-              123456789
-            </th>
-            <td class="px-6 py-3">
-              @frankfn
-            </td>
-            <td class="px-6 py-3">
-              frankvincent@gmail.com
-            </td>
-            <td class="px-6 py-3">
-              <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span>
-            </td>
-            <td class="px-6 py-3">
-              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
-            </td>
-          </tr>
+          @endforeach
+        
         </tbody>
       </table>
       <div class="flex items-center space-x-3 my-5">
