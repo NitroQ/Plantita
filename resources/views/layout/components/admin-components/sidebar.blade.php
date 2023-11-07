@@ -10,30 +10,38 @@
         <hr class="mt-1 mb-4 border-t border-gray-600" />
       </div>
       <ul class="space-y-3">
-        <li><a href="{{ route('dashboard') }}" class="{{ request()->is('admin') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+        <li><a href="{{ route('dashboard') }}" class="{{ request()->is('admin') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/dashboard-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Dashboard</span>
           </a></li>
-        <li><a href="{{ route('transactions') }}" class="{{ request()->is('transactions') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+        <li><a href="{{ route('transactions') }}" class="{{ request()->is('transactions') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/transactions-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Transactions</span>
           </a></li>
+<<<<<<< HEAD
         <li><a href="{{ route('admin.products.index') }}" class="{{ request()->is('admin/products') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
             <img src="{{ asset('images/icons_logos/product-management-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Product Management</span>
           </a></li>
         <li><a href="{{ route('admin.plantcare.index') }}" class="{{ request()->is('admin/plantcare') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+=======
+        <li><a href="{{ route('products') }}" class="{{ request()->is('products') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+            <img src="{{ asset('images/icons_logos/product-management-icon.svg') }}" class="m-0 lg:me-3 h-6" />
+            <span class="lg:inline hidden">Product Management</span>
+          </a></li>
+        <li><a href="{{ route('plantcare') }}" class="{{ request()->is('plantcare') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+>>>>>>> 5f34b52c13dc9c6432e6bc62a8a4f042b57da508
             <img src="{{ asset('images/icons_logos/plant-care-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Plant Care Information</span>
           </a></li>
-        <li><a href="{{ route('users') }}" class="{{ request()->is('users') ? 'bg-green/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green/10">
+        <li><a href="{{ route('users') }}" class="{{ request()->is('users') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/user-management-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">User Management</span>
           </a></li>
       </ul>
     </div>
     <ul class="my-3">
-      <li><a href="{{ route('index') }}" class="p-2 flex items-center lg:justify-between justify-center rounded-md hover:bg-green/10">
+      <li><a href="{{ route('index') }}" class="p-2 flex items-center lg:justify-between justify-center rounded-md hover:bg-green-200/10">
           <div class="flex items-center">
             <img src="{{ asset('images/icons_logos/user-profile-icon.svg') }}" class="m-0 lg:me-3 h-7" />
             <div class="lg:inline hidden">

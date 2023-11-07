@@ -47,13 +47,14 @@
         </span>
         <div class="grid grid-cols-5 items-center pb-3">
           <div class="col-span-2 mx-10">
-            <div class="" id="donut-chart-container">
+            <!-- <div class="" id="donut-chart-container">
               <canvas id="donut-chart"></canvas>
-            </div>
+            </div> -->
+            <div id="donut-chart"></div>
           </div>
-          <div class="col-span-3">
+          <div id="legend-table" class="col-span-3">
             <table class="w-full text-left">
-              <thead class="text-gray uppercase bg-culture font-brandon-bold">
+              <thead class="text-gray uppercase bg-gray-400 font-brandon-bold">
                 <tr>
                   <th scope="col" class="px-6 py-1 rounded-tl-lg rounded-bl-lg"></th>
                   <th scope="col" class="px-6 py-1">
@@ -70,7 +71,7 @@
               <tbody class="text-lg border-b border-gray/20">
                 <tr class="bg-white border-b border-gray/20">
                   <th scope="row" class="px-6 py-1 font-medium whitespace-nowrap">
-                    <div class="bg-green h-2 w-2 rounded-xl"></div>
+                    <div class="bg-green-200 h-2 w-2 rounded-xl"></div>
                   </th>
                   <td class="flex items-center px-6 py-1">
                     <img src="{{ asset('images/products/plant-sample.webp') }}" class="h-10 me-3" />
@@ -85,7 +86,7 @@
                 </tr>
                 <tr class="bg-white border-b border-gray/20">
                   <th scope="row" class="px-6 py-1 font-medium whitespace-nowrap">
-                    <div class="bg-blue h-2 w-2 rounded-xl"></div>
+                    <div class="bg-blue-100 h-2 w-2 rounded-xl"></div>
                   </th>
                   <td class="flex items-center px-6 py-1">
                     <img src="{{ asset('images/products/plant-sample.webp') }}" class="h-10 me-3" />
@@ -154,45 +155,14 @@
             <p class="text-lg text-gray leading-5">Total Income</p>
             <h3 class="text-4xl font-brandon-bold">$5,405</h3>
           </span>
-          <div class="" id="hbar-chart-container">
-            <canvas id="hbar-chart"></canvas>
-          </div>
-          <!-- <div class="space-y-3">
-            <?php
-            $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-            $colors = ['bg-blue', 'bg-green', 'bg-crimson', 'bg-orange', 'bg-yellow', 'bg-sky'];
-            $dataValues = [2470, 4800, 1000, 800, 2470, 1200]; // Example data values for each month
-
-            for ($i = 0; $i < count($months); $i++) {
-              $month = $months[$i];
-              $color = $colors[$i];
-              $dataValue = $dataValues[$i];
-            ?>
-              <div class="grid grid-cols-12 items-center">
-                <p><?= $month ?></p>
-                <div id="<?= strtolower($month) ?>-bar" class="col-span-11 <?= $color ?> h-6 rounded-tr-lg rounded-br-lg relative group" style="width: <?= ($dataValue / 5000) * 100 ?>%;">
-                  <div class="opacity-0 group-hover:opacity-100 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 text-white px-2 py-1 rounded">
-                    <?= $dataValue ?>₱
-                  </div>
-                </div>
-              </div>
-              <div class="grid grid-cols-12 items-center">
-                <div></div>
-                <hr class="col-span-11 border border-dashed border-lavender">
-              </div>
-            <?php
-            }
-            ?>
-          </div> -->
+          <div id="bar-chart"></div>
         </div>
         <div class="shadow-leftBottom p-5 rounded-md space-y-4">
           <span>
             <p class="text-lg text-gray leading-5">Average Daily Sales</p>
             <h3 class="text-4xl font-brandon-bold">200 Sold Items</h3>
           </span>
-          <div class="" id="bar-chart-container">
-            <canvas id="bar-chart"></canvas>
-          </div>
+          <div id="column-chart"></div>
         </div>
       </div>
     </div>
@@ -241,9 +211,9 @@
       <div class="shadow-leftBottom p-5 rounded-md space-y-3">
         <h3 class="text-2xl font-brandon-bold">Quick Access</h3>
         <div class="space-y-2">
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('transactions') }}">Check Transactions</a></button>
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('admin.plantcare.index') }}">Manage Inventory</a></button>
-          <button class="text-lg bg-background w-full py-2 hover:bg-green/10 rounded"><a href="{{ route('admin.products.index') }}">Modify Plant Care</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('transactions') }}">Check Transactions</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('admin.plantcare.index') }}">Manage Inventory</a></button>
+          <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a href="{{ route('admin.products.index') }}">Modify Plant Care</a></button>
         </div>
       </div>
     </div>
@@ -253,80 +223,187 @@
 
 @section('script')
 <script>
-  // doughnut chart
-  var ctx = document.getElementById('donut-chart').getContext('2d');
-
-  var donutData = {
-    datasets: [{
-      data: [5, 10, 20, 15, 50],
-      backgroundColor: ["#E31B42", "#F2441D", "#11485F", "#FECA26", "#0A6611"],
-    }],
-  };
-
-  var myDonutChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: donutData,
-    options: {
-      cutout: '70%',
-    },
-  });
-
-  // bar graph horizontal
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-  const dataValues = [2470, 4800, 1000, 800, 2470, 1200]; // Example data values for each month
-
-  // Create a canvas element for the chart
-  const hBarCtx = document.getElementById('hbar-chart').getContext('2d');
-
-  // Create the bar chart
-  const hBarChart = new Chart(hBarCtx, {
-    type: 'bar',
-    data: {
-      labels: months,
-      datasets: [{
-        borderRadius: 8,
-        barThickness: 25,
-        data: dataValues,
-        backgroundColor: ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26", "#65B5FF"],
-      }],
-    },
-    options: {
-      indexAxis: 'y',
-      plugins: {
-        legend: {
-          display: false
+  // DOUGHNUT CHART
+  window.addEventListener("load", function() {
+    const getChartOptions = () => {
+        return {
+          series: [35.1, 23.5, 2.4, 5.4, 3.5],
+          colors: ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26"],
+          chart: {
+            width: "100%",
+            type: "donut",
+          },
+          stroke: {
+            colors: ["transparent"],
+            lineCap: "",
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: { show: false },
+                size: "70%",
+              },
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            show: false,
+          },
         }
       }
-    },
-  });
 
-  // bar graph vertical
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const values = [20, 30, 50, 20, 10, 65, 45];
-
-  // Create a canvas element for the chart
-  const barCtx = document.getElementById('bar-chart').getContext('2d');
-
-  // Create the bar chart
-  const barChart = new Chart(barCtx, {
-    type: 'bar',
-    data: {
-      labels: days,
-      datasets: [{
-        borderRadius: 8,
-        barThickness: 35,
-        data: values,
-        backgroundColor: ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26", "#65B5FF"],
-      }],
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false
-        }
+      if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
+        chart.render();
       }
-    },
   });
+
+  // HORIZONTAL BAR CHART
+  window.addEventListener("load", function() {
+      var options = {
+          series: [
+              {
+                  name: "Income",
+                  data: [2420, 1620, 1820, 4420, 3650, 2120],
+                  colors: ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26", "#65B5FF"],
+              },
+          ],
+          chart: {
+              sparkline: { enabled: false },
+              type: "bar",
+              width: "100%",
+              height: "140%",
+              toolbar: { show: false },
+          },
+          fill: { opacity: 1 },
+          plotOptions: {
+              bar: {
+                  horizontal: true,
+                  distributed: true,
+                  columnWidth: "100%",
+                  borderRadiusApplication: "end",
+                  borderRadius: 10,
+                  dataLabels: {
+                      position: "top",
+                  },
+              },
+          },
+          legend: { show: false },
+          dataLabels: { enabled: false },
+          tooltip: {
+              shared: true,
+              intersect: false,
+              formatter: function (value) {
+                  return "$" + value;
+              },
+          },
+          xaxis: {
+              labels: {
+                  show: true,
+                  style: {
+                      cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400',
+                  },
+                  formatter: function (value) {
+                      return "$" + value;
+                  },
+              },
+              categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+              axisTicks: { show: false },
+              axisBorder: { show: false },
+          },
+          yaxis: {
+              labels: {
+                  show: true,
+                  style: {
+                      cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400',
+                  },
+              },
+          },
+          grid: {
+              show: true,
+              strokeDashArray: 4,
+              padding: {
+                  left: 2,
+                  right: 2,
+                  top: -20,
+              },
+          },
+      };
+
+      if (document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
+          const chart = new ApexCharts(document.getElementById("bar-chart"), options);
+          chart.render();
+      }
+  });
+
+  // VERTICAL BAR CHART
+  window.addEventListener("load", function() {
+    if (document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+        const colors = ["#0A6611", "#E31B42", "#F2441D", "#11485F", "#FECA26", "#65B5FF", "#00BDB3"];
+        const seriesData = [
+            { x: "Mon", y: 25 },
+            { x: "Tue", y: 38 },
+            { x: "Wed", y: 56 },
+            { x: "Thu", y: 70 },
+            { x: "Fri", y: 42 },
+            { x: "Sat", y: 14 },
+            { x: "Sun", y: 60 },
+        ];
+
+        const options = {
+            chart: {
+                type: "bar",
+                toolbar: { show: false },
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: "50%",
+                    distributed: true,
+                    borderRadius: 10,
+                    borderRadiusApplication: "end",
+                },
+            },
+            states: { hover: { filter: { type: "darken", value: 1 } },
+            },
+            stroke: { width: 0, colors: ["transparent"] },
+            grid: { show: true, strokeDashArray: 4, padding: { left: 2, right: 2, top: -14 } },
+            dataLabels: { enabled: false },
+            legend: { show: false },
+            xaxis: {
+                labels: {
+                    show: true,
+                },
+                axisBorder: { show: false },
+                axisTicks: { show: false },
+            },
+            yaxis: {
+              show: true,
+              labels: {
+                  show: true,
+                  formatter: function(value) {
+                    return value % 10 === 0 ? value : "";
+                  }
+              },
+              min: 0,
+              max: 70,
+              tickAmount: 7,
+            },
+            fill: { opacity: 1 },
+            colors: colors,
+            series: [
+                {
+                    name: "Sold Items",
+                    data: seriesData,
+                },
+            ],
+        };
+        const chart = new ApexCharts(document.getElementById("column-chart"), options);
+        chart.render();
+    }
+  });
+
 </script>
 
 @endsection
