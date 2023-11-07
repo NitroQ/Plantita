@@ -44,9 +44,31 @@ Route::get('/plantcare/edit', [PageController::class, 'editPlantInfo'])->name('e
 // user management
 Route::get('/users', [PageController::class, 'users'])->name('users');
 Route::get('/users/view', [PageController::class, 'viewUser'])->name('view-user');
+
 // entry pages
 Route::get('/signin', [PageController::class, 'signin'])->name('signin');
 Route::get('/signup', [PageController::class, 'signup'])->name('signup');
 
+// terms and conditions page
+Route::get('/terms-conditions', [PageController::class, 'termsConditions'])->name('terms-conditions');
+
 // contact
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+// about
+Route::get('/about', [PageController::class, 'about'])->name('about');
+
+// order confirmation
+Route::get('/order-confirmation', [PageController::class, 'orderConfirmation'])->name('order-confirmation');
+
+// error pages
+Route::get('/product-failed', [PageController::class, 'productFailed'])->name('product-failed');
+Route::get('/product-cancelled', [PageController::class, 'productCancelled'])->name('product-cancelled');
+Route::get('/error404', [PageController::class, 'error404'])->name('error404');
+
+// transaction - client
+Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
+
+
+
+
