@@ -7,7 +7,7 @@
     <h1 class="text-4xl font-brandon-bold">Add Product</h1>
   </div>
   <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-4 gap-8 items-start">
-   {{ csrf_field() }}
+   @csrf
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
       <div class="grid grid-cols-2 gap-3">

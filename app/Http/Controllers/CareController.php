@@ -68,10 +68,10 @@ class CareController extends Controller
      */
     public function edit($id)
     {
-        $care = Product::find($id);
+        $product = Product::find($id);
 
         return view('pages.admin.plantcare.edit', [
-            'care' => $care,
+            'product' => $product,
         ]);
     }
 
@@ -125,6 +125,8 @@ class CareController extends Controller
             ->with('flash_error', 'Error updating Care.')
             ->withInput();
         }
+        
+        return redirect()->route('admin.plantcare.index')->with('flash_success', 'Plant Care updated!');
     }
 
     /**

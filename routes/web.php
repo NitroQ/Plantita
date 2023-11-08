@@ -26,7 +26,13 @@ use App\Http\Controllers\CartController;
 // CLIENT
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/product', [PageController::class, 'publicProduct'])->name('product');
+Route::get('/product/{id}', [PageController::class, 'productShow'])->name('product.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+// transaction - client
+Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
+Route::get('/basket', [PageController::class, 'basket'])->name('basket');
+Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 
 // AUTHENTICATION
 Route::get('/signin', [AuthController::class, 'signin'])->name('signin');
@@ -48,7 +54,7 @@ Route::middleware(['auth'])->group(function(){
    Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->group(function(){
         // ADMIN
-        Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
         // transactions
         Route::get('/transactions', [PageController::class, 'transactions'])->name('transactions');
@@ -79,6 +85,7 @@ Route::middleware(['auth'])->group(function(){
    });
 
 });
+
 
 
 

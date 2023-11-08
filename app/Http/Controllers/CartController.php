@@ -3,27 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class CartController extends Controller
 {
     public function cartList()
     {
         $cartItems = \Cart::getContent();
-        dd($cartItems);
+        $productIds = $cartItems->pluck('id');
+        $products = Product::whereIn('id', $productIds)->get();
 
-        // $products = [];
 
-        // foreach($cartItems as $item){
-        //     $product = Product::find($ci->id);
-        //     array_push($products, [
-        //         'productName' => $product->name,
-        //         'content' => $product->description,
-        //         'productPrice' => $product->price,
-        //         'image' => asset('images/home/product-1.webp'),
-        //     ]);
-        // }
-
-        return view('cart', compact('cartItems'));
+        return view('pages.basket', compact('cartItems', 'products'));
     }
 
 

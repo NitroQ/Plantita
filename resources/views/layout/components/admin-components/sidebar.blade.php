@@ -1,7 +1,7 @@
 <aside id="sidebar" class="fixed overflow-hidden lg:w-96 md:w-20 h-full bg-background transition duration-300 ease-in-out">
   <nav class="h-full flex flex-col justify-between overflow-hidden text-xl md:px-2 lg:px-8 py-3">
     <div>
-      <a href="{{ route('dashboard') }}" class="">
+      <a href="{{ route('admin.dashboard') }}" class="">
         <img src="{{ asset('images/icons_logos/plantita-logo.svg') }}" class="lg:block hidden h-16 mx-auto my-4" alt="Plantita Logo" />
         <img src="{{ asset('images/icons_logos/leaf-logo.svg') }}" class="lg:hidden h-8 mx-auto my-4" alt="Plantita Logo" />
       </a>
@@ -10,7 +10,7 @@
         <hr class="mt-1 mb-4 border-t border-gray-600" />
       </div>
       <ul class="space-y-3">
-        <li><a href="{{ route('dashboard') }}" class="{{ request()->is('admin') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+        <li><a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/dashboard-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Dashboard</span>
           </a></li>

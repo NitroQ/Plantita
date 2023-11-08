@@ -45,7 +45,12 @@ class PageController extends Controller
       return view('pages.products', [
         "products" => $products
       ]);
+  }
 
+  public function productShow($id) {
+    $product = Product::find($id);
+
+    return view('pages.view-product', compact('product'));
   }
 
     // about page
@@ -73,4 +78,21 @@ class PageController extends Controller
     {
         return view('pages.error404');
     }
+
+    // transaction page - client
+    public function transaction()
+    {
+        return view('pages.transaction');
+    }
+    public function checkout()
+    {
+        return view('pages.checkout');
+    }
+
+    // terms and conditions page - client
+    public function termsConditions()
+    {
+        return view('pages.terms-conditions');
+    }
+  
 }

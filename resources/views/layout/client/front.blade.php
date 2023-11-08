@@ -11,20 +11,20 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- Styles -->
-  <script
-  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @yield('css')
 
 </head>
 
-<body class="mx-auto overflow-x-hidden bg-background font-brandon-regular text-black antialiased">
+<body class="mx-auto overflow-x-hidden bg-defaultWhite font-brandon-regular text-black antialiased">
   @include('layout.components.front-components.navbar')
-  <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation' ,
-    'product-failed', 'product-cancelled', 'error404') ? 'py-0' : 'py-20' }}">
+  <!-- <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation' ,
+    'product-failed', 'product-cancelled', 'error404', 'transaction', 'terms-conditions') ? 'py-0' : 'py-20' }}">
+    @yield('content')
+  </main> -->
+  <main class="{{ request()->is('signin','signup','contact') ? 'px-0 py-0' : 'px-24 pt-44 pb-12' }}">
     @yield('content')
   </main>
 
@@ -47,6 +47,7 @@
                 data: formData,
                 success: function(response) {
                     alert(response.message);
+                    console.log(response);
                 },
                 error: function(error) {
                     console.error(error);

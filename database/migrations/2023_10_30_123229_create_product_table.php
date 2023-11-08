@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('description');
             $table->string('lifespan');
             $table->string('care_level')->enum('Low', 'Medium', 'High')->nullable();
-            $table->string('care_description');
+            $table->string('care_description')->nullable();
             $table->string('watering_level')->enum('Low', 'Medium', 'High')->nullable();
-            $table->string('watering_description');
+            $table->string('watering_description')->nullable();
             $table->string('sun_level')->enum('Low', 'Medium', 'High')->nullable();
-            $table->string('sun_description');
+            $table->string('sun_description')->nullable();
             $table->string('status')->default('active');
             $table->string('image');
             $table->timestamps();
