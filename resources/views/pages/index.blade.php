@@ -174,7 +174,7 @@
           <div class="product-items">
               @foreach ($prods as $p)
                   <div class="mb-5 mx-5">
-                      @component('layout.components.front-components.Product', $p)
+                      @component('layout.components.front-components.Product', ['p' => $p])
                       @endcomponent
                   </div>
               @endforeach
