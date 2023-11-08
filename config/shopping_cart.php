@@ -1,4 +1,4 @@
-<?php
+c<?php
 
 return [
     /*
@@ -33,4 +33,6 @@ return [
      * the configuration for cart events
      */
     'events' => null,
+    'associatedModel' => App\Models\Product::class,
+    'associatedModelPK' => 'id',
 ];

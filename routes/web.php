@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CareController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+
 
 
 /*
@@ -35,7 +37,14 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function(){
 
+    // CART
+    Route::get('/cart', [CartController::class, 'cartList'])->name('cart');
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('add-cart');
+    Route::get('/cart/remove/{id}', [PageController::class, 'removeFromCart'])->name('remove-from-cart');
+    Route::get('/cart/clear', [PageController::class, 'clearCart'])->name('clear-cart');
 
+  
+    // ADMIN
    Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->group(function(){
         // ADMIN

@@ -34,6 +34,28 @@
 
   @yield('script')
 
+  <script>
+      $(document).ready(function() {
+        $('.add-to-cart').submit(function(event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('add-cart') }}",
+                data: formData,
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+  </script>
+
 </body>
 
 </html>

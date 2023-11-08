@@ -1,4 +1,5 @@
-<a class="max-w-xs card rounded-md shadow-bottom bg-gray-400 h-auto">
+<div class="max-w-xs card rounded-md shadow-bottom bg-gray-400 h-auto">
+   {{-- <a href="{{ route('') }}"> --}}
     @php $img = explode(',', $p->image) @endphp
     <img src="/uploads/products/{{ $img[0] }}" alt="Image preview"
         class="card__img mx-auto overflow-hidden rounded-tr-md rounded-tl-md w-full lg:h-52 h-auto">
@@ -8,9 +9,17 @@
             {{ mb_strimwidth($p->description, 0, 10, "..."); }}
         </p>
         <p class="font-brandon-bold text-lg">₱{{ $p->price }}</p>
-        <button
+        <form class="add-to-cart">
+            @csrf
+            <input type="hidden" name="id" value="{{ $p->id }}">
+            <input type="hidden" name="name" value="{{ $p->name }}">
+            <input type="hidden" name="price" value="{{ $p->price }}">
+            <button type="submit"
             class="bg-green-200 rounded-md uppercase text-center text-white leading-4 text-sm p-2 font-brandon-bold w-full">ADD
             TO
             BASKET</button>
+        </form>
+        
     </div>
-</a>
+   {{-- </a> --}}
+</div>

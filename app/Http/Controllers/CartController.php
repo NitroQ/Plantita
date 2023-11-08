@@ -29,13 +29,28 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        \Cart::add([
-            'id' => $request->id,
-            'quantity' => $request->quantity,
-        ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
-
-        return redirect()->route('cart.list');
+        $productId = $request->id;
+    
+        // Check if the product is already in the cart
+        $existingCartItem = \Cart::get($productId);
+    
+        // If the product is in the cart, update its quantity
+        if ($existingCartItem) {
+            \Cart::update($productId, [
+                'quantity' => $existingCartItem->quantity + 1,
+            ]);
+        } else {
+            // If the product is not in the cart, add it as a new item
+            \Cart::add([
+                'id' => $productId,
+                'name' => $request->name,
+                'price' => $request->price,
+                'quantity' => 1,
+            ]);
+        }
+    
+        // Return a JSON response indicating success
+        return response()->json(['message' => 'Item added to cart successfully']);
     }
 
     public function updateCart(Request $request)

@@ -31,6 +31,7 @@
                     class="block w-80 p-2 pl-5 text-lg border-none focus:outline-none rounded-lg bg-gray-400 text-gray-500"
                     placeholder="Search something...">
             </div>
+            @guest
             <ul class="lg:flex hidden items-center gap-x-4">
                 <li>
                     <a class="flex flex-col gap-y-px items-center" href="{{ route('signin') }}">
@@ -57,16 +58,18 @@
                     </a>
                 </li>
             </ul>
+            @endguest
 
             {{-- FOR LOGIN --}}
             {{-- User Dropdown menu --}}
+            @auth
             <div class="lg:block hidden">
 
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="flex items-center gap-x-1">
                     <i class='bx bx-user-circle text-4xl'></i>
                     <div class="flex flex-col items-start">
-                        <p class="font-brandon-bold text-base leading-4">@frankfn</p>
-                        <p class="text-base leading-1">frankvincent@gmail.com</p>
+                        <p class="font-brandon-bold text-base leading-4">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
+                        <p class="text-base leading-1">{{ auth()->user()->email }}</p>
                     </div>
                     <i id="userDown" class='bx bx-chevron-down text-3xl'></i>
                 </button>
@@ -93,6 +96,7 @@
                     </ul>
                 </div>
             </div>
+            @endauth
         </div>
         <div class="items-center hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-search">
             {{-- search input sm screens --}}
