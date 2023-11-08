@@ -1,9 +1,9 @@
 @extends('layout.client.front')
 @section('title', 'Terms and Conditions')
 @section('content')
-  <section class="container mx-auto max-w-screen-2xl p-10">
+  <section class="">
     <div class="mb-6">
-      <p class="font-brandon-bold text-green-200 text-4xl">Terms and Conditions</p>
+      <p class="font-brandon-bold text-green-200 text-4xl mb-5">Terms and Conditions</p>
       <p class="text-xl mt-2">Welcome to Plantita, the ultimate destination for plant enthusiasts in the Philippines.
         Please read these Terms and Conditions carefully before using our website. By accessing or using Plantita,
         you agree to comply with and be bound by the following terms and conditions. If you do not agree to these terms,

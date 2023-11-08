@@ -22,7 +22,7 @@
             <a href="{{ route('index') }}">Home</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
-            <a href="">About</a>
+            <a href="{{ route('about') }}">About</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
             <a href="{{ route('product') }}">Products</a>
@@ -46,6 +46,9 @@
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
             <a href="">Other Essentials</a>
+          </li>
+          <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
+            <a href="{{ route('terms') }}">Terms and Conditions</a>
           </li>
         </ul>
       </div>

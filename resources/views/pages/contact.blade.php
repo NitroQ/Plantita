@@ -59,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="sm:flex flex-col justify-center">
+  <div class="sm:flex flex-col justify-center mt-36">
     {{-- CONTACT FORM --}}
     <form class="max-w-[500px] w-full mx-auto p-8 px-8">
       <h2 class="font-brandon-black text-green-200 italic text-6xl">Got Questions?</h2>
