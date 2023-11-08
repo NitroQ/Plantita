@@ -91,7 +91,7 @@
                         </li>
                         <li
                             class="flex justify-between items-center cursor-pointer hover:bg-green-200 p-1 hover:p-2     duration-300 rounded-md">
-                            <span class="text-md">Log-out</span>
+                            <a class="text-md" href="{{ route('logout') }}">Log-out</a>
                         </li>
                     </ul>
                 </div>

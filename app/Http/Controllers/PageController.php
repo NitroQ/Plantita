@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     //front
     public function index() {
-      $products = Products::all();
+      $products = Product::all();
 
       return view('pages.index', [
         "prods" => $products
