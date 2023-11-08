@@ -77,7 +77,7 @@ class PageController extends Controller
         return view('pages.order-confirmation');
     }
 
-    //erro-failed pages
+    //error-failed pages
     public function productFailed()
     {
         return view('pages.product-failed');
