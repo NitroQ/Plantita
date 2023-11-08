@@ -96,6 +96,13 @@ class PageController extends Controller
     {
         return view('pages.transaction');
     }
+    public function basket() {
+        return view('pages.basket');
+    }
+    public function checkout()
+    {
+        return view('pages.checkout');
+    }
 
     // terms and conditions page - client
     public function termsConditions()

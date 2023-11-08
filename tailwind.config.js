@@ -29,7 +29,7 @@ module.exports = {
                 silver: {
                   500: "rgba(130, 130, 130, <alpha-value>)"
                 },
-
+                defaultWhite: "rgba(244, 244, 244, <alpha-value>)", //F4F4F4
                 white: "rgba(255, 255, 255, <alpha-value>)", //FFFFFF
                 blue: {
                     100: "rgba(17, 72, 95, <alpha-value>)"

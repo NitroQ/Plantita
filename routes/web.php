@@ -27,6 +27,11 @@ Route::get('/product', [PageController::class, 'publicProduct'])->name('product'
 Route::get('/products/view', [PageController::class, 'productShow'])->name('products.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
+// transaction - client
+Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
+Route::get('/basket', [PageController::class, 'basket'])->name('basket');
+Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
+
 // AUTHENTICATION
 Route::get('/signin', [AuthController::class, 'signin'])->name('signin');
 Route::post('/signin', [AuthController::class, 'authenticate'])->name('authenticate');
@@ -71,9 +76,6 @@ Route::middleware(['auth'])->group(function(){
    });
 
 });
-
-// transaction - client
-Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
 
 
 
