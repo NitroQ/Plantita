@@ -27,12 +27,16 @@ use App\Http\Controllers\CartController;
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/product', [PageController::class, 'publicProduct'])->name('product');
 Route::get('/product/{id}', [PageController::class, 'productShow'])->name('product.show');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-// transaction - client
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/terms', [PageController::class, 'termsConditions'])->name('terms');
+
+// transaction
 Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
 Route::get('/basket', [PageController::class, 'basket'])->name('basket');
 Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
+Route::get('/confirmed', [PageController::class, 'orderConfirmation'])->name('confirmed');
 
 // AUTHENTICATION
 Route::get('/signin', [AuthController::class, 'signin'])->name('signin');
@@ -85,6 +89,11 @@ Route::middleware(['auth'])->group(function(){
    });
 
 });
+
+// ERROR PAGES
+Route::get('/failed', [PageController::class, 'productFailed'])->name('failed');
+Route::get('/cancelled', [PageController::class, 'productCancelled'])->name('cancelled');
+Route::get('/404', [PageController::class, 'error404'])->name('404');
 
 
 

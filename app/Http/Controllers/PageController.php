@@ -50,7 +50,9 @@ class PageController extends Controller
   public function productShow($id) {
     $product = Product::find($id);
 
-    return view('pages.view-product', compact('product'));
+    $suggest = Product::where('category', $product->category)->where('id', '!=', $id)->get();
+
+    return view('pages.view-product', compact('product', 'suggest'));
   }
 
     // about page
@@ -65,7 +67,7 @@ class PageController extends Controller
         return view('pages.order-confirmation');
     }
 
-    //erro-failed pages
+    //error-failed pages
     public function productFailed()
     {
         return view('pages.product-failed');

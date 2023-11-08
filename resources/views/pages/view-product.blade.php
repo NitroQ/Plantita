@@ -109,40 +109,18 @@
                 </div>
             </div>
         </div>
-        <div class="view-products__extra my-5">
-            <h1 class="text-3xl italic">You may also like...</h1>
-            <div class="flex items-center gap-x-4 justify-center my-5">
+      </div>
+    </div>
 
-                {{-- @component('layout.components.front-components.Product', [
-                    'image' => asset('images/home/product-1.webp'),
-                    'productName' => 'African Masc',
-                    'productPrice' => '500',
-                    'content' => 'A tropical plant with striking foliage that resembles an...',
-                ])
-                @endcomponent
-                @component('layout.components.front-components.Product', [
-                    'image' => asset('images/home/product-1.webp'),
-                    'productName' => 'African Masc',
-                    'productPrice' => '500',
-                    'content' => 'A tropical plant with striking foliage that resembles an...',
-                ])
-                @endcomponent
-                @component('layout.components.front-components.Product', [
-                    'image' => asset('images/home/product-1.webp'),
-                    'productName' => 'African Masc',
-                    'productPrice' => '500',
-                    'content' => 'A tropical plant with striking foliage that resembles an...',
-                ])
-                @endcomponent
-            
-                @component('layout.components.front-components.Product', [
-                    'image' => asset('images/home/product-1.webp'),
-                    'productName' => 'African Masc',
-                    'productPrice' => '500',
-                    'content' => 'A tropical plant with striking foliage that resembles an...',
-                ])
-                @endcomponent --}}
-            </div>
-        </div>
-    </section>
+  <div class="view-products__extra my-5">
+    <h1 class="text-3xl italic">You may also like...</h1>
+    <div class="flex items-center gap-x-4 justify-center my-5">
+
+      @foreach($suggest as $s)
+        @component('layout.components.front-components.Product', ['p' => $s])
+        @endcomponent
+      @endforeach
+    </div>
+  </div>
+</section>
 @endsection

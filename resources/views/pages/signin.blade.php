@@ -7,7 +7,7 @@
                 alt="watering can and plant">
             <div class="absolute inset-0 bg-light-green-200-pattern-full opacity-100"></div>
         </div>
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center mt-36">
             {{-- SIGN IN FORM --}}
             <form class="max-w-[500px] w-full mx-auto text-center p-8 px-8 " action="{{ route('authenticate') }}"
                 method="POST">
@@ -17,20 +17,20 @@
                     plant paradise!</h4>
                 <div class="mb-2">
                     <input type="email" id="email" name="email"
-                        class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5"
+                        class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5 placeholder-gray-500/70"
                         placeholder="Email Address" required>
                 </div>
                 <div class="mb-2">
                     <input type="password" id="password" name="password"
-                        class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5"
+                        class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5 placeholder-gray-500/70"
                         placeholder="Password" required>
                 </div>
                 <div class="flex justify-between py-2">
                     {{-- REMEMBER ME --}}
                     <div class="flex items-center">
                         <input id="remember" name="remember" type="checkbox"
-                            class="w-4 h-4 text-green-200 bg-gray-100 border-gray-300 rounded focus:ring-green-200">
-                        <label for="checked-checkbox" class="ml-2 text-md font-medium text-gray italic">Remember Me</label>
+                            class="w-4 h-4 text-green-200 bg-white border-gray-300 rounded focus:ring-green-200">
+                        <label for="checked-checkbox" class="ml-3 text-md font-medium text-gray italic">Remember Me</label>
                     </div>
                     <div class="text-black font-bold">
                     </div>
