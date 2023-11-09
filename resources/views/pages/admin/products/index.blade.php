@@ -5,10 +5,12 @@
     <div class="flex justify-between mb-5">
       <h1 class="text-4xl font-brandon-bold">Product Management</h1>
       <div class="more-actions space-x-3 flex items-center">
-        <div class="flex items-center bg-culture rounded w-64">
-          <input type="text" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0">
-          <a href=""><i class="mt-1 mr-3 bx bx-search"></i></a>
-        </div>
+        <form action="{{ route('admin.products.index') }}" method="GET" id="searchForm">
+          <div class="flex items-center bg-culture rounded w-64">
+              <input type="text" name="search" id="searchInput" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0" placeholder="Search...">
+              <i class="mt-1 mr-3 bx bx-search cursor-pointer" onclick="document.getElementById('searchForm').submit()"></i>
+          </div>
+        </form>
         <a href="{{ route('admin.products.create') }}"><button class="bg-green-200 text-white py-2 px-5 rounded hover:bg-green-200/90">Add Inventory</button></a>
       </div>
     </div>
@@ -37,31 +39,36 @@
           </tr>
         </thead>
         <tbody class="text-lg border-b border-gray-500/20">
-      @foreach($products as $p)
-      <tr class="bg-white border-b border-gray-500/20">
-        <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
-          {{ $p->id  }}
-        </th>
-        <td class="px-6 py-3">
-          {{ $p->name  }}
-        </td>
-        <td class="px-6 py-3">
-          {{ $p->category }}
-        </td>
-        <td class="px-6 py-3">
-          {{ $p->quantity }}
-        </td>
-        <td class="px-6 py-3">
-          {{-- <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span> --}}
-          <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">{{ $p->status }}</span>
-        </td>
-        <td class="px-6 py-3 space-x-2">
-          <a href="{{ route('admin.products.view',[$p->id]) }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
-          <a href="{{ route('admin.products.edit',[$p->id]) }}"><button><i class='bx bxs-pencil bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
-        </td>
-      </tr>
-      @endforeach
-          
+          @if(count($products) === 0)
+            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
+              No product found
+            </th>
+          @else
+          @foreach($products as $p)
+          <tr class="bg-white border-b border-gray-500/20">
+            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
+              {{ $p->id  }}
+            </th>
+            <td class="px-6 py-3">
+              {{ $p->name  }}
+            </td>
+            <td class="px-6 py-3">
+              {{ $p->category }}
+            </td>
+            <td class="px-6 py-3">
+              {{ $p->quantity }}
+            </td>
+            <td class="px-6 py-3">
+              {{-- <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span> --}}
+              <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">{{ $p->status }}</span>
+            </td>
+            <td class="px-6 py-3 space-x-2">
+              <a href="{{ route('admin.products.view',[$p->id]) }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
+              <a href="{{ route('admin.products.edit',[$p->id]) }}"><button><i class='bx bxs-pencil bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
+            </td>
+          </tr>
+          @endforeach
+          @endif
         </tbody>
       </table>
       <div class="flex items-center space-x-3 my-5">
@@ -92,5 +99,6 @@
         </nav>
       </div>
     </div>
+    {{-- @endif --}}
   </section>
 @endsection

@@ -16,13 +16,21 @@ class CareController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $products = Product::where('category', 'plant')->get();
-        return view('pages.admin.plantcare.index',
-        [
-            'products' => $products,
-        ]);
+        $products = Product::query();
+
+        if ($req->has('search')) {
+            $search = $req->search;
+            $s = '%'.$search.'%';
+
+            $products->where('name', 'LIKE', $s)
+                ->orWhere('id', 'LIKE', $s);
+        }
+
+        $products = $products->get();
+
+        return view('pages.admin.plantcare.index', compact('products'));
     }
 
     /**

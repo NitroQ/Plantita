@@ -34,12 +34,17 @@
         </a>
       </ul>
       <div class="flex space-x-8">
+      <form action="{{ route('product') }}" method="GET" id="searchNav">
         <div class="relative top-2">
           <div class="absolute top-3.5 right-0 flex items-center pr-3">
-            <i class='bx bx-search w-4 h-4 text-gray cursor-pointer'></i>
+              {{-- <i class='bx bx-search w-4 h-4 text-gray cursor-pointer'></i> --}}
+              <i class="mt-1 mr-3 bx bx-search cursor-pointer" onclick="document.getElementById('searchNav').submit()"></i>
+            </form>
           </div>
-          <input type="text" class="w-80 p-2 pl-5 text-lg border-none focus:ring-green-200/20 focus:border-green-200/20 rounded-lg bg-gray-400 text-gray-500 placeholder-gray-500/70" placeholder="Search something...">
+          {{-- <input type="text" class="w-80 p-2 pl-5 text-lg border-none focus:ring-green-200/20 focus:border-green-200/20 rounded-lg bg-gray-400 text-gray-500 placeholder-gray-500/70" placeholder="Search something..."> --}}
+          <input type="text" name="search" id="searchInput" class="w-80 p-2 pl-5 text-lg border-none focus:ring-green-200/20 focus:border-green-200/20 rounded-lg bg-gray-400 text-gray-500 placeholder-gray-500/70" placeholder="Search...">
         </div>
+      </form>
         @guest
         <ul class="flex items-center space-x-3">
           <a href="{{ route('signin') }}" class="p-1 rounded hover:bg-green-100 w-12 {{ request()->is('signin') ? 'bg-green-100 rounded' : '' }}">

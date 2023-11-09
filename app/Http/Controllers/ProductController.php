@@ -21,9 +21,22 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $products = Product::all();
+        dd($req->all());
+        $products = Product::query();
+
+        if ($req->has('search')) {
+            $search = $req->search;
+            $s = '%'.$search.'%';
+
+            $products->where('name', 'LIKE', $s)
+                ->orWhere('type', 'LIKE', $s)
+                ->orWhere('id', 'LIKE', $s);
+        }
+
+        $products = $products->get();
+
         return view('pages.admin.products.index', compact('products'));
     }
 
