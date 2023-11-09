@@ -44,7 +44,9 @@
             {{ $pc->quantity }}
           </td>
           <td class="px-6 py-3">
-            <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">{{ $pc->care_level != '' ? 'Active' : 'Inactive' }}</span>
+            <span class="text-sm uppercase font-brandon-black px-3 py-2 rounded 
+            {{ $pc->care_level ? 'bg-blue-100/20 text-blue-100' : 'bg-orange/20 text-orange' }}"
+            >{{ $pc->care_level != '' ? 'Active' : 'Inactive' }}</span>
           </td>
           <td class="px-6 py-3 space-x-2">
             <a href="{{ route('admin.plantcare.view',[$pc->id]) }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>

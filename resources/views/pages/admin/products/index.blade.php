@@ -5,7 +5,7 @@
     <div class="flex justify-between mb-5">
       <h1 class="text-4xl font-brandon-bold">Product Management</h1>
       <div class="more-actions space-x-3 flex items-center">
-        <div class="flex items-center bg-culture rounded w-64">
+        <div class="flex items-center bg-gray-400 rounded w-64">
           <input type="text" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0">
           <a href=""><i class="mt-1 mr-3 bx bx-search"></i></a>
         </div>
@@ -14,7 +14,7 @@
     </div>
     <div class="relative overflow-x-auto">
       <table class="w-full text-left">
-        <thead class=""text-gray-500 uppercase bg-gray-400 font-brandon-bold">
+        <thead class="text-gray-500 uppercase bg-gray-400 font-brandon-bold">
           <tr>
             <th scope="col" class="px-6 py-3 rounded-tl-lg rounded-bl-lg">
               Item ID
@@ -52,8 +52,9 @@
           {{ $p->quantity }}
         </td>
         <td class="px-6 py-3">
-          {{-- <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span> --}}
-          <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">{{ $p->status }}</span>
+          <span class="text-sm uppercase font-brandon-black px-3 py-2 rounded 
+          {{ $p->status ? 'bg-blue-100/20 text-blue-100' : 'bg-orange/20 text-orange' }}"
+          >{{ $p->status ? 'Active' : 'Inactive' }}</span>
         </td>
         <td class="px-6 py-3 space-x-2">
           <a href="{{ route('admin.products.view',[$p->id]) }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
@@ -71,7 +72,7 @@
           <p>Inactive: the Product is hidden in the Shop</p>
         </div>
         <div class="flex items-center">
-          <div class="packed h-4 w-4 bg-blue me-2"></div>
+          <div class="packed h-4 w-4 bg-blue-100 me-2"></div>
           <p>Active: the Product is viewable in the shop</p>
         </div>
       </div>
