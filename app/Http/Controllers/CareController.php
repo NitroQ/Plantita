@@ -85,18 +85,18 @@ class CareController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $this->validate($request,[
-            'care_level' => 'required',
+            'care_level' => 'not_in:Choose Care Level',
             'care_description' => 'required',
-            'watering_level' => 'required',
+            'watering_level' => 'not_in:Choose Watering Level',
             'watering_description' => 'required',
-            'sun_level' => 'required',
+            'sun_level' => 'not_in:Choose Sunlight Level',
             'sun_description' => 'required',
         ],[
-            'care_level.required' => 'Care Level is required',
+            'care_level.not_in' => 'Care Level is required',
             'care_description.required' => 'Care Description is required',
-            'watering_level.required' => 'Watering Level is required',
+            'watering_level.not_in' => 'Watering Level is required',
             'watering_description.required' => 'Watering Description is required',
-            'sun_level.required' => 'Sun Level is required',
+            'sun_level.not_in' => 'Sun Level is required',
             'sun_description.required' => 'Sun Description is required'
         ]);
 

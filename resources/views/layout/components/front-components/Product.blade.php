@@ -1,11 +1,11 @@
-<div class="max-w-xs card rounded-lg shadow-bottom bg-gray-400 h-auto hover:bg-green-100 hover:text-green-200 duration-500">
+<div class="max-w-xs card h-full rounded-lg shadow-bottom bg-gray-400 hover:bg-green-100 hover:text-green-200 duration-500">
   <a href="{{ route('product.show', [$p->id]) }}">
     @php $img = explode(', ', $p->image) @endphp
     <div class="relative">
       <img src="/uploads/products/{{ $img[0] }}" alt="Image preview" class="h-[280px] w-full rounded-tr-md rounded-tl-md object-cover">
       <img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-8 h-8 text-green-200 absolute top-0 end-0 m-3" alt="" />
     </div>
-    <div class="flex flex-col gap-y-1 items-center justify-center card__body mt-2 p-3">
+    <div class="flex flex-col gap-y-1 items-center mt-2 p-3">
       <p class="card__title text-xl leading-5 font-brandon-black text-center">{{ $p->name }}</p>
       <p class="card__content text-silver-500/70 w-3/5 text-center leading-5 overflow-hidden line-clamp-2">
         {{ $p->description }}

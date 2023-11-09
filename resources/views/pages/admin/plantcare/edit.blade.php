@@ -12,47 +12,46 @@
           <h3 class="text-2xl font-brandon-bold mb-3">Plant Care Information</h3>
           <div class="space-y-2">
             <label for="care-level" class="text-xl font-brandon-bold block">Care Level</label>
-            <select name="care_level" id="care-level" class="border border-lavender rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+            <select name="care_level" id="care-level" class="border {{ $errors->has('care_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Care Level</option>
               <option {{ $product->care_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
               <option {{ $product->care_level == "Medium" ? 'selected' : '' }} value="Medium">Medium</option>
               <option {{ $product->care_level == "High" ? 'selected' : '' }} value="High">High</option>
             </select>
+            <span class="text-sm text-crimson my-1">{{$errors->first('care_level')}}</span>
             <textarea name="care_description" id="message" rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
+            class="block px-3.5 py-2.5 w-full border {{ $errors->has('care_description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none  focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
             >{{ $product->care_description }}</textarea>
+            <span class="text-sm text-crimson my-1">{{$errors->first('care_description')}}</span>
           </div>
           <div class="space-y-2">
             <label for="watering-level" class="text-xl font-brandon-bold block">Watering Level</label>
-            <select name="watering_level" id="watering-level" class="border border-lavender rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+            <select name="watering_level" id="watering-level" class="border {{ $errors->has('watering_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Watering Level</option>
               <option {{ $product->watering_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
               <option {{ $product->watering_level == "Medium" ? 'selected' : '' }} value="Medium">Medium</option>
               <option {{ $product->watering_level == "High" ? 'selected' : '' }} value="High">High</option>
-            
             </select>
+            <span class="text-sm text-crimson my-1">{{$errors->first('watering_level')}}</span>
             <textarea id="message" name="watering_description"  rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
+            class="block px-3.5 py-2.5 w-full border {{ $errors->has('watering_description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
             >{{ $product->watering_description }}</textarea>
+            <span class="text-sm text-crimson my-1">{{$errors->first('watering_description')}}</span>
           </div>
           <div class="space-y-2">
             <label for="sunlight-level" class="text-xl font-brandon-bold block">Sunlight Level</label>
-            <select name="sun_level" id="sunlight-level" class="border border-lavender rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+            <select name="sun_level" id="sunlight-level" class="border {{ $errors->has('sun_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Sunlight Level</option>
               <option {{ $product->sun_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
               <option {{ $product->sun_level == "Medium" ? 'selected' : '' }}  value="Medium">Medium</option>
               <option {{ $product->sun_level == "High" ? 'selected' : '' }}  value="High">High</option>
             </select>
+            <span class="text-sm text-crimson my-1">{{$errors->first('sun_level')}}</span>
             <textarea id="message" name="sun_description"  rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
+            class="block px-3.5 py-2.5 w-full border {{ $errors->has('sun_description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
             >{{ $product->sun_description }}</textarea>
+            <span class="text-sm text-crimson my-1">{{$errors->first('sun_description')}}</span>
           </div>
-          <span>{{$errors->first('care_level')}}</span>
-          <span>{{$errors->first('care_description')}}</span>
-          <span>{{$errors->first('watering_level')}}</span>
-          <span>{{$errors->first('watering_description')}}</span>
-          <span>{{$errors->first('sun_level')}}</span>
-          <span>{{$errors->first('sun_description')}}</span>
           <button type="submit" class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36">Save Details</button>
         </form>
         <div class="col-span-5 lg:col-span-2 order-first lg:order-last shadow-leftBottom p-5 rounded-md">
