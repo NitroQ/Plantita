@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Transaction;
+use App\Models\Transactions;
 use App\Models\TransactionProducts;
+use App\Models\User;
+use Validator;
+use Log;
+use DB;
 
 
 class TransactionController extends Controller
@@ -76,7 +80,7 @@ class TransactionController extends Controller
         try{
             DB::beginTransaction();
 
-            $transaction = Transaction::create([
+            $transaction = Transactions::create([
                 'user_id' => auth()->user()->id,
                 'payment_transaction_id' => null,
                 'payment_status' => 'pending',
