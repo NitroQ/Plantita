@@ -18,66 +18,29 @@
             <div class="py-6 px-6">
               <h4 class="font-brandon-black text-3xl ">Products Ordered</h4>
             </div>
-            {{-- PRODUCT ROW 1--}}
-            <div class="grid grid-rows-1 py-2 border-b-2 border-lightGray ">
-              <div class="grid grid-cols-6 items-center justify-center p-4 px-6">
-                <div class="col-span-1 flex justify-center items-center">
-                  <img class="h-20 w-20" src="{{ asset('images/home/product-1.webp') }}" alt="">
+            @php $i= 0; @endphp
+          @foreach($products as $p)
+          @php $img = explode(', ', $p->image) @endphp
+          <div class="grid grid-rows-1 py-2 border-b-2 border-lightGray ">
+            <div class="grid grid-cols-6 items-center justify-center p-4 px-6">
+              <div class="col-span-1 flex justify-center items-center">
+                <img class="h-20 w-20" src="/uploads/products/{{ $img[0] }}" alt="">
+              </div>
+              <div class=" col-span-4 pr-6">
+                <div class="grid grid-rows-1">
+                  <h4 class="font-brandon-black text-2xl">African Mask</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500 ">{{ mb_strimwidth($p->description, 0, 10, "..."); }}</h4>
+                  <h4 class="font-brandon-black text-xl">Quantity: {{ $quantity[$i] }}</h4>
                 </div>
-                <div class=" col-span-4 pr-6">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                    <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
-                    <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
-                  </div>
-                </div>
-                <div class="col-span-1 flex justify-end">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
-                  </div>
+              </div>
+              <div class="col-span-1 flex justify-end">
+                <div class="grid grid-rows-1">
+                  <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱{{ $p->price * $quantity[$i] }}</h4>
                 </div>
               </div>
             </div>
-            {{-- PRODUCT ROW 2--}}
-            <div class="grid grid-rows-1 py-2 border-b-2 border-lightGray ">
-              <div class="grid grid-cols-6 items-center justify-center p-4 px-6">
-                <div class="col-span-1 flex justify-center items-center">
-                  <img class="h-20 w-20" src="{{ asset('images/home/product-1.webp') }}" alt="">
-                </div>
-                <div class=" col-span-4 pr-6">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                    <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
-                    <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
-                  </div>
-                </div>
-                <div class="col-span-1 flex justify-end">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{-- PRODUCT ROW 3--}}
-            <div class="grid grid-rows-1 py-2 border-b-2 border-lightGray ">
-              <div class="grid grid-cols-6 items-center justify-center p-4 px-6">
-                <div class="col-span-1 flex justify-center items-center ">
-                  <img class="h-20 w-20" src="{{ asset('images/home/product-1.webp') }}" alt="">
-                </div>
-                <div class=" col-span-4 pr-6">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl">African Mask</h4>
-                    <h4 class="font-brandon-regular text-lg text-gray-500 ">A tropical plant with striking foliage that resembles an...</h4>
-                    <h4 class="font-brandon-black text-xl">Quantity: 4</h4>
-                  </div>
-                </div>
-                <div class="col-span-1 flex justify-end">
-                  <div class="grid grid-rows-1">
-                    <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱2000</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+          @endforeach
             {{-- DELIVERY FEE--}}
             <div class="grid grid-rows-1  border-b-2 border-lightGray ">
               <div class="grid grid-cols-6 p-4 px-6">
@@ -85,7 +48,7 @@
                   <h4 class="font-brandon-regular text-2xl text-gray-500">Delivery Fee:</h4>
                 </div>
                 <div class="col-span-1 flex justify-end">
-                  <h4 class="font-brandon-black text-2xl font-bold">₱250</h4>
+                  <h4 class="font-brandon-black text-2xl font-bold">₱{{ $transaction->shipping_cost }}</h4>
                 </div>
               </div>
             </div>
@@ -96,7 +59,7 @@
                   <h4 class="font-brandon-regular text-2xl text-gray-500">Total</h4>
                 </div>
                 <div class="col-span-1 flex justify-end items-center">
-                  <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱6,250</h4>
+                  <h4 class="font-brandon-black text-2xl text-green-200 font-bold">₱{{ $transaction->total }}</h4>
                 </div>
               </div>
             </div>
@@ -117,7 +80,7 @@
                   </div>
                 </div>
                 <div class="col-span-3 flex justify-start items-center">
-                  <h4 class="font-brandon-regular text-lg text-gray-500">#123456789</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">#{{ $transaction->id }}</h4>
                 </div>
               </div>
             </div>
@@ -130,7 +93,7 @@
                   </div>
                 </div>
                 <div class="col-span-3 flex justify-start items-center">
-                  <h4 class="font-brandon-regular text-lg text-gray-500">October 16, 2023</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->created_at->format('M d, Y')  }}</h4>
                 </div>
               </div>
             </div>
@@ -143,7 +106,7 @@
                   </div>
                 </div>
                 <div class="col-span-3 flex justify-start items-center">
-                  <h4 class="font-brandon-regular text-lg text-gray-500">Personal Delivery</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->ship_method }}</h4>
                 </div>
               </div>
             </div>
@@ -156,9 +119,9 @@
                   </div>
                 </div>
                 <div class="col-span-3">
-                  <h4 class="font-brandon-regular text-lg text-gray-500">Frank Vincent Gesmundo</h4>
-                  <h4 class="font-brandon-regular text-lg text-gray-500">09236541256</h4>
-                  <h4 class="font-brandon-regular text-lg text-gray-500 w-48 pr-6">96 Kaliraya St. Cluster 19 G. Araneta Ave. Brgy. Tatalon, Quezon City, 1113</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->name }}</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->phone }}</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500 w-48 pr-6">{{ $transaction->company }} {{ $transaction->street_address }} {{ $transaction->building_address }} {{ $transaction->city }} {{ $transaction->zip_code }}</h4>
                 </div>
               </div>
 
@@ -171,8 +134,8 @@
                     </div>
                   </div>
                   <div class="col-span-3">
-                    <h4 class="font-brandon-regular text-lg text-gray-500">Maya Debit / Credit</h4>
-                    <h4 class="font-brandon-regular text-lg text-gray-500">#1273459049084</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->pay_method }}</h4>
+                    <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->payment_transaction_id }}</h4>
                   </div>
                 </div>
               </div>

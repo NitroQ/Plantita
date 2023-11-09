@@ -20,10 +20,10 @@ class TransactionProducts extends Model
     public $timestamps = false;
 
     public function transaction(){
-        return $this->belongsTo('App\Models\Transactions');
+        return $this->belongsTo('App\Models\Transactions', 'transaction_id', 'id');
     }
 
     public function product(){
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
     }
 }

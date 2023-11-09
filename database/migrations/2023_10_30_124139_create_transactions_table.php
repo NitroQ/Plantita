@@ -18,9 +18,12 @@ return new class extends Migration
             $table->foreignUuid('user_id');
             $table->string('payment_transaction_id')->nullable();
             $table->string('payment_status')->nullable();
-            $table->string('pay_method')->enum('credit-card', 'debit-card', 'e-wallet', 'cash');
-            $table->string('ship_method')->enum('same-day', 'pick-up', 'standard');
-            $table->string('status')->enum('pending', 'packed', 'shipped', 'done');
+            $table->string('pay_method')->nullable();
+            $table->string('ship_method')->nullable();
+            $table->string('status')->enum('pending', 'packed', 'shipped', 'done')->default('pending');
+            $table->string('subtotal')->nullable();
+            $table->string('total')->nullable();
+            $table->string('shipping_cost');
             $table->string('name');
             $table->string('company')->nullable();
             $table->string('street_address');
@@ -28,6 +31,9 @@ return new class extends Migration
             $table->string('city');
             $table->string('zip_code');
             $table->string('phone');
+            $table->string('courier')->nullable();
+            $table->string('courier_location')->nullable();
+            $table->string('shipping_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

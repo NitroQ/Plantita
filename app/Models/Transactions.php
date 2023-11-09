@@ -13,12 +13,15 @@ class Transactions extends Model
     protected $table = 'transactions';
 
     protected $fillable = [
-        'user',
+        'user_id',
         'payment_transaction_id',
         'payment_status',
         'pay_method',
         'ship_method',
         'status',
+        'subtotal',
+        'total',
+        'shipping_cost',
         'name',
         'company',
         'street_address',
@@ -26,17 +29,13 @@ class Transactions extends Model
         'city',
         'zip_code',
         'phone',
+        'courier',
+        'courier_location',
+        'tracking_id'
     ];
 
     protected function transactionProducts() {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('App\Models\TransactionProducts' , 'transaction_id', 'id');
     }
 
-    public function total(){
-        $total = 0;
-        foreach($this->transactionProducts as $product){
-            $total += $product->price * $product->quantity;
-        }
-        return $total;
-    }
 }

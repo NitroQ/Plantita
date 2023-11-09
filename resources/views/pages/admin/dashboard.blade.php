@@ -217,7 +217,7 @@
                     <h3 class="text-2xl font-brandon-bold">Quick Access</h3>
                     <div class="space-y-2">
                         <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a
-                                href="{{ route('transactions') }}">Check Transactions</a></button>
+                                href="{{ route('admin.transactions.index') }}">Check Transactions</a></button>
                         <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a
                                 href="{{ route('admin.plantcare.index') }}">Manage Inventory</a></button>
                         <button class="text-lg bg-background w-full py-2 hover:bg-green-200/10 rounded"><a

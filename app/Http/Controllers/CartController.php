@@ -22,9 +22,16 @@ class CartController extends Controller
     
         // Check if the product is already in the cart
         $existingCartItem = \Cart::get($productId);
+
+        $product = Product::find($productId);
     
+        if($product->quantity < 1) {
+            return response()->json(['message' => 'Product is out of stock']);
+        } else if ($existingCartItem && $existingCartItem->quantity >= $product->quantity) {
+            return response()->json(['message' => 'Max quantity reached']);
+        }
         // If the product is in the cart, update its quantity
-        if ($existingCartItem) {
+        else if ($existingCartItem) {
             \Cart::update($productId, [
                 'quantity' => $existingCartItem->quantity + 1,
             ]);

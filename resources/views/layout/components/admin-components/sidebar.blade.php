@@ -14,7 +14,7 @@
             <img src="{{ asset('images/icons_logos/dashboard-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Dashboard</span>
           </a></li>
-        <li><a href="{{ route('transactions') }}" class="{{ request()->is('transactions') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+        <li><a href="{{ route('admin.transactions.index') }}" class="{{ request()->is('transactions') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/transactions-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Transactions</span>
           </a></li>
