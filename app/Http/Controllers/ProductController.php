@@ -51,6 +51,8 @@ class ProductController extends Controller
             'type'=> 'not_in:Type',
             'quantity'=> 'required',
             'price'=> 'required',
+            'scientific_name' => 'nullable',
+            'lifespan' => 'nullable',
             'description'=> 'required|min:2',
             'images.*'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ],[

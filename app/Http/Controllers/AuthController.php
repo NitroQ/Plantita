@@ -20,13 +20,16 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8|max:255',
+            'password' => 'required',
+        ],[
+            'email.required' => 'Email is required',
+            'password.required' => 'Password is required',
         ]);
 
 
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->route('index')->with('flash_message', 'Logged in!');;
+            return redirect()->route('index')->with('flash_message', 'Logged in!');
         }
 
         return back()->withErrors([
@@ -67,7 +70,7 @@ class AuthController extends Controller
             'last_name' => 'required|min:2|max:50',
             'username' => 'required|min:3|max:30|unique:users',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|max:255|confirmed',
+            'password' => 'required|min:8|max:255|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
         ],[
             'first_name.required' => 'First name is required',
             'first_name.min' => 'First name must be at least 2 characters',
@@ -84,8 +87,9 @@ class AuthController extends Controller
             'email.unique' => 'Email is already taken',
             'password.required' => 'Password is required',
             'password.min' => 'Password must be at least 8 characters',
-            'password.max' => 'Password must be at most 255 characters',
+            'password.max' => 'Password must be no more than 255 characters',
             'password.confirmed' => 'Password confirmation does not match',
+            'password.regex' => 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
         ]);
 
         try{

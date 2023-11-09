@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('category');
             $table->string('type');
-            $table->string('scientific_name');
+            $table->string('scientific_name')->nullable();
             $table->string('quantity');
             $table->string('price');
             $table->string('description');
-            $table->string('lifespan');
+            $table->string('lifespan')->nullable();
             $table->string('care_level')->enum('Low', 'Medium', 'High')->nullable();
             $table->string('care_description')->nullable();
             $table->string('watering_level')->enum('Low', 'Medium', 'High')->nullable();
