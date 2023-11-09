@@ -48,6 +48,7 @@ class ProductController extends Controller
         $validator = $this->validate($request, [
             'name'=> 'required|min:2|max:50',
             'category'=> 'required',
+            'type'=> 'required',
             'scientific_name'=> 'required|min:2|max:50',
             'quantity'=> 'required',
             'lifespan'=> 'required',
@@ -59,6 +60,7 @@ class ProductController extends Controller
             'name.min' => 'Name must be at least 2 characters',
             'name.max' => 'Name must be less than 50 characters',
             'category.required' => 'Category is required',
+            'type.required' => 'Type is required',
             'scientific_name.required' => 'Scientific Name is required',
             'scientific_name.min' => 'Scientific Name must be at least 2 characters',
             'scientific_name.max' => 'Scientific Name must be less than 50 characters',
@@ -91,6 +93,7 @@ class ProductController extends Controller
             Product::create([
                 'name' => $validator['name'],
                 'category' => $validator['category'],
+                'type' => $validator['type'],
                 'scientific_name' => $validator['scientific_name'],
                 'quantity' => $validator['quantity'],
                 'price' => $validator['price'],
@@ -150,6 +153,7 @@ class ProductController extends Controller
         $validator = $this->validate($request, [
             'name'=> 'required|min:2|max:50',
             'category'=> 'required',
+            'type'=> 'required',
             'scientific_name'=> 'required|min:2|max:50',
             'quantity'=> 'required',
             'price'=> 'required',
@@ -160,6 +164,7 @@ class ProductController extends Controller
             'name.min' => 'Name must be at least 2 characters',
             'name.max' => 'Name must be less than 50 characters',
             'category.required' => 'Category is required',
+            'type.required' => 'Type is required',
             'scientific_name.required' => 'Scientific Name is required',
             'scientific_name.min' => 'Scientific Name must be at least 2 characters',
             'scientific_name.max' => 'Scientific Name must be less than 50 characters',
@@ -197,6 +202,7 @@ class ProductController extends Controller
 
             $product->name = $validator['name'];
             $product->category = $validator['category'];
+            $product->type = $validator['type'];
             $product->scientific_name = $validator['scientific_name'];
             $product->quantity = $validator['quantity'];
             $product->price = $validator['price'];

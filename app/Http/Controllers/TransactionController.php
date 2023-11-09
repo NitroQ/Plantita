@@ -20,21 +20,21 @@ class TransactionController extends Controller
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
-        if($items == null){
+        if ($items == null) {
             return redirect()->back();
-        }else if(count($items) != count($quantity)){
+        } else if (count($items) != count($quantity)) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
 
         $product = [];
-        
+
         $address = auth()->user();
 
         foreach ($items as $item) {
             $product[] = Product::find($item);
         }
 
-        
+
         return view('pages.transaction.checkout', [
             'products' => $product,
             'quantity' => $quantity,
@@ -49,13 +49,13 @@ class TransactionController extends Controller
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
-        if($items == null){
+        if ($items == null) {
             return redirect()->back();
-        }else if(count($items) != count($quantity)){
+        } else if (count($items) != count($quantity)) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
 
-        $validate = $this->validate($request,[
+        $validate = $this->validate($request, [
             'email' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
@@ -65,7 +65,7 @@ class TransactionController extends Controller
             'phone' => 'required',
             'ship_method' => 'required',
             'pay_method' => 'required',
-        ],[
+        ], [
             'email.required' => 'Email is required',
             'first_name.required' => 'First name is required',
             'last_name.required' => 'Last name is required',
@@ -76,8 +76,8 @@ class TransactionController extends Controller
             'ship_method.required' => 'Ship method is required',
             'pay_method.required' => 'Pay method is required',
         ]);
-        
-        try{
+
+        try {
             DB::beginTransaction();
 
             $transaction = Transactions::create([
@@ -96,7 +96,7 @@ class TransactionController extends Controller
                 'phone' => $validate['phone'],
             ]);
 
-            for($i = 0; $i < count($items); $i++){
+            for ($i = 0; $i < count($items); $i++) {
                 TransactionProducts::create([
                     'transaction_id' => $transaction->id,
                     'product_id' => $items[$i],
@@ -104,7 +104,7 @@ class TransactionController extends Controller
                 ]);
             }
 
-            if($request->remember == 'yes'){
+            if ($request->remember == 'yes') {
                 $user = User::find(auth()->user()->id);
 
                 $user->update([
@@ -118,14 +118,13 @@ class TransactionController extends Controller
             }
 
             DB::commit();
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
             DB::rollback();
 
             return redirect()
-            ->back()
-            ->with('error', 'Something went wrong');
+                ->back()
+                ->with('error', 'Something went wrong');
         }
 
 
@@ -135,26 +134,30 @@ class TransactionController extends Controller
         return view('pages.transaction.checkout-address');
     }
 
-    public function transactions(){
+    public function transactions()
+    {
         return view('pages.admin.transactions.transactions');
     }
-    public function viewTransaction(){
+    public function viewTransaction()
+    {
         return view('pages.admin.transactions.view-transaction');
     }
-    public function pending(){
+    public function pending()
+    {
         return view('pages.admin.transactions.pending');
     }
-    public function pack(){
+    public function pack()
+    {
         return view('pages.admin.transactions.pack');
     }
-    public function shipped(){
+    public function shipped()
+    {
         return view('pages.admin.transactions.shipped');
     }
 
 
     public function orderConfirmation()
     {
-
     }
 
     public function productFailed()
