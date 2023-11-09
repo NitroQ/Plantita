@@ -12,9 +12,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $users = User::all();
+        $users = User::query();
+
+        if ($req->has('search')) {
+            $search = $req->search;
+            $s = '%'.$search.'%';
+
+            $users->where('username', 'LIKE', $s)
+                ->orWhere('email', 'LIKE', $s)
+                ->orWhere('id', 'LIKE', $s);
+        }
+
+        $users = $users->get();
+
         return view('pages.admin.user.index', compact('users'));
     }
 

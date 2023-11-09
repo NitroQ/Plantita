@@ -5,8 +5,12 @@
     <div class="flex justify-between mb-5">
       <h1 class="text-4xl font-brandon-bold">User Management</h1>
       <div class="flex items-center bg-gray-400 rounded w-64">
-        <input type="text" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0">
-        <a href=""><i class="mt-1 mr-3 bx bx-search"></i></a>
+        <form action="{{ route('users') }}" method="GET" id="searchForm">
+          <div class="flex items-center bg-culture rounded w-64">
+              <input type="text" name="search" id="searchInput" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0" placeholder="Search...">
+              <i class="mt-1 mr-3 bx bx-search cursor-pointer" onclick="document.getElementById('searchForm').submit()"></i>
+          </div>
+        </form>
       </div>
     </div>
     <div class="relative overflow-x-auto">
@@ -31,6 +35,11 @@
           </tr>
         </thead>
         <tbody class="text-lg border-b border-gray/20">
+          @if(count($users) === 0)
+            <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
+              No user found
+            </th>
+          @else
           @foreach($users as $u)
           <tr class="bg-white border-b border-gray/20">
             <th scope="row" class="px-6 py-3 font-medium whitespace-nowrap">
@@ -43,15 +52,16 @@
               {{ $u->email  }}
             </td>
             <td class="px-6 py-3">
-              {{-- <span class="text-sm bg-orange/20 text-orange uppercase font-brandon-black px-3 py-2 rounded">Inactive</span> --}}
-              <span class="text-sm bg-blue-100/20 text-blue-100 uppercase font-brandon-black px-3 py-2 rounded">Active</span>
+              <span class="text-sm uppercase font-brandon-black px-3 py-2 rounded 
+              {{ $u->status == 'active' ? 'bg-blue-100/20 text-blue-100' : 'bg-orange/20 text-orange' }}"
+              >{{ $u->status == 'active' ? 'Active' : 'Inactive' }}</span>
             </td>
             <td class="px-6 py-3">
               <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
             </td>
           </tr>
           @endforeach
-        
+          @endif
         </tbody>
       </table>
       <div class="flex items-center space-x-3 my-5">

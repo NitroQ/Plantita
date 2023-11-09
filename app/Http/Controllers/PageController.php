@@ -21,14 +21,37 @@ class PageController extends Controller
   public function contact(){
       return view('pages.public.contact');
   }
+  
 
-  public function publicProduct() {
-    $products = Product::all();
+public function publicProduct(Request $request) {
+  $products = Product::query();
+  $categories = $request->input('categories', []); 
+  $types = $request->input('types', []); 
 
-      return view('pages.product.index', [
-        "products" => $products
-      ]);
+  if (!empty($categories)) {
+      $products->whereIn('category', $categories);
   }
+
+  if (!empty($types)) {
+      $products->whereIn('type', $types);
+  }
+     if ($request->has('search')) {
+        $search = $request->search;
+        $s = '%'.$search.'%';
+  
+        $products->where('name', 'LIKE', $s)
+            ->orWhere('type', 'LIKE', $s)
+            ->orWhere('id', 'LIKE', $s);
+    }
+
+  $filteredProducts = $products->get();
+
+  return view('pages.product.index', [
+      "products" => $filteredProducts,
+      "categories" => $categories, 
+      "types" => $types, 
+  ]);
+}
 
   public function productShow($id) {
     $product = Product::find($id);
