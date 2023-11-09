@@ -47,10 +47,9 @@ class ProductController extends Controller
     {
         $validator = $this->validate($request, [
             'name'=> 'required|min:2|max:50',
-            'category'=> 'required',
-            'scientific_name'=> 'required|min:2|max:50',
+            'category'=> 'not_in:Category',
+            'type'=> 'not_in:Type',
             'quantity'=> 'required',
-            'lifespan'=> 'required',
             'price'=> 'required',
             'description'=> 'required|min:2',
             'images.*'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
@@ -58,15 +57,13 @@ class ProductController extends Controller
             'name.required' => 'Name is required',
             'name.min' => 'Name must be at least 2 characters',
             'name.max' => 'Name must be less than 50 characters',
-            'category.required' => 'Category is required',
-            'scientific_name.required' => 'Scientific Name is required',
-            'scientific_name.min' => 'Scientific Name must be at least 2 characters',
-            'scientific_name.max' => 'Scientific Name must be less than 50 characters',
+            'category.not_in' => 'Category is required',
+            'type.not_in' => 'Type is required',
             'quantity.required' => 'Quantity is required',
-            'lifespan.required' => 'Lifespan is required',
             'price.required' => 'Price is required',
             'description.required' => 'Description is required',
             'description.min' => 'Description must be at least 2 characters',
+            'images.*.required' => 'Images are required',
             'images.*.image' => 'Image must be an image',
             'images.*.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg.',
             'images.*.max' => 'Image must be less than 4MB',
@@ -91,6 +88,7 @@ class ProductController extends Controller
             Product::create([
                 'name' => $validator['name'],
                 'category' => $validator['category'],
+                'type' => $validator['type'],
                 'scientific_name' => $validator['scientific_name'],
                 'quantity' => $validator['quantity'],
                 'price' => $validator['price'],
@@ -150,6 +148,7 @@ class ProductController extends Controller
         $validator = $this->validate($request, [
             'name'=> 'required|min:2|max:50',
             'category'=> 'required',
+            'type'=> 'required',
             'scientific_name'=> 'required|min:2|max:50',
             'quantity'=> 'required',
             'price'=> 'required',
@@ -160,6 +159,7 @@ class ProductController extends Controller
             'name.min' => 'Name must be at least 2 characters',
             'name.max' => 'Name must be less than 50 characters',
             'category.required' => 'Category is required',
+            'type.required' => 'Type is required',
             'scientific_name.required' => 'Scientific Name is required',
             'scientific_name.min' => 'Scientific Name must be at least 2 characters',
             'scientific_name.max' => 'Scientific Name must be less than 50 characters',
@@ -197,6 +197,7 @@ class ProductController extends Controller
 
             $product->name = $validator['name'];
             $product->category = $validator['category'];
+            $product->type = $validator['type'];
             $product->scientific_name = $validator['scientific_name'];
             $product->quantity = $validator['quantity'];
             $product->price = $validator['price'];

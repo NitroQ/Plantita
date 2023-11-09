@@ -9,6 +9,7 @@ use App\Http\Controllers\CareController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\LikeController;
 
 
 
@@ -42,6 +43,11 @@ Route::post('/signup', [AuthController::class, 'register'])->name('register');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function(){
+
+    //LIKES
+    Route::get('/likes', [LikeController::class, 'viewLikes'])->name('view-likes');
+    Route::post('/likes/add', [LikeController::class, 'addLike'])->name('add-likes');
+    Route::post('/likes/remove', [LikeController::class, 'removeLike'])->name('remove-likes');
 
     // CART
     Route::get('/cart', [CartController::class, 'cartList'])->name('basket');

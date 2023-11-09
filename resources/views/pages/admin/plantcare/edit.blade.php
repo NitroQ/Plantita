@@ -19,9 +19,8 @@
               <option {{ $product->care_level == "High" ? 'selected' : '' }} value="High">High</option>
             </select>
             <textarea name="care_description" id="message" rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20"
-            >{{ $product->care_description }}
-            </textarea>
+            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
+            >{{ $product->care_description }}</textarea>
           </div>
           <div class="space-y-2">
             <label for="watering-level" class="text-xl font-brandon-bold block">Watering Level</label>
@@ -33,7 +32,7 @@
             
             </select>
             <textarea id="message" name="watering_description"  rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20"
+            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
             >{{ $product->watering_description }}</textarea>
           </div>
           <div class="space-y-2">
@@ -45,7 +44,7 @@
               <option {{ $product->sun_level == "High" ? 'selected' : '' }}  value="High">High</option>
             </select>
             <textarea id="message" name="sun_description"  rows="4" placeholder="Write description here..."
-            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20"
+            class="block px-3.5 py-2.5 w-full border border-lavender rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
             >{{ $product->sun_description }}</textarea>
           </div>
           <span>{{$errors->first('care_level')}}</span>
@@ -54,7 +53,7 @@
           <span>{{$errors->first('watering_description')}}</span>
           <span>{{$errors->first('sun_level')}}</span>
           <span>{{$errors->first('sun_description')}}</span>
-          <button type="submit" class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90">Save Details</button>
+          <button type="submit" class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36">Save Details</button>
         </form>
         <div class="col-span-5 lg:col-span-2 order-first lg:order-last shadow-leftBottom p-5 rounded-md">
           <div class="flex justify-between mb-3">
@@ -63,7 +62,7 @@
           </div>
           <div class="grid grid-cols-4 gap-x-5 items-start">
             @php $img = explode(', ', $product->image) @endphp
-            <img src="/uploads/products/{{ $img[0] }}" class="col-span-1" />
+            <img src="/uploads/products/{{ $img[0] }}" class="col-span-1 object-cover rounded h-32 w-full" />
             <div class="grid grid-cols-2 col-span-3 gap-x-5 gap-y-3">
               <div class="text-center font-brandon-bold py-1 bg-gray-400 rounded-lg">Plant Name</div>
               <p class="mt-1">{{ $product->name }}</p>

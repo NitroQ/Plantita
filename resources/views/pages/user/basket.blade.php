@@ -3,7 +3,11 @@
 @section('content')
 
 <section>
-  <p class="text-gray-500/70">Plants / Basket</p>
+  <div class="text-lg text-gray-500 flex space-x-2">
+    <span>Plants</span>
+    <span>/</span>
+    <span>Basket</span>
+  </div>
   <div class="flex justify-between mb-5">
     <h3 class="text-4xl font-brandon-bold leading">Your Basket</h3>
   </div>
@@ -43,7 +47,7 @@
           <td class="px-6 py-4 flex items-center">
             <input type="checkbox" class="checkbox w-4 h-4 text-green-200 border-gray-500/50 rounded focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" data-row-id="{{ $item->id }}">
             @php $img = explode(',', $product->image) @endphp
-            <img src="/uploads/products/{{ $img[0] }}" class="h-28 w-28 object-cover mx-5 rounded-lg" />
+            <img src="/uploads/products/{{ $img[0] }}" class="h-28 w-40 object-cover mx-5 rounded-lg" />
             <div>
               <h4 class="text-2xl font-brandon-bold">{{ $product->name }}</h4>
               <p class="text-gray-500/70 w-3/5 max-h-20 overflow-hidden line-clamp-2">{{ $product->description }}</p>

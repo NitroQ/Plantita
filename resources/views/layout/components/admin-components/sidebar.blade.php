@@ -1,7 +1,7 @@
 <aside id="sidebar" class="fixed overflow-hidden lg:w-96 md:w-20 h-full bg-background transition duration-300 ease-in-out">
   <nav class="h-full flex flex-col justify-between overflow-hidden text-xl md:px-2 lg:px-8 py-3">
     <div>
-      <a href="{{ route('admin.dashboard') }}" class="">
+      <a href="{{ route('index') }}" class="">
         <img src="{{ asset('images/icons_logos/plantita-logo.svg') }}" class="lg:block hidden h-16 mx-auto my-4" alt="Plantita Logo" />
         <img src="{{ asset('images/icons_logos/leaf-logo.svg') }}" class="lg:hidden h-8 mx-auto my-4" alt="Plantita Logo" />
       </a>
@@ -32,18 +32,20 @@
           </a></li>
       </ul>
     </div>
+    @auth
     <ul class="my-3">
-      <li><a href="{{ route('index') }}" class="p-2 flex items-center lg:justify-between justify-center rounded-md hover:bg-green-200/10">
+      <li><a href="{{ route('logout') }}" class="p-2 flex items-center lg:justify-between justify-center rounded-md hover:bg-green-200/10">
           <div class="flex items-center">
             <img src="{{ asset('images/icons_logos/user-profile-icon.svg') }}" class="m-0 lg:me-3 h-7" />
             <div class="lg:inline hidden">
-              <p class="text-base font-brandon-bold leading-5">Frank Vincent Gesmundo</p>
+              <p class="text-base font-brandon-bold leading-5 capitalize">{{ auth()->user()->username }}</p>
               <p class="text-sm leading-5">Adminisrator</p>
             </div>
           </div>
           <img src="{{ asset('images/icons_logos/logout-icon.svg') }}" class="h-5 lg:inline hidden" />
         </a></li>
     </ul>
+    @endauth
   </nav>
 </aside>
 

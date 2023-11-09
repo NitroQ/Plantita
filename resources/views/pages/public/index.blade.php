@@ -16,7 +16,7 @@
         <p class="text-lg lg:w-2/3 w-full">Shop our curated selection of plants, hand-picked by titas for titas
           and plant lovers everywhere. Find the perfect plant for your space and style with <span class="font-brandon-bold italic">Plantita!</span>
         </p>
-        <a href="http://" class="flex-none text-md inline-block rounded-md bg-green-200 px-4 py-2 font-brandon-bold uppercase w-32 text-center text-white">SHOP NOW</a>
+        <a href="http://" class="flex-none text-md inline-block rounded-md bg-green-200 hover:bg-green-200/80 px-4 py-2 font-brandon-bold uppercase w-32 text-center text-white">SHOP NOW</a>
       </div>
       <div class="mx-auto md:block hidden bg-[url('../../public/images/home/home-plant-babies.webp')] home__img-container relative bg-cover bg-center bg-no-repeat md:col-span-4 w-full h-[35vh] rounded-md">
         <div class="absolute z-10 flex items-end h-full w-full px-8 bottom-8">

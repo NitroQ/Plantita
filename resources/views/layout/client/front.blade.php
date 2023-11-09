@@ -54,6 +54,24 @@
                 }
             });
         });
+        $('.add-to-likes').click(function() {
+          var productId = $(this).data('product-id');
+          console.log(productId);
+
+          $.ajax({
+              type: 'POST',
+              url: "{{ route('add-likes') }}",
+              data: { id: productId, _token: "{{ csrf_token() }}" },
+              success: function(response) {
+                  alert(response.message);
+                  console.log(response);
+              },
+              error: function(error) {
+                  console.error(error);
+                  alert(error.message);
+              }
+          });
+      });
     });
   </script>
 

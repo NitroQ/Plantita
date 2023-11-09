@@ -20,21 +20,21 @@ class TransactionController extends Controller
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
-        if($items == null){
+        if ($items == null) {
             return redirect()->back();
-        }else if(count($items) != count($quantity)){
+        } else if (count($items) != count($quantity)) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
 
         $product = [];
-        
+
         $address = auth()->user();
 
         foreach ($items as $item) {
             $product[] = Product::find($item);
         }
 
-        
+
         return view('pages.transaction.checkout', [
             'products' => $product,
             'quantity' => $quantity,
@@ -68,9 +68,9 @@ class TransactionController extends Controller
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
-        if($items == null){
+        if ($items == null) {
             return redirect()->back();
-        }else if(count($items) != count($quantity)){
+        } else if (count($items) != count($quantity)) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
 
@@ -132,25 +132,30 @@ class TransactionController extends Controller
             DB::rollback();
 
             return redirect()
-            ->back()
-            ->with('error', 'Something went wrong');
+                ->back()
+                ->with('error', 'Something went wrong');
         }
 
     }
 
-    public function transactions(){
+    public function transactions()
+    {
         return view('pages.admin.transactions.transactions');
     }
-    public function viewTransaction(){
+    public function viewTransaction()
+    {
         return view('pages.admin.transactions.view-transaction');
     }
-    public function pending(){
+    public function pending()
+    {
         return view('pages.admin.transactions.pending');
     }
-    public function pack(){
+    public function pack()
+    {
         return view('pages.admin.transactions.pack');
     }
-    public function shipped(){
+    public function shipped()
+    {
         return view('pages.admin.transactions.shipped');
     }
 

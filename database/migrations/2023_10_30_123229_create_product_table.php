@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id');
             $table->string('name');
             $table->string('category');
+            $table->string('type');
             $table->string('scientific_name');
             $table->string('quantity');
             $table->string('price');
