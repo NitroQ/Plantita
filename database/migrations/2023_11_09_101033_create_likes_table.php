@@ -13,20 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
-            $table->id();
+        Schema::create('likes', function (Blueprint $table) {
             $table->foreignUuid('user_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('company')->nullable();
-            $table->string('street_address');
-            $table->string('building_address')->nullable();
-            $table->string('city');
-            $table->string('phone');
-            $table->boolean('default')->default(true);
-            $table->timestamps();
+            $table->unsignedBigInteger('product_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
         });
     }
 
@@ -37,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('likes');
     }
 };

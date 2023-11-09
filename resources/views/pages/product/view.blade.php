@@ -52,6 +52,10 @@
               <i class='bx bx-plus text-green-200 text-4xl'></i>
             </button>
           </div>
+                        <button type="button"
+                                    class="bg-green-200 py-1 w-full text-white font-brandon-black rounded-md text-lg mt-5 add-to-likes" data-product-id="{{ $product->id }}">ADD
+                                    TO
+                                    LIKES</button>
           <form class="add-to-cart">
             @csrf
             <input type="hidden" name="id" value="{{ $product->id }}">

@@ -18,8 +18,16 @@
         <input type="text" name="scientific_name" class="col-span-2 rounded-lg border {{ $errors->has('scientific_name') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Scientific Name">
         <select id="product-type" name="category" class="border {{ $errors->has('category') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
           <option selected class="text-gray bg-culture hover:bg-green/20">Category</option>
-          <option value="plant">Plant</option>
-          <option value="essential">Essential</option>
+          <option value="Plant">Plant</option>
+          <option value="Essential">Essential</option>
+        </select>
+        <select id="product-type" name="type"  class="border border-gray-400 rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+          <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
+          <option value="Bush">Bush</option>
+          <option value="Flowering">Flowering</option>
+          <option value="Shrub">Shrub</option>
+          <option value="Succulent">Succulent</option>
+          <option value="Perennial">Perennial</option>
         </select>
         <input type="text" name="lifespan" class="rounded-lg border {{ $errors->has('lifespan') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Lifespan (if plants)">
         <textarea id="message" rows="10" name="description" placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border {{ $errors->has('description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"></textarea>

@@ -22,15 +22,12 @@
           <input type="text" value="{{ $product->scientific_name }}"
             class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
             placeholder="Scientific Name" disabled>
-          <select id="product-type"
-            class="border border-lavender rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5"
-            disabled>
-            <option class="text-gray bg-gray-400 hover:bg-green-200/20">Type</option>
-            <option selected value="Plants">Plants</option>
-            <option value="Option 2">Option 2</option>
-            <option value="Option 3">Option 3</option>
-            <option value="Option 4">Option 4</option>
-          </select>
+          <input type="text" value="{{ $product->category }}"
+            class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
+            placeholder="Category" disabled>
+          <input type="text" value="{{ $product->type }}"
+            class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
+            placeholder="Type" disabled>
           <input type="text" value="{{ $product->lifespan }}"
             class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20"
             placeholder="Lifespan (if plants)" disabled>

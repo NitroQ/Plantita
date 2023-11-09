@@ -14,11 +14,18 @@ class Transactions extends Model
 
     protected $fillable = [
         'user',
-        'maya_transaction_id',
-        'maya_status',
+        'payment_transaction_id',
+        'payment_status',
         'pay_method',
         'ship_method',
         'status',
+        'name',
+        'company',
+        'street_address',
+        'building_address',
+        'city',
+        'zip_code',
+        'phone',
     ];
 
     protected function transactionProducts() {

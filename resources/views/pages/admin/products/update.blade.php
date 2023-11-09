@@ -17,8 +17,16 @@
         <input type="text" name="scientific_name" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Scientific Name" value="{{ $product->scientific_name }}">
         <select id="product-type" name="category"  class="border border-gray-400 rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
           <option selected class="text-gray bg-culture hover:bg-green/20">Category</option>
-          <option value="plant">Plant</option>
-          <option value="essential">Essential</option>
+          <option {{ $product->category == "Plant" ? 'selected' : '' }} value="Plant">Plant</option>
+          <option {{ $product->category == "Essential" ? 'selected' : '' }} value="Essential">Essential</option>
+        </select>
+        <select id="product-type" name="type"  class="border border-gray-400 rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+          <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
+          <option {{ $product->type == "Bush" ? 'selected' : '' }} value="Bush">Bush</option>
+          <option {{ $product->type == "Flowering" ? 'selected' : '' }} value="Flowering">Flowering</option>
+          <option {{ $product->type == "Shrub" ? 'selected' : '' }} value="Shrub">Shrub</option>
+          <option {{ $product->type == "Succulent" ? 'selected' : '' }} value="Succulent">Succulent</option>
+          <option {{ $product->type == "Perennial" ? 'selected' : '' }} value="Perennial">Perennial</option>
         </select>
         <input type="text" name="lifespan" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Lifespan (if plants)" value="{{ $product->lifespan }}">
         <textarea id="message" rows="10"  name="description"  placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border border-gray-400 rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70">{{ $product->description }}</textarea>

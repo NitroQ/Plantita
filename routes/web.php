@@ -9,6 +9,7 @@ use App\Http\Controllers\CareController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\LikeController;
 
 
 
@@ -43,6 +44,11 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function(){
 
+    //LIKES
+    Route::get('/likes', [LikeController::class, 'viewLikes'])->name('view-likes');
+    Route::post('/likes/add', [LikeController::class, 'addLike'])->name('add-likes');
+    Route::post('/likes/remove', [LikeController::class, 'removeLike'])->name('remove-likes');
+
     // CART
     Route::get('/cart', [CartController::class, 'cartList'])->name('basket');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('add-cart');
@@ -54,6 +60,7 @@ Route::middleware(['auth'])->group(function(){
     // CHECKOUT
     Route::get('/transaction', [TransactionController::class, 'transaction'])->name('transaction');
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/create', [TransactionController::class, 'transaction'])->name('create-transaction');
     Route::get('/confirmed', [TransactionController::class, 'orderConfirmation'])->name('confirmed');
 
 
