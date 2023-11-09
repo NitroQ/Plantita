@@ -5,7 +5,7 @@
 <section>
   <div class="grid grid-cols-8 gap-20">
     <div class="col-span-3">
-      <form action="" class="space-y-5">
+      <form action="{{ route('create-transaction') }}" method="POST" class="space-y-5">
         @csrf
         @php $q = 0; @endphp
         @foreach($products as $p)
@@ -17,17 +17,17 @@
           <div class="flex justify-between items-center mb-3">
             <h3 class="text-xl font-brandon-bold">Contact Information</h3>
           </div>
-          <input id="contact" type="email" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Email Address">
+          <input id="contact" type="email" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Email Address" value="{{ $user->email }}">
         </div>
         <div>
           <h3 class="text-xl font-brandon-bold mb-3">Delivery Information</h3>
           <div class="grid grid-cols-2 gap-3">
-            <input id="firstName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" value="{{ auth()->user()->first_name }}">
-            <input id="lastName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Last Name" value="{{ auth()->user()->last_name }}">
-            <input id="company" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Company (optional)">
-            <input id="house" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name">
-            <input id="apartment" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)">
-            <select id="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
+            <input id="firstName" type="text" name="first_name"  class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" value="{{ $user->first_name }}">
+            <input id="lastName" type="text" name="last_name" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Last Name" value="{{$user->last_name }}">
+            <input id="company" type="text" name="company" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Company (optional)" value="{{$user->company }}">
+            <input id="house" type="text"  name="street_address" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name"  value="{{$user->street_address }}">
+            <input id="apartment" type="text" name="building_address" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)" value="{{$user->building_address }}">
+            <select id="city" name="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
               <option>Select City</option>
               <option value="antipolo" shipping="360">Antipolo</option>
               <option value="bacoor" shipping="250">Bacoor</option>
@@ -49,8 +49,8 @@
               <option value="taguig" shipping="220">Taguig</option>
               <option value="valenzuela" shipping="360">Valenzuela</option>
             </select>
-            <input id="zip" type="number" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code">
-            <input id="company" type="number" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number">
+            <input id="zip" name="zip_code" type="number" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code"  value="{{$user->zip_code }}">
+            <input id="phone" type="number" name="phone" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number"  value="{{$user->phone }}">
           </div>
         </div>
         <div>
@@ -60,9 +60,9 @@
           </div>
           <div id="accordion-open" data-accordion="open">
             <h2 id="same-day">
-              <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4" data-accordion-target="#same-day-desc" aria-expanded="true" aria-controls="same-day-desc">
+              <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4" data-accordion-target="#same-day-desc" aria-expanded="true" aria-controls="same-day-desc" >
                 <div class="flex items-center space-x-4">
-                  <input id="shipping-radio-1" type="radio" value="" name="shipping-radio" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" checked>
+                  <input id="shipping-radio-1" type="radio" value="same-day" name="shipping" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" checked>
                   <label for="shipping-radio-1" class="w-full ml-2 font-medium text-gray-900 dark:text-gray-300">Same-day Delivery</label>
                 </div>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -91,7 +91,7 @@
             <h2 id="personal">
               <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 focus:ring-4" data-accordion-target="#personal-desc" aria-expanded="true" aria-controls="personal-desc">
                 <div class="flex items-center space-x-4">
-                  <input id="shipping-radio-2" type="radio" value="" name="shipping-radio" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
+                  <input id="shipping-radio-2" type="radio" value="standard" name="shipping" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
                   <label for="shipping-radio-2" class="w-full ml-2 font-medium text-gray-900 dark:text-gray-300">Personal Delivery</label>
                 </div>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -120,7 +120,7 @@
             <h2 id="pickup">
               <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 focus:ring-4" data-accordion-target="#pickup-desc" aria-expanded="true" aria-controls="pickup-desc">
                 <div class="flex items-center space-x-4">
-                  <input id="shipping-radio-3" type="radio" value="" name="shipping-radio" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
+                  <input id="shipping-radio-3" type="radio" value="pick-up" name="shipping" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
                   <label for="shipping-radio-3" class="w-full ml-2 font-medium text-gray-900 dark:text-gray-300">Pick-up</label>
                 </div>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -143,8 +143,19 @@
             <p class="text-gray-500">Save your information for faster checkout</p>
           </div>
           <div class="flex items-center pl-4 bg-white space-x-5 rounded-lg border border-lavender">
-            <input type="checkbox" class="w-4 h-4 text-green-200 border-gray-500/50 rounded-full focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
+            <input type="checkbox" name="remember" value="yes" class="w-4 h-4 text-green-200 border-gray-500/50 rounded-full focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
             <label for="" class="w-full py-4">Remember Me!</label>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-3">
+            <h3 class="text-xl font-brandon-bold">Payment Method</h3>
+            <p class="text-gray-500">Choose your preferred payment method.</p>
+          </div>
+          <div class="flex items-center pl-4 bg-white space-x-5 rounded-lg border border-lavender">
+            <input type="checkbox" name="cash" checked value="true" class="w-4 h-4 text-green-200 border-gray-500/50 rounded-full focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
+            <label for="" class="w-full py-4">Cash On Delivery</label>
           </div>
         </div>
         <a href="{{ route('checkout') }}"><button class="rounded-md text-lg bg-green-200 p-2 mt-5 w-full text-center text-white hover:bg-green-200/80">Pay Now</button></a>

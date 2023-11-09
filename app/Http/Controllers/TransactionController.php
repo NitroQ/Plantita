@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Transaction;
+use App\Models\TransactionProducts;
+
 
 class TransactionController extends Controller
 {
@@ -13,16 +16,119 @@ class TransactionController extends Controller
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
+        if($items == null){
+            return redirect()->back();
+        }else if(count($items) != count($quantity)){
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+
         $product = [];
+        
+        $address = auth()->user();
 
         foreach ($items as $item) {
             $product[] = Product::find($item);
         }
 
+        
         return view('pages.transaction.checkout', [
             'products' => $product,
-            'quantity' => $quantity
+            'quantity' => $quantity,
+            'user' => $address
         ]);
+    }
+
+    public function createTransaction(Request $request)
+    {
+
+        dd($request->all());
+        $items = $request->input('items');
+        $quantity = $request->input('quantity');
+
+        if($items == null){
+            return redirect()->back();
+        }else if(count($items) != count($quantity)){
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+
+        $validate = $this->validate($request,[
+            'email' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'street_address' => 'required',
+            'city' => 'required',
+            'zip_code' => 'required',
+            'phone' => 'required',
+            'ship_method' => 'required',
+            'pay_method' => 'required',
+        ],[
+            'email.required' => 'Email is required',
+            'first_name.required' => 'First name is required',
+            'last_name.required' => 'Last name is required',
+            'street_address.required' => 'Street address is required',
+            'city.required' => 'City is required',
+            'zip_code.required' => 'Zip code is required',
+            'phone.required' => 'Phone is required',
+            'ship_method.required' => 'Ship method is required',
+            'pay_method.required' => 'Pay method is required',
+        ]);
+        
+        try{
+            DB::beginTransaction();
+
+            $transaction = Transaction::create([
+                'user_id' => auth()->user()->id,
+                'payment_transaction_id' => null,
+                'payment_status' => 'pending',
+                'pay_method' => $validate['pay_method'],
+                'ship_method' => $validate['ship_method'],
+                'status' => 'pending',
+                'name' => $validate['first_name'] . ' ' . $validate['last_name'],
+                'company' => $request->company,
+                'street_address' => $validate['street_address'],
+                'building_address' => $request->building_address,
+                'city' => $validate['city'],
+                'zip_code' => $validate['zip_code'],
+                'phone' => $validate['phone'],
+            ]);
+
+            for($i = 0; $i < count($items); $i++){
+                TransactionProducts::create([
+                    'transaction_id' => $transaction->id,
+                    'product_id' => $items[$i],
+                    'quantity' => $quantity[$i],
+                ]);
+            }
+
+            if($request->remember == 'yes'){
+                $user = User::find(auth()->user()->id);
+
+                $user->update([
+                    'company' => $request->company,
+                    'street_address' => $validate['street_address'],
+                    'building_address' => $request->building_address,
+                    'city' => $validate['city'],
+                    'zip_code' => $validate['zip_code'],
+                    'phone' => $validate['phone'],
+                ]);
+            }
+
+            DB::commit();
+
+        }catch(\Exception $e){
+            Log::error($e);
+            DB::rollback();
+
+            return redirect()
+            ->back()
+            ->with('error', 'Something went wrong');
+        }
+
+
+
+
+
+        return view('pages.transaction.checkout-address');
     }
 
     public function transactions(){
@@ -44,7 +150,7 @@ class TransactionController extends Controller
 
     public function orderConfirmation()
     {
-        return view('pages.transaction.order-confirmation');
+
     }
 
     public function productFailed()

@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function(){
     // CHECKOUT
     Route::get('/transaction', [TransactionController::class, 'transaction'])->name('transaction');
     Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/create', [TransactionController::class, 'transaction'])->name('create-transaction');
     Route::get('/confirmed', [TransactionController::class, 'orderConfirmation'])->name('confirmed');
 
 
