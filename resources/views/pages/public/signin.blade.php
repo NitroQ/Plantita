@@ -12,7 +12,8 @@
       <h2 class="font-brandon-black text-green-200 italic font-bold text-6xl">Hello again!</h2>
       <h4 class="font-brandon-regular text-gray font-normal text-xl mt-2 mb-6">Welcome back! Let's get you back to plant paradise!</h4>
       <div class="mb-2">
-        <input type="email" id="email" name="email" class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5 placeholder-gray-500/70" placeholder="Email Address" required>
+        <input type="email" id="email" name="email" class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 {{ $errors->has('email') ? 'border-red-500' : 'border-lavender' }} block w-full p-2.5 placeholder-gray-500/70" placeholder="Email Address" required>
+        <span class="text-crimson">{{$errors->first('email')}}</span>
       </div>
       <div class="mb-2">
         <input type="password" id="password" name="password" class="bg-white border-none rounded-lg focus:ring-green-200 focus:border-green-200 block w-full p-2.5 placeholder-gray-500/70" placeholder="Password" required>

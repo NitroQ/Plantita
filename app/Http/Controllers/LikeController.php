@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Likes;
+use App\Models\Product;
 use DB;
 use Log;
 
 class LikeController extends Controller
 {
     public function viewLikes() {
-        $like = Likes::where('user_id', '=', auth()->user()->id);
-        $product = Product::whereIn('id', $like)->get();
+        // $like = Likes::where('user_id', '=', auth()->user()->id);
+        // dd($like);
+        $products = Product::all();
 
-        return view('pages.admin.products.view', compact('product'));
+        return view('pages.user.likes', compact('products'));
     }
 
     public function addLike(Request $r) {

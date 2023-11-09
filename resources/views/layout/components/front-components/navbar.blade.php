@@ -74,7 +74,7 @@
           </button>
           <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="space-y-2 p-2">
-              <a href="{{ route('product') }}"><li class="flex justify-between items-center p-2 cursor-pointer hover:bg-green-100 duration-300 rounded-md">
+              <a href="{{ route('view-likes') }}"><li class="flex justify-between items-center p-2 cursor-pointer hover:bg-green-100 duration-300 rounded-md">
                 <span class="text-md">My Likes</span>
               </li></a>
               <a href="{{ route('basket') }}"><li class="flex justify-between items-center p-2 cursor-pointer hover:bg-green-100 duration-300 rounded-md">

@@ -8,7 +8,7 @@
   </div>
   <form action="{{ route('admin.products.update',[$product->id]) }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-4 gap-8 items-start">
    @csrf
-    <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
+    <!-- <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
       <div class="grid grid-cols-2 gap-3">
         <input type="text" name="name" class="col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Product Name" value="{{ $product->name }}">
@@ -31,7 +31,59 @@
         <input type="text" name="lifespan" class="rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Lifespan (if plants)" value="{{ $product->lifespan }}">
         <textarea id="message" rows="10"  name="description"  placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border border-gray-400 rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70">{{ $product->description }}</textarea>
         <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36">Update Product</button>
-      
+      </div>
+    </div> -->
+    <div class="col-span-2 shadow-leftBottom p-5 rounded-md space-y-3">
+      <h3 class="text-2xl font-brandon-bold mb-3">Product Details</h3>
+      <div class="grid grid-cols-2 gap-y-1 gap-x-3">
+        <div class="col-span-2 flex flex-col">
+          <input type="text" name="name" class="rounded-lg border {{ $errors->has('name') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" 
+          value="{{ $product->name }}" placeholder="Product Name">
+          <span class="text-sm text-crimson my-1">{{$errors->first('name')}}</span>
+        </div>
+        <div class="flex flex-col">
+          <input type="number" name="quantity" class="rounded-lg border {{ $errors->has('quantity') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" 
+          value="{{ $product->quantity }}" placeholder="In-Stock Quantity">
+          <span class="text-sm text-crimson my-1">{{$errors->first('quantity')}}</span>
+        </div>
+        <div class="flex flex-col">
+          <input type="number" name="price" class="rounded-lg border {{ $errors->has('price') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" 
+          value="{{ $product->price }}" placeholder="Listed Price">
+          <span class="text-sm text-crimson my-1">{{$errors->first('price')}}</span>
+        </div>
+        <div class="col-span-2 flex flex-col">
+          <input type="text" name="scientific_name" class="rounded-lg border {{ $errors->has('scientific_name') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" 
+          value="{{ $product->scientific_name }}" placeholder="Scientific Name">
+          <span class="text-sm text-crimson my-1">{{$errors->first('scientific_name')}}</span>
+        </div>
+        <div class="flex flex-col">
+          <select id="category" name="category" class="border {{ $errors->has('category') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+            <option selected class="text-gray bg-culture hover:bg-green/20">Category</option>
+            <option {{ $product->category == "Plant" ? 'selected' : '' }} value="Plant">Plant</option>
+            <option {{ $product->category == "Essential" ? 'selected' : '' }} value="Essential">Essential</option>
+          </select>
+          <span class="text-sm text-crimson my-1">{{$errors->first('category')}}</span>
+        </div>
+        <div class="flex flex-col">
+          <select id="product-type" name="type" class="border {{ $errors->has('type') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5"
+          value="{{ old('type') }}" data-plant-options="Bush,Flowering,Shrub,Succulent,Perennial" data-essential-options="Soil,Pots,Watering Tools,Gardening Tools & Accessories">
+            <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
+          </select>
+          <span class="text-sm text-crimson my-1">{{$errors->first('type')}}</span>
+        </div>
+        <div id="lifespan" class="col-span-2 flex flex-col">
+          <input type="text" name="lifespan" class="rounded-lg border {{ $errors->has('lifespan') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" 
+          value="{{ $product->lifespan }}" placeholder="Lifespan (if plants)">
+          <span class="text-sm text-crimson my-1">{{$errors->first('lifespan')}}</span>
+        </div>
+        <div class="col-span-2 flex flex-col">
+          <textarea id="message" rows="10" name="description" placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border {{ $errors->has('description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70"
+          value="{{ old('description') }}">{{ $product->description }}</textarea>
+          <span class="text-sm text-crimson my-1">{{$errors->first('description')}}</span>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <button class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36">Add Product</button>
+        </div>
       </div>
     </div>
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
@@ -52,14 +104,6 @@
       <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
       <div id="image-preview" class="flex flex-wrap gap-5 mt-5"></div>
     </div>
-    <span class="text-red-900">{{$errors->first('name')}}</span>
-    <span class="text-red-900">{{$errors->first('quantity')}}</span>
-    <span class="text-red-900">{{$errors->first('price')}}</span>
-    <span class="text-red-900">{{$errors->first('scientific_name')}}</span>
-    <span class="text-red-900">{{$errors->first('category')}}</span>
-    <span class="text-red-900">{{$errors->first('lifespan')}}</span>
-    <span class="text-red-900">{{$errors->first('description')}}</span>
-    <span class="text-red-900">{{$errors->first('image')}}</span>
   </form>
 </section>
 @endsection
