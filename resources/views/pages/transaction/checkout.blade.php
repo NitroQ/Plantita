@@ -9,9 +9,9 @@
         @csrf
         @php $q = 0; @endphp
         @foreach($products as $p)
-          <input type="hidden" name="items[]" value="{{ $p->id }}">
-          <input type="hidden" name="quantity[]" value="{{ $quantity[$q] }}">
-          @php $q++; @endphp
+        <input type="hidden" name="items[]" value="{{ $p->id }}">
+        <input type="hidden" name="quantity[]" value="{{ $quantity[$q] }}">
+        @php $q++; @endphp
         @endforeach
         <div>
           <div class="flex justify-between items-center mb-3">
@@ -27,7 +27,28 @@
             <input id="company" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Company (optional)">
             <input id="house" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name">
             <input id="apartment" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)">
-            <input id="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
+            <select id="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
+              <option>Select City</option>
+              <option value="antipolo" shipping="360">Antipolo</option>
+              <option value="bacoor" shipping="250">Bacoor</option>
+              <option value="caloocan" shipping="360">Caloocan</option>
+              <option value="dasmarinas" shipping="250">Dasmariñas</option>
+              <option value="imus" shipping="250">Imus</option>
+              <option value="las pinas" shipping="170">Las Piñas</option>
+              <option value="makati" shipping="220">Makati</option>
+              <option value="malabon" shipping="360">Malabon</option>
+              <option value="mandalayong" shipping="220">Mandaluyong</option>
+              <option value="manila" shipping="300">Manila</option>
+              <option value="marikina" shipping="300">Marikina</option>
+              <option value="muntinlupa" shipping="170">Muntinlupa</option>
+              <option value="paranaque" shipping="170">Parañaque</option>
+              <option value="pasay" shipping="220">Pasay</option>
+              <option value="pasig" shipping="300">Pasig</option>
+              <option value="quezon city" shipping="300">Quezon City</option>
+              <option value="san juan" shipping="300">San Juan</option>
+              <option value="taguig" shipping="220">Taguig</option>
+              <option value="valenzuela" shipping="360">Valenzuela</option>
+            </select>
             <input id="zip" type="number" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code">
             <input id="company" type="number" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number">
           </div>
@@ -37,7 +58,6 @@
             <h3 class="text-xl font-brandon-bold">Shipping Method</h3>
             <p class="text-gray-500">Select what suits your availability the best.</p>
           </div>
-
           <div id="accordion-open" data-accordion="open">
             <h2 id="same-day">
               <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4" data-accordion-target="#same-day-desc" aria-expanded="true" aria-controls="same-day-desc">
@@ -133,7 +153,7 @@
     <div class="col-span-5 ml-10">
       <div class="p-10 rounded-lg bg-gray-400">
         <div class="grid grid-cols-5 items-center gap-y-5">
-          @php $i = 0;  $subtotal = 0; @endphp
+          @php $i = 0; $subtotal = 0; @endphp
           @foreach($products as $p)
           @php $img = explode(', ', $p->image) @endphp
           <img src="/uploads/products/{{ $img[0] }}" class="pe-10 rounded-lg" />
@@ -142,7 +162,7 @@
             <p>Quantity: {{ $quantity[$i] }}</p>
           </div>
           <p class="text-xl text-end">{{ $p->price }}</p>
-          @php  $subtotal += ($p->price * $quantity[$i]); $i++;@endphp
+          @php $subtotal += ($p->price * $quantity[$i]); $i++;@endphp
           @endforeach
           <div class="col-span-5 grid grid-cols-2 text-lg">
             <p>Subtotal</p>
@@ -152,12 +172,28 @@
           </div>
           <div class="flex justify-between col-span-5 text-xl">
             <p class="font-brandon-bold">Total</p>
-            <p class="font-brandon-bold">₱2,250</p>
+            <p class="font-brandon-bold" id="total">₱{{ $subtotal }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#city').on('change', function() {
+        var selectedShippingCost = parseFloat($('option:selected', this).attr('shipping'));
+
+        var subtotal = parseFloat('{{ $subtotal }}');
+
+        var total = subtotal + selectedShippingCost;
+
+        $('.text-gray-500').text('Shipping: ₱' + selectedShippingCost);
+        $('.font-brandon-bold.text-end').first().text('₱' + subtotal.toFixed(2));
+        $('#total').text('₱' + total.toFixed(2));
+      });
+    });
+  </script>
 </section>
 
 @endsection
