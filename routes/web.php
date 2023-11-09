@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CareController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TransactionController;
 
 
 
@@ -32,11 +33,6 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/terms', [PageController::class, 'termsConditions'])->name('terms');
 
-// transaction
-Route::get('/transaction', [PageController::class, 'transaction'])->name('transaction');
-Route::get('/basket', [PageController::class, 'basket'])->name('basket');
-Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
-Route::get('/confirmed', [PageController::class, 'orderConfirmation'])->name('confirmed');
 
 // AUTHENTICATION
 Route::get('/signin', [AuthController::class, 'signin'])->name('signin');
@@ -48,12 +44,19 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function(){
 
     // CART
-    Route::get('/cart', [CartController::class, 'cartList'])->name('cart');
+    Route::get('/cart', [CartController::class, 'cartList'])->name('basket');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('add-cart');
-    Route::get('/cart/remove/{id}', [PageController::class, 'removeFromCart'])->name('remove-from-cart');
-    Route::get('/cart/clear', [PageController::class, 'clearCart'])->name('clear-cart');
+    Route::post('/cart/update', [CartController::class, 'updateCart'])->name('update-cart');
+    Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('remove-cart');
+    Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('clear-cart');
 
-  
+    
+    // CHECKOUT
+    Route::get('/transaction', [TransactionController::class, 'transaction'])->name('transaction');
+    Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+    Route::get('/confirmed', [TransactionController::class, 'orderConfirmation'])->name('confirmed');
+
+
     // ADMIN
    Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->group(function(){
@@ -61,11 +64,11 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
         // transactions
-        Route::get('/transactions', [PageController::class, 'transactions'])->name('transactions');
-        Route::get('/transactions/view', [PageController::class, 'viewTransaction'])->name('view-transaction');
-        Route::get('/transactions/pending', [PageController::class, 'pending'])->name('pending');
-        Route::get('/transactions/pack', [PageController::class, 'pack'])->name('pack');
-        Route::get('/transactions/shipped', [PageController::class, 'shipped'])->name('shipped');
+        Route::get('/transactions', [TransactionController::class, 'transactions'])->name('transactions');
+        Route::get('/transactions/view', [TransactionController::class, 'viewTransaction'])->name('view-transaction');
+        Route::get('/transactions/pending', [TransactionController::class, 'pending'])->name('pending');
+        Route::get('/transactions/pack', [TransactionController::class, 'pack'])->name('pack');
+        Route::get('/transactions/shipped', [TransactionController::class, 'shipped'])->name('shipped');
 
         // product management
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
@@ -93,7 +96,6 @@ Route::middleware(['auth'])->group(function(){
 // ERROR PAGES
 Route::get('/failed', [PageController::class, 'productFailed'])->name('failed');
 Route::get('/cancelled', [PageController::class, 'productCancelled'])->name('cancelled');
-Route::get('/404', [PageController::class, 'error404'])->name('404');
 
 
 

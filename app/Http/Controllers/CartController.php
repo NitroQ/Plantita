@@ -12,9 +12,7 @@ class CartController extends Controller
         $cartItems = \Cart::getContent();
         $productIds = $cartItems->pluck('id');
         $products = Product::whereIn('id', $productIds)->get();
-
-
-        return view('pages.basket', compact('cartItems', 'products'));
+        return view('pages.user.basket', compact('cartItems', 'products'));
     }
 
 
@@ -46,26 +44,29 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
-        \Cart::update(
-            $request->id,
-            [
-                'quantity' => [
+        $id = $request->rowId;
+        $quantity = (int)$request->quantity;
+    
+        try {
+            \Cart::update($id, array(
+                'quantity' => array(
                     'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
-
-        session()->flash('success', 'Item Cart is Updated Successfully !');
-        return redirect()->route('cart.list');
+                    'value' => $quantity
+                ),
+            ));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    
+        return response()->json(['message' => 'Cart updated successfully']);
     }
-
-    public function removeCart(Request $request)
+    
+    public function removeFromCart(Request $request)
     {
-        \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return redirect()->route('cart.list');
+        $id = $request->rowId;
+        \Cart::remove($id);
+    
+        return response()->json(['message' => 'Item removed from cart successfully']);
     }
 
     public function clearAllCart()

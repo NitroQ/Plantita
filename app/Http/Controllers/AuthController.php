@@ -36,7 +36,7 @@ class AuthController extends Controller
 
     protected function signin() {
 		if (!Auth::check())
-			return view('pages.signin');
+			return view('pages.public.signin');
 		elseif(Auth::check())
 			return redirect()->route('index');
 		else
@@ -53,7 +53,7 @@ class AuthController extends Controller
 
     public function signup() {
         if (!Auth::check())
-            return view('pages.signup');
+            return view('pages.public.signup');
         elseif(Auth::check())
             return redirect()->route('index');
         else

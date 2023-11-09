@@ -6,18 +6,24 @@
   <div class="grid grid-cols-8 gap-20">
     <div class="col-span-3">
       <form action="" class="space-y-5">
+        @csrf
+        @php $q = 0; @endphp
+        @foreach($products as $p)
+          <input type="hidden" name="items[]" value="{{ $p->id }}">
+          <input type="hidden" name="quantity[]" value="{{ $quantity[$q] }}">
+          @php $q++; @endphp
+        @endforeach
         <div>
           <div class="flex justify-between items-center mb-3">
             <h3 class="text-xl font-brandon-bold">Contact Information</h3>
-            <p class="text-gray-500">Already have an account? <a href="{{ route('signin') }}"><span class="text-green-200 font-brandon-bold">Sign-in</span></a></p>
           </div>
           <input id="contact" type="email" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Email Address">
         </div>
         <div>
           <h3 class="text-xl font-brandon-bold mb-3">Delivery Information</h3>
           <div class="grid grid-cols-2 gap-3">
-            <input id="firstName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name">
-            <input id="lastName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Last Name">
+            <input id="firstName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" value="{{ auth()->user()->first_name }}">
+            <input id="lastName" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Last Name" value="{{ auth()->user()->last_name }}">
             <input id="company" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Company (optional)">
             <input id="house" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name">
             <input id="apartment" type="text" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)">
@@ -127,21 +133,20 @@
     <div class="col-span-5 ml-10">
       <div class="p-10 rounded-lg bg-gray-400">
         <div class="grid grid-cols-5 items-center gap-y-5">
-          <img src="{{ asset('images/products/plant-sample.webp') }}" class="pe-10 rounded-lg" />
+          @php $i = 0;  $subtotal = 0; @endphp
+          @foreach($products as $p)
+          @php $img = explode(', ', $p->image) @endphp
+          <img src="/uploads/products/{{ $img[0] }}" class="pe-10 rounded-lg" />
           <div class="col-span-3">
-            <p class="font-brandon-bold text-xl">African Mask</p>
-            <p>Quantity: 2</p>
+            <p class="font-brandon-bold text-xl">{{ $p->name }}</p>
+            <p>Quantity: {{ $quantity[$i] }}</p>
           </div>
-          <p class="text-xl text-end">₱1,000</p>
-          <img src="{{ asset('images/products/plant-sample.webp') }}" class="pe-10 rounded-lg" />
-          <div class="col-span-3">
-            <p class="font-brandon-bold text-xl">African Mask</p>
-            <p>Quantity: 2</p>
-          </div>
-          <p class="text-xl text-end">₱1,000</p>
+          <p class="text-xl text-end">{{ $p->price }}</p>
+          @php  $subtotal += ($p->price * $quantity[$i]); $i++;@endphp
+          @endforeach
           <div class="col-span-5 grid grid-cols-2 text-lg">
             <p>Subtotal</p>
-            <p class="font-brandon-bold text-end">₱2,000</p>
+            <p class="font-brandon-bold text-end">₱{{ $subtotal }}</p>
             <p>Shipping</p>
             <p class="text-gray-500 text-end">Enter Shipping Address</p>
           </div>
