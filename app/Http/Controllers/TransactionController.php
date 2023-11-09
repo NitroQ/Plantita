@@ -44,8 +44,27 @@ class TransactionController extends Controller
 
     public function createTransaction(Request $request)
     {
+        
+        $validated = $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company' => 'nullable',
+            'street_address' => 'required',
+            'building_address' => 'nullable',
+            'city' => 'required',
+            'zip_code' => 'required',
+            'phone' => 'required',
+            'ship_method' => 'required',
+        ],[
+            'first_name.required' => 'First name is required',
+            'last_name.required' => 'Last name is required',
+            'street_address.required' => 'Street address is required',
+            'city.required' => 'City is required',
+            'zip_code.required' => 'Zip code is required',
+            'phone.required' => 'Phone is required',
+            'ship_method.required' => 'Ship method is required',
+        ]);
 
-        dd($request->all());
         $items = $request->input('items');
         $quantity = $request->input('quantity');
 
@@ -55,28 +74,6 @@ class TransactionController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
 
-        $validate = $this->validate($request,[
-            'email' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'street_address' => 'required',
-            'city' => 'required',
-            'zip_code' => 'required',
-            'phone' => 'required',
-            'ship_method' => 'required',
-            'pay_method' => 'required',
-        ],[
-            'email.required' => 'Email is required',
-            'first_name.required' => 'First name is required',
-            'last_name.required' => 'Last name is required',
-            'street_address.required' => 'Street address is required',
-            'city.required' => 'City is required',
-            'zip_code.required' => 'Zip code is required',
-            'phone.required' => 'Phone is required',
-            'ship_method.required' => 'Ship method is required',
-            'pay_method.required' => 'Pay method is required',
-        ]);
-        
         try{
             DB::beginTransaction();
 
@@ -84,41 +81,52 @@ class TransactionController extends Controller
                 'user_id' => auth()->user()->id,
                 'payment_transaction_id' => null,
                 'payment_status' => 'pending',
-                'pay_method' => $validate['pay_method'],
-                'ship_method' => $validate['ship_method'],
-                'status' => 'pending',
-                'name' => $validate['first_name'] . ' ' . $validate['last_name'],
-                'company' => $request->company,
-                'street_address' => $validate['street_address'],
-                'building_address' => $request->building_address,
-                'city' => $validate['city'],
-                'zip_code' => $validate['zip_code'],
-                'phone' => $validate['phone'],
+                'pay_method' => 'cash',
+                'ship_method' => $validated['ship_method'],
+                'shipping_cost' => $request->shipping,
+                'name' => $validated['first_name'] . ' ' . $validated['last_name'],
+                'company' => $validated['company'],
+                'street_address' => $validated['street_address'],
+                'building_address' => $validated['building_address'],
+                'city' => $validated['city'],
+                'zip_code' => $validated['zip_code'],
+                'phone' => $validated['phone'],
             ]);
 
+            $subtotal = 0;
+
             for($i = 0; $i < count($items); $i++){
+                $subtotal += (Product::find($items[$i])->price * $quantity[$i]);
+
                 TransactionProducts::create([
                     'transaction_id' => $transaction->id,
                     'product_id' => $items[$i],
                     'quantity' => $quantity[$i],
                 ]);
+                \Cart::remove($items[$i]);
             }
+
+            $transaction->subtotal = $subtotal;
+            $transaction->total = $subtotal + $request->shipping;
+            $transaction->save();
 
             if($request->remember == 'yes'){
                 $user = User::find(auth()->user()->id);
 
-                $user->update([
-                    'company' => $request->company,
-                    'street_address' => $validate['street_address'],
-                    'building_address' => $request->building_address,
-                    'city' => $validate['city'],
-                    'zip_code' => $validate['zip_code'],
-                    'phone' => $validate['phone'],
-                ]);
+                    $user->company = $validated['company'];
+                    $user->street_address = $validated['street_address'];
+                    $user->building_address = $validated['building_address'];
+                    $user->city = $validated['city'];
+                    $user->zip_code = $validated['zip_code'];
+                    $user->phone = $validated['phone'];
+                    $user->save();
             }
 
-            DB::commit();
+            $products = Product::whereIn('id', $items)->get();
 
+            DB::commit();
+            
+            return view('pages.transaction.order-confirmation', compact('transaction', 'products', 'quantity'));
         }catch(\Exception $e){
             Log::error($e);
             DB::rollback();
@@ -128,11 +136,6 @@ class TransactionController extends Controller
             ->with('error', 'Something went wrong');
         }
 
-
-
-
-
-        return view('pages.transaction.checkout-address');
     }
 
     public function transactions(){
@@ -154,7 +157,7 @@ class TransactionController extends Controller
 
     public function orderConfirmation()
     {
-
+        return view('pages.transaction.order-confirmation');
     }
 
     public function productFailed()

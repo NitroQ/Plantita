@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+// use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -48,12 +48,12 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $exception)
-{
-    if ($exception instanceof HttpException) {
-        return response()->view('errors.' . $exception->getStatusCode(), [], $exception->getStatusCode());
-    }
+//     public function render($request, Throwable $exception)
+// {
+//     if ($exception instanceof HttpException) {
+//         return response()->view('errors.' . $exception->getStatusCode(), [], $exception->getStatusCode());
+//     }
 
-    return parent::render($request, $exception);
-}
+//     return parent::render($request, $exception);
+// }
 }
