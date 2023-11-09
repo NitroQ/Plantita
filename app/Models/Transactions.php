@@ -29,7 +29,13 @@ class Transactions extends Model
         'city',
         'zip_code',
         'phone',
+        'courier',
+        'courier_location',
+        'tracking_id'
     ];
 
+    protected function transactionProducts() {
+        return $this->hasMany('App\Models\TransactionProducts' , 'transaction_id', 'id');
+    }
 
 }

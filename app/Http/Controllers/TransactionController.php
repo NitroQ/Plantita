@@ -14,6 +14,8 @@ use DB;
 
 class TransactionController extends Controller
 {
+
+
     public function checkout(Request $request)
     {
 
@@ -96,7 +98,8 @@ class TransactionController extends Controller
             $subtotal = 0;
 
             for($i = 0; $i < count($items); $i++){
-                $subtotal += (Product::find($items[$i])->price * $quantity[$i]);
+                $prod = Product::find($items[$i]);
+                $subtotal += ($prod->price * $quantity[$i]);
 
                 TransactionProducts::create([
                     'transaction_id' => $transaction->id,
@@ -104,6 +107,9 @@ class TransactionController extends Controller
                     'quantity' => $quantity[$i],
                 ]);
                 \Cart::remove($items[$i]);
+
+                $prod->quantity -= $quantity[$i];
+                $prod->save();
             }
 
             $transaction->subtotal = $subtotal;
@@ -131,43 +137,72 @@ class TransactionController extends Controller
             Log::error($e);
             DB::rollback();
 
-            return redirect()
-                ->back()
-                ->with('error', 'Something went wrong');
+            return view('pages.transaction.product-failed');
         }
 
     }
 
     public function transactions()
     {
-        return view('pages.admin.transactions.transactions');
+        $transactions = Transactions::where('user_id', auth()->user()->id)->get();
+        return view('pages.transaction.transaction', compact('transactions'));
     }
-    public function viewTransaction()
+
+    public function receiveTransaction($id)
     {
-        return view('pages.admin.transactions.view-transaction');
-    }
-    public function pending()
-    {
-        return view('pages.admin.transactions.pending');
-    }
-    public function pack()
-    {
-        return view('pages.admin.transactions.pack');
-    }
-    public function shipped()
-    {
-        return view('pages.admin.transactions.shipped');
+        $t = Transactions::find($id);
+        $t->status = 'done';
+        $t->save();
+
+        return redirect()->back()->with('success', 'Transaction Complete!');
     }
 
 
-    public function orderConfirmation()
+    //admin functions
+    public function index()
     {
-        return view('pages.transaction.order-confirmation');
+        $transactions = Transactions::all();
+        return view('pages.admin.transactions.index', compact('transactions'));
     }
 
-    public function productFailed()
+    public function view($id)
     {
-        return view('pages.transaction.product-failed');
+        $t = Transactions::find($id);
+        return view('pages.admin.transactions.view', compact('t'));
+    }
+    
+    public function edit($id)
+    {
+        $t = Transactions::find($id);
+        return view('pages.admin.transactions.edit', compact('t'));
+    }
+
+    public function changeStatus($id, $status)
+    {
+        $t = Transactions::find($id);
+        $t->status = $status;
+        $t->save();
+
+        return redirect()->back()->with('success', 'Status changed successfully');
+    }
+
+    public function pack(Request $request, $id)
+    {
+        $validate = $this->validate($request, [
+            'courier' => 'required',
+            'courier_location' => 'required',
+            'shipping_id' => 'required',
+        ]);
+
+        $t = Transactions::find($id);
+        $t->courier = $validate['courier'];
+        $t->courier_location = $validate['courier_location'];
+        $t->shipping_id = $validate['shipping_id'];
+        $t->status = 'shipped';
+        $t->save();
+
+
+        return view('pages.admin.transactions.edit', compact('t'));
     }
 
     public function productCancelled()

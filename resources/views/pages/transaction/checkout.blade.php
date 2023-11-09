@@ -155,7 +155,7 @@
             <p class="text-gray-500">Choose your preferred payment method.</p>
           </div>
           <div class="flex items-center pl-4 bg-white space-x-5 rounded-lg border border-lavender">
-            <input type="checkbox" name="pay_method" checked class="w-4 h-4 text-green-200 border-gray-500/50 rounded-full focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
+            <input type="checkbox" name="pay_method" checked disabled class="w-4 h-4 text-green-200 border-gray-500/50 rounded-full focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
             <label for="" class="w-full py-4">Cash On Delivery</label>
           </div>
         </div>

@@ -93,7 +93,7 @@
                   </div>
                 </div>
                 <div class="col-span-3 flex justify-start items-center">
-                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->created_at->format('l jS \\of F Y h:i:s A')  }}</h4>
+                  <h4 class="font-brandon-regular text-lg text-gray-500">{{ $transaction->created_at->format('M d, Y')  }}</h4>
                 </div>
               </div>
             </div>

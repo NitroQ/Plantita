@@ -58,10 +58,11 @@ Route::middleware(['auth'])->group(function(){
 
     
     // CHECKOUT
-    Route::get('/transaction', [TransactionController::class, 'transaction'])->name('transaction');
+    Route::get('/transaction', [TransactionController::class, 'transactions'])->name('transaction');
+    Route::get('/transaction/{id}/received', [TransactionController::class, 'receiveTransaction'])->name('received-transaction');
+
     Route::get('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
     Route::post('/checkout/create', [TransactionController::class, 'createTransaction'])->name('create-transaction');
-    Route::get('/confirmed', [TransactionController::class, 'orderConfirmation'])->name('confirmed');
 
 
     // ADMIN
@@ -71,11 +72,11 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
         // transactions
-        Route::get('/transactions', [TransactionController::class, 'transactions'])->name('transactions');
-        Route::get('/transactions/view', [TransactionController::class, 'viewTransaction'])->name('view-transaction');
-        Route::get('/transactions/pending', [TransactionController::class, 'pending'])->name('pending');
-        Route::get('/transactions/pack', [TransactionController::class, 'pack'])->name('pack');
-        Route::get('/transactions/shipped', [TransactionController::class, 'shipped'])->name('shipped');
+        Route::get('/transactions', [TransactionController::class, 'index'])->name('admin.transactions.index');
+        Route::get('/transactions/{id}/view', [TransactionController::class, 'view'])->name('admin.transactions.view');
+        Route::get('/transactions/{id}/edit', [TransactionController::class, 'edit'])->name('admin.transactions.edit');
+        Route::get('/transactions/{id}/{status}/set', [TransactionController::class, 'changeStatus'])->name('transaction.status');
+        Route::post('/transactions/{id}/packed', [TransactionController::class, 'pack'])->name('transaction.pack');
 
         // product management
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');

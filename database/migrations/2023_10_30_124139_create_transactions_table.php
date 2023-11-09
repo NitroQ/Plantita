@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('city');
             $table->string('zip_code');
             $table->string('phone');
+            $table->string('courier')->nullable();
+            $table->string('courier_location')->nullable();
             $table->string('shipping_id')->nullable();
             $table->timestamps();
 

@@ -16,6 +16,7 @@
         <input type="hidden" name="id" value="{{ $p->id }}">
         <input type="hidden" name="name" value="{{ $p->name }}">
         <input type="hidden" name="price" value="{{ $p->price }}">
+        <input type="hidden" name="quantity" value="{{ $p->quantity }}">
         @auth
         <button type="submit" class="bg-green-200 mb-1 rounded-lg uppercase text-center text-white leading-4 text-sm px-5 py-3 font-brandon-bold w-full">ADD TO BASKET</button>
         @endauth

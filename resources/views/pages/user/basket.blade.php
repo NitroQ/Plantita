@@ -46,6 +46,7 @@
          <tr class="bg-white text-black border-b">
           <td class="px-6 py-4 flex items-center">
             <input type="checkbox" class="checkbox w-4 h-4 text-green-200 border-gray-500/50 rounded focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" data-row-id="{{ $item->id }}">
+            <input type="hidden" id="max-{{ $item->id }}" value="{{ $product->quantity }}">
             @php $img = explode(',', $product->image) @endphp
             <img src="/uploads/products/{{ $img[0] }}" class="h-28 w-40 object-cover mx-5 rounded-lg" />
             <div>
@@ -125,8 +126,13 @@
         $('.plus').click(function() {
             var rowId = $(this).data('row-id');
             var quantityElement = $(this).siblings('.quantity');
-            var quantity = parseInt(quantityElement.text()) + 1;
 
+            if(parseInt(quantityElement.text()) >= parseInt($('#max-' + rowId).val())) {
+              alert('Maximum quantity reached!');
+              return;
+            }
+
+            var quantity = parseInt(quantityElement.text()) + 1;
             quantityElement.text(quantity);
 
             updateCartItemQuantity(rowId, quantity);
