@@ -209,6 +209,12 @@ class TransactionController extends Controller
         return view('pages.admin.transactions.edit', compact('t'));
     }
 
+    public function print($id)
+    {
+        $t = Transactions::find($id);
+        return view('pages.admin.transactions.print', compact('t'));
+    }
+    
     public function productCancelled()
     {
         return view('pages.transaction.product-cancelled');

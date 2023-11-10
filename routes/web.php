@@ -77,6 +77,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/transactions/{id}/edit', [TransactionController::class, 'edit'])->name('admin.transactions.edit');
         Route::get('/transactions/{id}/{status}/set', [TransactionController::class, 'changeStatus'])->name('transaction.status');
         Route::post('/transactions/{id}/packed', [TransactionController::class, 'pack'])->name('transaction.pack');
+        Route::get('/transactions/{id}/print', [TransactionController::class, 'print'])->name('transaction.print');
+
 
         // product management
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');

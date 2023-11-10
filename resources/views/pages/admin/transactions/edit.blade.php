@@ -47,7 +47,7 @@
       <div class="space-y-3">
         <div class="grid grid-cols-3 space-x-3 pt-3">
           <a type="button" href="{{ route('transaction.status',['id' => $t->id, 'status' => 'cancelled']) }}" class="bg-crimson text-white text-center text-lg py-2 rounded hover:bg-crimson/80"><i class='bx bx-x-circle me-3'></i>Cancel Order</a>
-          <button class="bg-blue-100 text-white text-lg py-2 rounded hover:bg-blue-100/80"><i class='bx bx-printer me-3'></i>Print Waybill</button>
+          <a href="{{ route('transaction.print',[$t->id]) }}"  class="bg-blue-100 text-white text-lg py-2 rounded hover:bg-blue-100/80 text-center"><i class='bx bx-printer me-3'></i>Print Waybill</a>
           <a type="button" href="{{ route('transaction.status',['id' => $t->id, 'status' => 'packed']) }}" class="bg-yellow-400 text-center text-lg py-2 rounded hover:bg-yellow-400/80"><i class='bx bx-package me-3'></i>Item Prepared</a>
         </div>
       </div>
@@ -65,8 +65,8 @@
         value="{{ old('shipping_id') }}" placeholder="Tracking/Reference No.">
         <span class="text-sm text-crimson my-1">{{$errors->first('shipping_id')}}</span>
         <div class="grid grid-cols-3 space-x-3 pt-3">
-          <button type="button" href="{{ route('transaction.status',['id' => $t->id, 'status' => 'cancelled']) }}" class="bg-crimson text-white text-lg py-2 rounded hover:bg-crimson/80"><i class='bx bx-x-circle me-3'></i>Cancel Order</button>
-          <button type="button" class="bg-blue-100 text-white text-lg py-2 rounded hover:bg-blue-100/80"><i class='bx bx-printer me-3'></i>Print Waybill</button>
+          <a type="button" href="{{ route('transaction.status',['id' => $t->id, 'status' => 'cancelled']) }}" class="bg-crimson text-center text-white text-lg py-2 rounded hover:bg-crimson/80"><i class='bx bx-x-circle me-3'></i>Cancel Order</a>
+          <a type="button" href="{{ route('transaction.print',[$t->id]) }}" class="bg-blue-100 text-white text-center text-lg py-2 rounded hover:bg-blue-100/80"><i class='bx bx-printer me-3'></i>Print Waybill</a>
           <button type="submit" class="bg-green-200 text-white text-lg py-2 rounded hover:bg-green-200/80"><i class='bx bxs-truck me-3'></i>Ship Item</button>
         </div>
       </form>

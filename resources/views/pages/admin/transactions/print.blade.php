@@ -45,27 +45,30 @@
             </svg>
 
             <div class="section">
-                <h2>FROM: SENDER</h2>
+                <h2>FROM: Plantita HQ</h2>
                 <h3>Contact Information:</h3>
-                <p>[Sender Address]</p>
+                <p> 0956-3479923 -Unit 2303 Matalino St. Suntrust Capitol Plaza Diliman, QC</p>
             </div>
             <div class="section">
-                <h2>TO: ADDRESSEE</h2>
+                <h2>TO: {{ $t->name }} {{ $t->company }}</h2>
                 <h3>Contact Information:</h3>
-                <p>[Buyer Name]</p>
-                <p>[Buyer Address]</p>
+                <p>{{ $t->phone }}</p>
+                <p>{{ $t->street_address }} {{ $t->building_address }} {{ $t->city }} {{ $t->zip_code }}</p>
             </div>
             <div class="section">
-                <h2> Shipping Mode: </h2>
+                <h2> Shipping Mode: {{ $t->ship_method }}</h2>
                 <p> Cash on Delivery </p>
                 <h2>Shipping Fee:</h2>
-                <p>[Price]</p>
+                <p>{{ $t->shipping_cost }}</p>
+                <h2>Order Total:</h2>
+                <p>{{ $t->total }}</p>
                 <h2>Transaction ID:</h2>
-                <p>[ID]</p>
+                <p>{{ $t->id }}</p>
                 <h2>Date of Transaction:</h2>
-                <p>[Date]</p>
+                <p>{{ $t->created_at->format('M d, Y') }}</p>
             </div>
         </div>
     </div>
+    <script type="text/javascript">window.onload = () => { window.print() };</script>
 </body>
 </html>
