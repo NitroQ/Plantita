@@ -7,7 +7,7 @@
     <div class="col-span-8">
       <div class="lg:ml-5 mb-3">
         <h3 class="text-4xl font-brandon-bold leading">My Likes</h3>
-        <h5 class="text-base text-gray-500">20 results</h5>
+        <h5 class="text-base text-gray-500">{{ count($products) }} results</h5>
       </div>
       <div class="grid lg:grid-cols-5 grid-cols-1">
         @foreach ($products as $p)
@@ -17,9 +17,9 @@
         </div>
         @endforeach
       </div>
-      <div class="flex justify-center mt-10 mx-auto">
+      {{-- <div class="flex justify-center mt-10 mx-auto">
         <button class="bg-green-200 rounded-md uppercase text-center text-white leading-4 text-sm p-2 font-brandon-bold w-52">Show More</button>
-      </div>
+      </div> --}}
     </div>
   </div>
 </section>

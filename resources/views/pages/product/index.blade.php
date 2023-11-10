@@ -17,10 +17,12 @@
         <button class="py-1 px-3 rounded text-orange font-brandon-bold text-lg hover:bg-orange/10">Reset</button>
       </div>
       <div class="mt-3 flex flex-col gap-y-3">
+        @auth
         <a href="{{ route('view-likes') }}"><button class="flex items-center w-full gap-x-4 rounded p-1 hover:bg-green-100 hover:px-2 hover:text-green-200 hover:font-brandon-bold duration-300">
             <img src="{{ asset('images/icons_logos/green-watercan-icon.svg') }}" class="w-7 h-7 text-green-200" alt="" />
             <span class="text-xl pt-1">Likes</span>
           </button></a>
+        @endauth
 
         <div id="accordion-open" data-accordion="open" data-active-classes="bg-green-100 px-2 rounded text-green-200 font-brandon-bold" data-inactive-classes="text-black">
           <h2 id="plants-drop">
