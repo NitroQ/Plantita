@@ -74,6 +74,7 @@
       </div>
     </div>
   </div>
+  @if($product->category == "Plant")
   <div class="view-product__plant-care my-16">
     <h2 class="text-4xl font-brandon-black italic">Plant Care Information</h2>
     <div class="grid grid-cols-3 gap-x-4 mt-5">
@@ -115,10 +116,11 @@
       </div>
     </div>
   </div>
+  @endif
   </div>
   </div>
 
-  <div class="view-products__extra my-5">
+  <div class="view-products__extra mt-10 mb-5">
     <h1 class="text-3xl italic">You may also like...</h1>
     <div class="flex items-center gap-x-4 justify-center my-5">
 
