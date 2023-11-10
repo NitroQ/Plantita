@@ -109,8 +109,8 @@
             <div class="lg:col-span-1 col-span-5 space-y-5">
                 <div class="shadow-leftBottom p-5 rounded-md">
                     <span>
-                        <h3 class="text-3xl font-brandon-bold uppercase">Tuesday</h3>
-                        <p class="text-2xl">October 19, 2023</p>
+                        <h3 class="text-3xl font-brandon-bold uppercase">{{ $currentDay }}</h3>
+                        <p class="text-2xl">{{ $currentDate }}</p>
                     </span>
                 </div>
                 <div class="shadow-leftBottom py-5 rounded-md space-y-3">
