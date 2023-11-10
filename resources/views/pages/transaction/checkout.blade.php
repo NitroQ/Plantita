@@ -173,7 +173,7 @@
             <p class="font-brandon-bold text-xl">{{ $p->name }}</p>
             <p>Quantity: {{ $quantity[$i] }}</p>
           </div>
-          <p class="text-xl text-end">{{ $p->price }}</p>
+          <p class="text-xl text-end">₱{{ $p->price }}</p>
           @php $subtotal += ($p->price * $quantity[$i]); $i++;@endphp
           @endforeach
           <div class="col-span-5 grid grid-cols-2 text-lg">

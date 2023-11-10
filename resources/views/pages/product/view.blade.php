@@ -28,7 +28,7 @@
           <h2 class="font-brandon-black italic leading-10 text-5xl">{{ $product->name }}</h2>
           <h4 class="text-3xl text-green-200 leading-9 font-brandon-bold">₱ {{ $product->price }}</h4>
         </div>
-        <a href="" class="bg-white hover:bg-green-100 rounded-full p-2 shadow-bottom"><img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-10 h-10 text-green-200" alt="" /></a>
+        <button href="" class="bg-white hover:bg-green-100 rounded-full p-2 shadow-bottom add-to-likes" data-product-id="{{ $product->id }}"><img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-10 h-10 text-green-200" alt="" /></button>
       </div>
       <p class="text-xl">
         <span class="font-brandon-bold">Scientific Name:</span>
@@ -52,10 +52,6 @@
               <i class='bx bx-plus text-green-200 text-4xl'></i>
             </button>
           </div>
-                        <button type="button"
-                                    class="bg-green-200 py-1 w-full text-white font-brandon-black rounded-md text-lg mt-5 add-to-likes" data-product-id="{{ $product->id }}">ADD
-                                    TO
-                                    LIKES</button>
           <form class="add-to-cart">
             @csrf
             <input type="hidden" name="id" value="{{ $product->id }}">

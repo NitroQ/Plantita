@@ -55,7 +55,7 @@
                                 <div class="flex p-4 items-center">
                                     <h4 class="font-brandon-regular text-xl text-gray-500">Order Total:</h4>
                                     <h4 class="font-brandon-bold text-xl text-green-200 font-bold  ml-2">₱{{ $t->total }}</h4>
-                                    @if($t->status != 'done')
+                                    @if($t->status == 'shipped')
                                     <a href="{{ route('received-transaction', [$t->id]) }}"
                                         class="text-sm p-2 bg-green-200 rounded-md uppercase font-extrabold text-white ml-4">Products
                                         Received</a>

@@ -144,7 +144,7 @@ class TransactionController extends Controller
 
     public function transactions()
     {
-        $transactions = Transactions::where('user_id', auth()->user()->id)->get();
+        $transactions = Transactions::where('user_id', auth()->user()->id)->get()->reverse();
         return view('pages.transaction.transaction', compact('transactions'));
     }
 
