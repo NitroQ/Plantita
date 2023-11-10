@@ -5,19 +5,12 @@
     <div class="flex justify-between mb-5">
       <h1 class="text-4xl font-brandon-bold">Product Management</h1>
       <div class="more-actions space-x-3 flex items-center">
-<<<<<<< HEAD
-        <div class="flex items-center bg-gray-400 rounded w-64">
-          <input type="text" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0">
-          <a href=""><i class="mt-1 mr-3 bx bx-search"></i></a>
-        </div>
-=======
         <form action="{{ route('admin.products.index') }}" method="GET" id="searchForm">
           <div class="flex items-center bg-culture rounded w-64">
               <input type="text" name="search" id="searchInput" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0" placeholder="Search...">
               <i class="mt-1 mr-3 bx bx-search cursor-pointer" onclick="document.getElementById('searchForm').submit()"></i>
           </div>
         </form>
->>>>>>> 934c58eb8a72119355c8d79dd0a8fbcce45daed2
         <a href="{{ route('admin.products.create') }}"><button class="bg-green-200 text-white py-2 px-5 rounded hover:bg-green-200/90">Add Inventory</button></a>
       </div>
     </div>
