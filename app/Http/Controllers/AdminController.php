@@ -35,19 +35,17 @@ class AdminController extends Controller
         }
 
         $totalIncome = Transactions::sum('total'); 
-        $latestTransactionDate = Transactions::max('created_at'); 
 
         $transactionsData = Transactions::select('total', 'created_at')
         ->orderBy('created_at')
-        ->get();
-
-        $months = $transactionsData->pluck('created_at')->unique()->map(function ($date) {
-            return \Carbon\Carbon::parse($date)->format('M');
-        })->values();    
+        ->get(); 
         
         $pendingTransactions = Transactions::where('status', 'pending')
         ->select('id', 'name', 'total')
         ->get();
+
+        $currentDate = now()->format('F j, Y'); 
+        $currentDay = now()->format('l'); 
 
         return view('pages.admin.dashboard', compact(
             'totalProducts',
@@ -57,10 +55,10 @@ class AdminController extends Controller
             'totalQuantityInTransactions',
             'bestSellingProductsDetails',
             'totalIncome',
-            'latestTransactionDate',
             'transactionsData',
-            'months',
-            'pendingTransactions'
+            'pendingTransactions',
+            'currentDate',
+            'currentDay'
         ));
     }
 
