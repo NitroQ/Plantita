@@ -18,7 +18,7 @@ class CareController extends Controller
      */
     public function index(Request $req)
     {
-        $products = Product::query();
+        $products = Product::query()->where('category', '=', 'Plant');
 
         if ($req->has('search')) {
             $search = $req->search;
@@ -61,10 +61,10 @@ class CareController extends Controller
      */
     public function show($id)
     {
-        $care = Product::find($id);
+        $product = Product::find($id);
 
         return view('pages.admin.plantcare.view', [
-            'care' => $care,
+            'product' => $product,
         ]);
     }
 

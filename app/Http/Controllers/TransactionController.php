@@ -53,7 +53,7 @@ class TransactionController extends Controller
             'company' => 'nullable',
             'street_address' => 'required',
             'building_address' => 'nullable',
-            'city' => 'required',
+            'city' => 'not_in:Select City',
             'zip_code' => 'required',
             'phone' => 'required',
             'ship_method' => 'required',
@@ -61,10 +61,10 @@ class TransactionController extends Controller
             'first_name.required' => 'First name is required',
             'last_name.required' => 'Last name is required',
             'street_address.required' => 'Street address is required',
-            'city.required' => 'City is required',
+            'city.not_in' => 'City is required',
             'zip_code.required' => 'Zip code is required',
-            'phone.required' => 'Phone is required',
-            'ship_method.required' => 'Ship method is required',
+            'phone.required' => 'Phone Number is required',
+            'ship_method.required' => 'Please pick a Shipping Method',
         ]);
 
         $items = $request->input('items');
@@ -144,7 +144,7 @@ class TransactionController extends Controller
 
     public function transactions()
     {
-        $transactions = Transactions::where('user_id', auth()->user()->id)->get();
+        $transactions = Transactions::where('user_id', auth()->user()->id)->get()->reverse();
         return view('pages.transaction.transaction', compact('transactions'));
     }
 
@@ -192,6 +192,10 @@ class TransactionController extends Controller
             'courier' => 'required',
             'courier_location' => 'required',
             'shipping_id' => 'required',
+        ],[
+            'courier.required' => 'Please enter a Courier',
+            'courier_location.required' => 'Please enter the Courier Location',
+            'shipping_id.required' => 'Tracking/Reference No. is required',
         ]);
 
         $t = Transactions::find($id);

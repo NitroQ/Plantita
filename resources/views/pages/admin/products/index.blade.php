@@ -6,8 +6,8 @@
       <h1 class="text-4xl font-brandon-bold">Product Management</h1>
       <div class="more-actions space-x-3 flex items-center">
         <form action="{{ route('admin.products.index') }}" method="GET" id="searchForm">
-          <div class="flex items-center bg-culture rounded w-64">
-              <input type="text" name="search" id="searchInput" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0" placeholder="Search...">
+          <div class="flex items-center rounded w-64 bg-gray-400">
+              <input type="text" name="search" id="searchInput" class="py-2 px-4 border-none bg-transparent w-full focus:outline-none focus:ring-0">
               <i class="mt-1 mr-3 bx bx-search cursor-pointer" onclick="document.getElementById('searchForm').submit()"></i>
           </div>
         </form>

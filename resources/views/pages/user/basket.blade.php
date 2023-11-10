@@ -34,15 +34,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="bg-white">
-            <th scope="row" colspan="6" class="px-6 py-4 whitespace-nowrap space-x-5 bg-gray-400">
-              <span class="">Plants</span>
-            </th>
-          </tr>
-         @foreach($cartItems as $item)
+          @foreach($cartItems as $item)
             @php
             $product = $products->where('id', $item->id)->first(); // Find product details based on item ID
-            @endphp
+          @endphp
          <tr class="bg-white text-black border-b">
           <td class="px-6 py-4 flex items-center">
             <input type="checkbox" class="checkbox w-4 h-4 text-green-200 border-gray-500/50 rounded focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" data-row-id="{{ $item->id }}">
@@ -66,7 +61,6 @@
           </td>
         </tr>
          @endforeach
-        
         </tbody>
       </table>
     </div>

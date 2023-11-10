@@ -14,7 +14,7 @@
             <img src="{{ asset('images/icons_logos/dashboard-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Dashboard</span>
           </a></li>
-        <li><a href="{{ route('admin.transactions.index') }}" class="{{ request()->is('transactions') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+        <li><a href="{{ route('admin.transactions.index') }}" class="{{ request()->is('admin/transactions') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/transactions-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Transactions</span>
           </a></li>
@@ -26,7 +26,7 @@
             <img src="{{ asset('images/icons_logos/plant-care-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">Plant Care Information</span>
           </a></li>
-        <li><a href="{{ route('users') }}" class="{{ request()->is('users') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
+        <li><a href="{{ route('users') }}" class="{{ request()->is('admin/users') ? 'bg-green-200/10' : '' }} p-2 flex items-center lg:justify-start justify-center rounded-md hover:bg-green-200/10">
             <img src="{{ asset('images/icons_logos/user-management-icon.svg') }}" class="m-0 lg:me-3 h-6" />
             <span class="lg:inline hidden">User Management</span>
           </a></li>

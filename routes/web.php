@@ -95,7 +95,7 @@ Route::middleware(['auth'])->group(function(){
 
         // user management
         Route::get('/users', [UserController::class, 'index'])->name('users');
-        Route::get('/users/view', [UserController::class, 'show'])->name('view-user');
+        Route::get('/users/{id}/view', [UserController::class, 'show'])->name('view-user');
     });
    });
 

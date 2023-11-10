@@ -34,7 +34,7 @@ class ProductController extends Controller
                 ->orWhere('id', 'LIKE', $s);
         }
 
-        $products = $products->get();
+        $products = $products->get()->reverse();
 
         return view('pages.admin.products.index', compact('products'));
     }

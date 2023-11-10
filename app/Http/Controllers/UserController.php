@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Transactions;
 
 class UserController extends Controller
 {
@@ -60,7 +61,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('pages.admin.user.view', compact('user'));
+        $transaction = Transactions::where('user_id', $id)->get();
+        return view('pages.admin.user.view', compact('user', 'transaction'));
     }
 
     /**

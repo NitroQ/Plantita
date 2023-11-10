@@ -24,7 +24,7 @@ class PageController extends Controller
   
 
 public function publicProduct(Request $request) {
-  $products = Product::query();
+  $products = Product::query()->where('quantity', '>', 0);
   $categories = $request->input('categories', []); 
   $types = $request->input('types', []); 
 
@@ -56,7 +56,7 @@ public function publicProduct(Request $request) {
   public function productShow($id) {
     $product = Product::find($id);
 
-    $suggest = Product::where('category', $product->category)->where('id', '!=', $id)->get();
+    $suggest = Product::where('category', $product->category)->where('quantity', '>', 0)->where('id', '!=', $id)->limit(5)->get();
 
     return view('pages.product.view', compact('product', 'suggest'));
   }

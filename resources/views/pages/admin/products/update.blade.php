@@ -79,8 +79,7 @@
         </label>
       </div>
       <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
-      <div id="image-preview" class="flex flex-wrap gap-5 mt-5"></div>
-      <div class="flex flex-wrap gap-5 mt-5">
+      <div class="flex flex-wrap gap-5 mt-5" id="image-preview">
         @php $img = explode(', ', $product->image) @endphp
         @for($i = 0; $i < count($img); $i++) 
           <img class="w-28 h-28 object-cover rounded" src="/uploads/products/{{ $img[$i] }}" alt="">
@@ -101,8 +100,6 @@
 
       // Get the selected files
       var files = event.target.files;
-
-      console.log('hello')
 
       // Loop through the selected files and display previews
       for (var i = 0; i < files.length; i++) {

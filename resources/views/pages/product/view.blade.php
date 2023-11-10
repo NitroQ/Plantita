@@ -9,6 +9,7 @@
     <span>/</span>
     <span>{{ $product->name }}</span>
   </div>
+  <input type="hidden" name="max" value="{{ $product->quantity }}">
   <div class="grid grid-cols-12 gap-x-12">
     @php $img = explode(', ', $product->image) @endphp
     <div class="col-span-6 flex flex-wrap">
@@ -23,12 +24,14 @@
       </div>
     </div>
     <div class="col-span-6 flex flex-col view-products__info gap-y-3 mt-5">
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-start">
         <div>
           <h2 class="font-brandon-black italic leading-10 text-5xl">{{ $product->name }}</h2>
           <h4 class="text-3xl text-green-200 leading-9 font-brandon-bold">₱ {{ $product->price }}</h4>
         </div>
-        <a href="" class="bg-white hover:bg-green-100 rounded-full p-2 shadow-bottom"><img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-10 h-10 text-green-200" alt="" /></a>
+        <button type="button" class="bg-white hover:bg-green-100 rounded-full p-2 shadow-bottom add-to-likes" data-product-id="{{ $product->id }}">
+          <img src="{{ asset('images/icons_logos/green-watercan-icon.svg') }}" class="w-10 h-10 text-green-200" alt="" />
+        </button>
       </div>
       <p class="text-xl">
         <span class="font-brandon-bold">Scientific Name:</span>
@@ -44,23 +47,20 @@
       <div class="h-full relative">
         <div class="absolute top-1/2 bottom-0">
           <div class="flex items-center w-auto gap-5 mb-5">
-            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom">
+            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom" id="minus">
               <i class='bx bx-minus text-green-200 text-4xl'></i>
             </button>
-            <span class="text-3xl">1</span>
-            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom">
+            <span class="text-3xl" id="quantity">1</span>
+            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom" id="plus">
               <i class='bx bx-plus text-green-200 text-4xl'></i>
             </button>
           </div>
-                        <button type="button"
-                                    class="bg-green-200 py-1 w-full text-white font-brandon-black rounded-md text-lg mt-5 add-to-likes" data-product-id="{{ $product->id }}">ADD
-                                    TO
-                                    LIKES</button>
-          <form class="add-to-cart">
+          <form class="add-to-cart-custom">
             @csrf
             <input type="hidden" name="id" value="{{ $product->id }}">
             <input type="hidden" name="name" value="{{ $product->name }}">
             <input type="hidden" name="price" value="{{ $product->price }}">
+            <input type="hidden" name="quantity_specific" value="1">
             @auth
             <button type="submit" class="bg-green-200 hover:bg-green-200/80 py-3 px-5 w-full text-white font-brandon-black rounded-md text-lg mt-5">ADD TO BASKET</button>
             @endauth
@@ -74,6 +74,7 @@
       </div>
     </div>
   </div>
+  @if($product->category == "Plant")
   <div class="view-product__plant-care my-16">
     <h2 class="text-4xl font-brandon-black italic">Plant Care Information</h2>
     <div class="grid grid-cols-3 gap-x-4 mt-5">
@@ -115,10 +116,11 @@
       </div>
     </div>
   </div>
+  @endif
   </div>
   </div>
 
-  <div class="view-products__extra my-5">
+  <div class="view-products__extra mt-10 mb-5">
     <h1 class="text-3xl italic">You may also like...</h1>
     <div class="flex items-center gap-x-4 justify-center my-5">
 
@@ -129,4 +131,52 @@
     </div>
   </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+  $(document).ready(function(){
+
+    var max = $('input[name="max"]').val();
+   
+
+    $('#plus').click(function() {
+       if(parseInt($('#quantity').text()) < max){
+        var quantity = parseInt($('#quantity').text()) + 1;
+        $('#quantity').text(quantity);
+        $('input[name="quantity_specific"]').val(quantity);
+       }else{
+        alert('Maximum quantity reached!');
+       }
+    });
+
+    $('#minus').click(function() {
+        if(parseInt($('#quantity').text()) > 1){
+          var quantity = parseInt($('#quantity').text()) - 1;
+          $('#quantity').text(quantity);
+          $('input[name="quantity_specific"]').val(quantity);
+        }
+    });
+
+    $('.add-to-cart-custom').submit(function(event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('add-cart') }}",
+                data: formData,
+                success: function(response) {
+                    alert(response.message);
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        });
+
+  });
+</script>
 @endsection

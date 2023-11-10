@@ -11,9 +11,8 @@ use Log;
 class LikeController extends Controller
 {
     public function viewLikes() {
-        // $like = Likes::where('user_id', '=', auth()->user()->id);
-        // dd($like);
-        $products = Product::all();
+        $like = Likes::where('user_id', '=', auth()->user()->id)->get();
+        $products = Product::whereIn('id', $like->pluck('product_id'))->get();
 
         return view('pages.user.likes', compact('products'));
     }
@@ -21,12 +20,17 @@ class LikeController extends Controller
     public function addLike(Request $r) {
         try {
             DB::beginTransaction();
-            Likes::create([
-                'user_id' => auth()->user()->id,
-                'product_id' => $r->id
-            ]);
-            DB::commit();
+         
+            $checkexisting = Likes::where('user_id', '=', auth()->user()->id)->where('product_id', '=', $r->id)->first();
 
+            if ($checkexisting) {
+                return response()->json(['message' => 'Item already in likes']);
+            }else{
+                Likes::create([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $r->id
+                ]);
+            }
         } catch (\Exception $e) {
             Log::error($e);
             DB::rollback();

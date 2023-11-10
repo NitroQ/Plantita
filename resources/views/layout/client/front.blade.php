@@ -18,13 +18,9 @@
 
 </head>
 
-<body class="mx-auto overflow-x-hidden font-brandon-regular text-black antialiased {{ request()->is('checkout') ? 'bg-white' : 'bg-gray-400' }}">
+<body class="mx-auto overflow-x-hidden font-brandon-regular text-black antialiased {{ request()->is('checkout','checkout/create') ? 'bg-white' : 'bg-gray-400' }}">
   @include('layout.components.front-components.navbar')
-  <!-- <main class="relative {{ request()->is('signin', 'signup', 'contact' , 'order-confirmation' ,
-    'product-failed', 'product-cancelled', 'error404', 'transaction', 'terms-conditions') ? 'py-0' : 'py-20' }}">
-    @yield('content')
-  </main> -->
-  <main class="{{ request()->is('signin','signup','contact','confirmed','404','failed','cancelled') ? 'px-0 py-0' : 'px-24 pt-44 pb-12' }}">
+  <main class="{{ request()->is('signin','signup','contact','checkout/create') ? 'px-0 py-0' : 'px-24 pt-44 pb-12' }}">
     @yield('content')
   </main>
 

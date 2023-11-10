@@ -23,32 +23,44 @@
         <div>
           <h3 class="text-xl font-brandon-bold mb-3">Delivery Information</h3>
           <div class="grid grid-cols-2 gap-3">
-            <input id="firstName" type="text" name="first_name"  class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" value="{{ $user->first_name }}">
-            <input id="lastName" type="text" name="last_name" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Last Name" value="{{$user->last_name }}">
+            <div>
+              <input id="firstName" type="text" name="first_name" class="block w-full rounded-lg border {{ $errors->has('first_name') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" 
+              value="{{ $user->first_name }}">
+              <span class="text-sm text-crimson my-1">{{$errors->first('first_name')}}</span>
+            </div>
+            <div>
+              <input id="lastName" type="text" name="last_name" class="block w-full rounded-lg border {{ $errors->has('last_name') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="First Name" 
+              value="{{ $user->last_name }}">
+              <span class="text-sm text-crimson my-1">{{$errors->first('last_name')}}</span>
+            </div>
             <input id="company" type="text" name="company" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Company (optional)" value="{{$user->company }}">
-            <input id="house" type="text"  name="street_address" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name"  value="{{$user->street_address }}">
+            <div class="col-span-2">
+              <input id="house" type="text"  name="street_address" class="block w-full rounded-lg border {{ $errors->has('street_address') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="House Number, Street Name" 
+              value="{{$user->street_address }}">
+              <span class="text-sm text-crimson my-1">{{$errors->first('street_address')}}</span>
+            </div>
             <input id="apartment" type="text" name="building_address" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)" value="{{ $user->building_address }}">
             <select id="city" name="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
-              <option>Select City</option>
-              <option value="antipolo" shipping="360">Antipolo</option>
-              <option value="bacoor" shipping="250">Bacoor</option>
-              <option value="caloocan" shipping="360">Caloocan</option>
-              <option value="dasmarinas" shipping="250">Dasmariñas</option>
-              <option value="imus" shipping="250">Imus</option>
-              <option value="las pinas" shipping="170">Las Piñas</option>
-              <option value="makati" shipping="220">Makati</option>
-              <option value="malabon" shipping="360">Malabon</option>
-              <option value="mandalayong" shipping="220">Mandaluyong</option>
-              <option value="manila" shipping="300">Manila</option>
-              <option value="marikina" shipping="300">Marikina</option>
-              <option value="muntinlupa" shipping="170">Muntinlupa</option>
-              <option value="paranaque" shipping="170">Parañaque</option>
-              <option value="pasay" shipping="220">Pasay</option>
-              <option value="pasig" shipping="300">Pasig</option>
-              <option value="quezon city" shipping="300">Quezon City</option>
-              <option value="san juan" shipping="300">San Juan</option>
-              <option value="taguig" shipping="220">Taguig</option>
-              <option value="valenzuela" shipping="360">Valenzuela</option>
+              <option value=''>Select City</option>
+              <option {{ $user->city == 'Antipolo' ? 'selected' : '' }} value="Antipolo" shipping="360">Antipolo</option>
+              <option {{ $user->city == 'Bacoor' ? 'selected' : '' }} value="Bacoor" shipping="250">Bacoor</option>
+              <option {{ $user->city == 'Caloocan' ? 'selected' : '' }} value="Caloocan" shipping="360">Caloocan</option>
+              <option {{ $user->city == 'Dasmarinas' ? 'selected' : '' }} value="Dasmarinas" shipping="250">Dasmariñas</option>
+              <option {{ $user->city == 'Imus' ? 'selected' : '' }} value="Imus" shipping="250">Imus</option>
+              <option {{ $user->city == 'Las Pinas' ? 'selected' : '' }} value="Las Pinas" shipping="170">Las Piñas</option>
+              <option {{ $user->city == 'Makati' ? 'selected' : '' }} value="Makati" shipping="220">Makati</option>
+              <option {{ $user->city == 'Malabon' ? 'selected' : '' }} value="Malabon" shipping="360">Malabon</option>
+              <option {{ $user->city == 'Mandalayong' ? 'selected' : '' }} value="Mandalayong" shipping="220">Mandaluyong</option>
+              <option {{ $user->city == 'Manila' ? 'selected' : '' }} value="Manila" shipping="300">Manila</option>
+              <option {{ $user->city == 'Marikina' ? 'selected' : '' }} value="Marikina" shipping="300">Marikina</option>
+              <option {{ $user->city == 'Muntinlupa' ? 'selected' : '' }} value="Muntinlupa" shipping="170">Muntinlupa</option>
+              <option {{ $user->city == 'Paranaque' ? 'selected' : '' }} value="Paranaque" shipping="170">Parañaque</option>
+              <option {{ $user->city == 'Pasay' ? 'selected' : '' }} value="Pasay" shipping="220">Pasay</option>
+              <option {{ $user->city == 'Pasig' ? 'selected' : '' }} value="Pasig" shipping="300">Pasig</option>
+              <option {{ $user->city == 'Quezon City' ? 'selected' : '' }} value="Quezon City" shipping="300">Quezon City</option>
+              <option {{ $user->city == 'San Juan' ? 'selected' : '' }} value="San Juan" shipping="300">San Juan</option>
+              <option {{ $user->city == 'Taguig' ? 'selected' : '' }} value="Taguig" shipping="220">Taguig</option>
+              <option {{ $user->city == 'Valenzuela' ? 'selected' : '' }} value="Valenzuela" shipping="360">Valenzuela</option>
             </select>
             <input id="zip" name="zip_code" type="number" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code"  value="{{$user->zip_code }}">
             <input id="phone" type="number" name="phone" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number"  value="{{$user->phone }}">
@@ -58,12 +70,15 @@
           <div class="mb-3">
             <h3 class="text-xl font-brandon-bold">Shipping Method</h3>
             <p class="text-gray-500">Select what suits your availability the best.</p>
+            @error('ship_method')
+                <span class="text-sm text-crimson my-1">{{ $message }}</span>
+            @enderror
           </div>
           <div id="accordion-open" data-accordion="open">
             <h2 id="same-day">
               <button type="button" class="flex bg-white items-center justify-between w-full p-4 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4" data-accordion-target="#same-day-desc" aria-expanded="true" aria-controls="same-day-desc" >
                 <div class="flex items-center space-x-4">
-                  <input id="shipping-radio-1" type="radio" value="same-day" name="ship_method" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2" checked>
+                  <input id="shipping-radio-1" type="radio" value="same-day" name="ship_method" class="w-4 h-4 text-green-200 focus:ring-green-200 dark:focus:ring-green-200 focus:ring-2">
                   <label for="shipping-radio-1" class="w-full ml-2 font-medium text-gray-900 dark:text-gray-300">Same-day Delivery</label>
                 </div>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -168,12 +183,12 @@
           @php $i = 0; $subtotal = 0; @endphp
           @foreach($products as $p)
           @php $img = explode(', ', $p->image) @endphp
-          <img src="/uploads/products/{{ $img[0] }}" class="pe-10 rounded-lg" />
+          <img src="/uploads/products/{{ $img[0] }}" class="w-28 h-28 object-cover rounded-lg" />
           <div class="col-span-3">
             <p class="font-brandon-bold text-xl">{{ $p->name }}</p>
             <p>Quantity: {{ $quantity[$i] }}</p>
           </div>
-          <p class="text-xl text-end">{{ $p->price }}</p>
+          <p class="text-xl text-end">₱{{ $p->price }}</p>
           @php $subtotal += ($p->price * $quantity[$i]); $i++;@endphp
           @endforeach
           <div class="col-span-5 grid grid-cols-2 text-lg">
@@ -192,6 +207,20 @@
   </div>
   <script>
     $(document).ready(function() {
+
+      $( window ).on( "load", function() {
+        if($('#city').val() != '') {
+          var selectedShippingCost = parseFloat($('option:selected', $('#city')).attr('shipping'));
+          var subtotal = parseFloat('{{ $subtotal }}');
+
+          var total = subtotal + selectedShippingCost;
+
+          $('#shipping_cost').text('Shipping: ₱' + selectedShippingCost);
+          $('input[name="shipping"]').val(selectedShippingCost);
+          $('#subtotal').first().text('₱' + subtotal.toFixed(2));
+          $('#total').text('₱' + total.toFixed(2));
+        }
+    });
 
       $('#city').on('change', function() {
         var selectedShippingCost = parseFloat($('option:selected', this).attr('shipping'));
