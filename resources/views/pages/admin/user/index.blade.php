@@ -57,7 +57,7 @@
               >{{ $u->status == 'active' ? 'Active' : 'Inactive' }}</span>
             </td>
             <td class="px-6 py-3">
-              <a href="{{ route('view-user') }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
+              <a href="{{ route('view-user', [$u->id]) }}"><button><i class='bx bxs-show bg-gray-400 p-2 rounded hover:bg-green-200/20'></i></button></a>
             </td>
           </tr>
           @endforeach

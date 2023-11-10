@@ -9,6 +9,7 @@
     <span>/</span>
     <span>{{ $product->name }}</span>
   </div>
+  <input type="hidden" name="max" value="{{ $product->quantity }}">
   <div class="grid grid-cols-12 gap-x-12">
     @php $img = explode(', ', $product->image) @endphp
     <div class="col-span-6 flex flex-wrap">
@@ -44,19 +45,20 @@
       <div class="h-full relative">
         <div class="absolute top-1/2 bottom-0">
           <div class="flex items-center w-auto gap-5 mb-5">
-            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom">
+            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom" id="minus">
               <i class='bx bx-minus text-green-200 text-4xl'></i>
             </button>
-            <span class="text-3xl">1</span>
-            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom">
+            <span class="text-3xl" id="quantity">1</span>
+            <button class="w-12 h-12 items-center flex justify-center rounded-full bg-white shadow-bottom" id="plus">
               <i class='bx bx-plus text-green-200 text-4xl'></i>
             </button>
           </div>
-          <form class="add-to-cart">
+          <form class="add-to-cart-custom">
             @csrf
             <input type="hidden" name="id" value="{{ $product->id }}">
             <input type="hidden" name="name" value="{{ $product->name }}">
             <input type="hidden" name="price" value="{{ $product->price }}">
+            <input type="hidden" name="quantity_specific" value="1">
             @auth
             <button type="submit" class="bg-green-200 hover:bg-green-200/80 py-3 px-5 w-full text-white font-brandon-black rounded-md text-lg mt-5">ADD TO BASKET</button>
             @endauth
@@ -125,4 +127,52 @@
     </div>
   </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+  $(document).ready(function(){
+
+    var max = $('input[name="max"]').val();
+   
+
+    $('#plus').click(function() {
+       if(parseInt($('#quantity').text()) < max){
+        var quantity = parseInt($('#quantity').text()) + 1;
+        $('#quantity').text(quantity);
+        $('input[name="quantity_specific"]').val(quantity);
+       }else{
+        alert('Maximum quantity reached!');
+       }
+    });
+
+    $('#minus').click(function() {
+        if(parseInt($('#quantity').text()) > 1){
+          var quantity = parseInt($('#quantity').text()) - 1;
+          $('#quantity').text(quantity);
+          $('input[name="quantity_specific"]').val(quantity);
+        }
+    });
+
+    $('.add-to-cart-custom').submit(function(event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('add-cart') }}",
+                data: formData,
+                success: function(response) {
+                    alert(response.message);
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        });
+
+  });
+</script>
 @endsection

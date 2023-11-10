@@ -25,29 +25,55 @@ class CartController extends Controller
 
         $product = Product::find($productId);
     
-        if($product->quantity < 1) {
-            return response()->json(['message' => 'Product is out of stock']);
-        } else if ($existingCartItem && $existingCartItem->quantity >= $product->quantity) {
-            return response()->json(['message' => 'Max quantity reached']);
-        }
-        // If the product is in the cart, update its quantity
-        else if ($existingCartItem) {
-            \Cart::update($productId, [
-                'quantity' => $existingCartItem->quantity + 1,
-            ]);
-        } else {
-            // If the product is not in the cart, add it as a new item
-            \Cart::add([
-                'id' => $productId,
-                'name' => $request->name,
-                'price' => $request->price,
-                'quantity' => 1,
-            ]);
+        if($request->has('quantity_specific')){
+            $quantity = $request->quantity_specific;
+
+            if($product->quantity < $quantity) {
+                return response()->json(['message' => 'Product is out of stock']);
+            } else if ($existingCartItem && $existingCartItem->quantity + $quantity >= $product->quantity) {
+                return response()->json(['message' => 'Max quantity reached']);
+            }
+            // If the product is in the cart, update its quantity
+            else if ($existingCartItem) {
+                \Cart::update($productId, [
+                    'quantity' => $existingCartItem->quantity + $quantity,
+                ]);
+            } else {
+                // If the product is not in the cart, add it as a new item
+                \Cart::add([
+                    'id' => $productId,
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'quantity' => $quantity,
+                ]);
+            }
+        }else{
+            if($product->quantity < 1) {
+                return response()->json(['message' => 'Product is out of stock']);
+            } else if ($existingCartItem && $existingCartItem->quantity >= $product->quantity) {
+                return response()->json(['message' => 'Max quantity reached']);
+            }
+            // If the product is in the cart, update its quantity
+            else if ($existingCartItem) {
+                \Cart::update($productId, [
+                    'quantity' => $existingCartItem->quantity + 1,
+                ]);
+            } else {
+                // If the product is not in the cart, add it as a new item
+                \Cart::add([
+                    'id' => $productId,
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'quantity' => 1,
+                ]);
+            }
         }
     
         // Return a JSON response indicating success
         return response()->json(['message' => 'Item added to cart successfully']);
     }
+
+
 
     public function updateCart(Request $request)
     {

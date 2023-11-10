@@ -34,11 +34,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="bg-white">
+          {{-- <tr class="bg-white">
             <th scope="row" colspan="6" class="px-6 py-4 whitespace-nowrap space-x-5 bg-gray-400">
               <span class="">Plants</span>
             </th>
-          </tr>
+          </tr> --}}
          @foreach($cartItems as $item)
             @php
             $product = $products->where('id', $item->id)->first(); // Find product details based on item ID
