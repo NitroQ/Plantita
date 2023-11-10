@@ -52,7 +52,7 @@
             >{{ $product->sun_description }}</textarea>
             <span class="text-sm text-crimson my-1">{{$errors->first('sun_description')}}</span>
           </div>
-          <button type="submit" class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36">Save Details</button>
+          <button type="button" class="bg-green-200 text-white py-2 rounded hover:bg-green-200/90 w-36"><a href="{{ route('admin.plantcare.edit',[$product->id]) }}">Edit Details</a></button>
         </form>
         <div class="col-span-5 lg:col-span-2 order-first lg:order-last shadow-leftBottom p-5 rounded-md">
           <div class="flex justify-between mb-3">
