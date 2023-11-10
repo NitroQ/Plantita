@@ -53,7 +53,7 @@
               <span class="text-sm">Sign-In</span>
             </li>
           </a>
-          <a href="{{ route('product') }}" class="p-1 rounded hover:bg-green-100 w-12 {{ request()->is('product') ? 'bg-green-100 rounded' : '' }}">
+          <a href="{{ route('view-likes') }}" class="p-1 rounded hover:bg-green-100 w-12 {{ request()->is('product') ? 'bg-green-100 rounded' : '' }}">
             <li class="flex flex-col items-center">
               <img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-7 h-7" alt="" />
               <span class="text-sm">Likes</span>
@@ -112,7 +112,7 @@
         <a href="{{ route('product') }}">
           <li class="mb-2 p-2 rounded hover:bg-green-100 hover:font-brandon-bold hover:text-green-200">Products</li>
         </a>
-        <a href="{{ route('product') }}">
+        <a href="{{ route('view-likes') }}">
           <li class="mb-2 p-2 rounded hover:bg-green-100 hover:font-brandon-bold hover:text-green-200">Likes</li>
         </a>
         <a href="{{ route('basket') }}">

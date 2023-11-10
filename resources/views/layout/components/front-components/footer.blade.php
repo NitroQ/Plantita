@@ -36,16 +36,16 @@
         <h5 class="uppercase font-brandon-bold text-lg mb-3">OUR PRODUCTS</h5>
         <ul class="flex flex-col gap-y-2">
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
-            <a href="">Plants</a>
+            <a href="{{ route('product') }}">Plants</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
-            <a href="">Pots</a>
+            <a href="{{ route('product') }}">Pots</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
-            <a href="">Garden Tools</a>
+            <a href="{{ route('product') }}">Garden Tools</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
-            <a href="">Other Essentials</a>
+            <a href="{{ route('product') }}">Other Essentials</a>
           </li>
           <li class="text-gray-500 rounded hover:font-brandon-bold hover:text-green-200">
             <a href="{{ route('terms') }}">Terms and Conditions</a>

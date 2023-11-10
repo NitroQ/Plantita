@@ -9,7 +9,7 @@
         <h3 class="text-4xl font-brandon-bold leading">My Likes</h3>
         <h5 class="text-base text-gray-500">20 results</h5>
       </div>
-      <div class="grid lg:grid-cols-4 grid-cols-1">
+      <div class="grid lg:grid-cols-5 grid-cols-1">
         @foreach ($products as $p)
         <div class="mb-5 mx-5">
             @component('layout.components.front-components.Product', ['p' => $p])
