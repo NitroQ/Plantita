@@ -24,13 +24,27 @@
           <span class="text-sm text-crimson my-1">{{$errors->first('price')}}</span>
         </div>
         <div class="flex flex-col">
-          <select id="category" name="category" class="border {{ $errors->has('category') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+          <select id="category" name="category" class="border {{ $errors->has('category') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5" disabled>
             <option selected class="text-gray bg-culture hover:bg-green/20">Category</option>
             <option {{ $product->category == "Plant" ? 'selected' : '' }} value="Plant">Plant</option>
             <option {{ $product->category == "Essential" ? 'selected' : '' }} value="Essential">Essential</option>
           </select>
+          <input type="hidden" name="category" value="{{ $product->category }}">
           <span class="text-sm text-crimson my-1">{{$errors->first('category')}}</span>
         </div>
+        @if ($product->category == "Essential")
+        <div class="flex flex-col">
+          <select id="product-type" name="type" class="border {{ $errors->has('type') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
+            <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
+            <option {{ $product->type == "Soil" ? 'selected' : '' }} value="Soil">Soil</option>
+            <option {{ $product->type == "Pots" ? 'selected' : '' }} value="Pots">Pots</option>
+            <option {{ $product->type == "Watering Tools" ? 'selected' : '' }} value="Watering Tools">Watering Tools</option>
+            <option {{ $product->type == "Gardening Tools & Accessories" ? 'selected' : '' }} value="Gardening Tools & Accessories">Gardening Tools & Accessories</option>
+          </select>
+          <span class="text-sm text-crimson my-1">{{$errors->first('type')}}</span>
+        </div>
+        @endif
+        @if ($product->category == "Plant")
         <div class="flex flex-col">
           <select id="product-type" name="type" class="border {{ $errors->has('type') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
             <option selected class="text-gray bg-culture hover:bg-green/20">Type</option>
@@ -39,10 +53,6 @@
             <option {{ $product->type == "Shrub" ? 'selected' : '' }} value="Shrub">Shrub</option>
             <option {{ $product->type == "Succulent" ? 'selected' : '' }} value="Succulent">Succulent</option>
             <option {{ $product->type == "Perennial" ? 'selected' : '' }} value="Perennial">Perennial</option>
-            <option {{ $product->type == "Soil" ? 'selected' : '' }} value="Soil">Soil</option>
-            <option {{ $product->type == "Pots" ? 'selected' : '' }} value="Pots">Pots</option>
-            <option {{ $product->type == "Watering Tools" ? 'selected' : '' }} value="Watering Tools">Watering Tools</option>
-            <option {{ $product->type == "Gardening Tools & Accessories" ? 'selected' : '' }} value="Gardening Tools & Accessories">Gardening Tools & Accessories</option>
           </select>
           <span class="text-sm text-crimson my-1">{{$errors->first('type')}}</span>
         </div>
@@ -54,6 +64,7 @@
           <input type="text" name="lifespan" class="rounded-lg border {{ $errors->has('lifespan') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" value="{{ $product->lifespan }}" placeholder="Lifespan (if plants)">
           <span class="text-sm text-crimson my-1">{{$errors->first('lifespan')}}</span>
         </div>
+        @endif
         <div class="col-span-2 flex flex-col">
           <textarea id="message" rows="10" name="description" placeholder="Plant Description" class="block px-3.5 py-2.5 col-span-2 border {{ $errors->has('description') ? 'border-red-500' : 'border-lavender' }} rounded-lg resize-none focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" value="{{ old('description') }}">{{ $product->description }}</textarea>
           <span class="text-sm text-crimson my-1">{{$errors->first('description')}}</span>
@@ -65,25 +76,18 @@
     </div>
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Images</h3>
-      <div class="flex items-center justify-center w-full">
-        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-lavender border-dashed rounded-lg cursor-pointer">
-          <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <div class="flex items-center">
-              <i class='bx bx-cloud-upload text-2xl me-3'></i>
-              <p class="text-center">Drag and Drop here</p>
-            </div>
-            <p>or</p>
-            <p class="mt-2 bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">Select Files</p>
-          </div>
+      <div class="flex flex-col items-start">
+        <label for="dropzone-file">
+          <p class="bg-green-200 text-sm text-white py-2 px-5 rounded hover:bg-green-200/90 cursor-pointer">Replace Images</p>
           <input id="dropzone-file" type="file" class="hidden" name="images[]" multiple accept="image/*" />
         </label>
+        <p class="text-sm mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos 500x500 pixels recommended</p>
       </div>
-      <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
+      <input id="dropzone-file" type="file" class="hidden" name="images[]" multiple accept="image/*" />
       <div class="flex flex-wrap gap-5 mt-5" id="image-preview">
         @php $img = explode(', ', $product->image) @endphp
-        @for($i = 0; $i < count($img); $i++) 
-          <img class="w-28 h-28 object-cover rounded" src="/uploads/products/{{ $img[$i] }}" alt="">
-        @endfor
+        @for($i = 0; $i < count($img); $i++) <img class="w-28 h-28 object-cover rounded" src="/uploads/products/{{ $img[$i] }}" alt="">
+          @endfor
       </div>
     </div>
   </form>
@@ -117,31 +121,6 @@
         };
       }
     });
-  });
-
-  // conditionally change type options based on category selection
-  // only show lifespan input field when plant is selected
-  $(document).ready(function () {
-    var $categorySelect = $('#category');
-    var $lifespanInput = $('#lifespan');
-    var $scientificInput = $('#scientific');
-
-    var plantOptions = $typeSelect.attr('data-plant-options').split(',');
-    var essentialOptions = $typeSelect.attr('data-essential-options').split(',');
-
-    $categorySelect.on('change', function () {
-      var selectedCategory = $(this).val();
-
-      if (selectedCategory === 'Plant') {
-        $lifespanInput.removeClass('hidden');
-        $scientificInput.removeClass('hidden');
-      } else {
-        $lifespanInput.addClass('hidden');
-        $scientificInput.addClass('hidden');
-      }
-    });
-
-    $categorySelect.trigger('change');
   });
 </script>
 
