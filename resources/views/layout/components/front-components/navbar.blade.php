@@ -53,7 +53,7 @@
               <span class="text-sm">Sign-In</span>
             </li>
           </a>
-          <a href="{{ route('view-likes') }}" class="p-1 rounded hover:bg-green-100 w-12 {{ request()->is('product') ? 'bg-green-100 rounded' : '' }}">
+          <a href="{{ route('view-likes') }}" class="p-1 rounded hover:bg-green-100 w-12">
             <li class="flex flex-col items-center">
               <img src="{{ asset('images/icons_logos/water-can.svg') }}" class="w-7 h-7" alt="" />
               <span class="text-sm">Likes</span>

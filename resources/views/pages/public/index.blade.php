@@ -120,7 +120,7 @@
         </div>
         <div class="bg-[url('../../public/images/home/home-water-can.webp')] relative bg-cover bg-center bg-no-repeat w-full h-[40vh] rounded-md">
           <a href="{{ route('product') }}">
-            <div class="absolute z-10 p-10 h-[40vh] hover:text-green-200">
+            <div class="absolute z-10 p-10 h-[40vh]">
               <div class="flex justify-center flex-col h-full w-full">
                 <h4 class="lg:text-5xl md:text-3xl text-lg font-brandon-black italic text-white">Essentials
                 </h4>
