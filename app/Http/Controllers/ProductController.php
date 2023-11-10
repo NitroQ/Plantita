@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
@@ -191,7 +192,7 @@ class ProductController extends Controller
 
             $product = Product::find($id);
 
-            if($request->hasFile('image')) {
+            if($request->hasFile('images')) {
                 $imagePaths = [];
 
             foreach ($validator['images'] as $image) {
@@ -205,6 +206,12 @@ class ProductController extends Controller
             }
     
             $imagesString = implode(', ', $imagePaths);
+
+            // Delete existing images before updating with new ones
+            $existingImages = explode(', ', $product->image);
+            foreach ($existingImages as $existingImage) {
+                Storage::disk('public')->delete("uploads/products/{$existingImage}");
+            }
 
             $product->image = $imagesString;
             }
