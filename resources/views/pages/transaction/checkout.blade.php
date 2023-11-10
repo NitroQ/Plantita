@@ -40,41 +40,30 @@
               <span class="text-sm text-crimson my-1">{{$errors->first('street_address')}}</span>
             </div>
             <input id="apartment" type="text" name="building_address" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Apartment, Suite, Unit, etc. (optional)" value="{{ $user->building_address }}">
-            <div>
-              <select id="city" name="city" type="text" class="block w-full rounded-lg border {{ $errors->has('city') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
-                <option>Select City</option>
-                <option {{ $user->city == "antipolo" ? 'selected' : '' }} value="antipolo" shipping="360">Antipolo</option>
-                <option {{ $user->city == "bacoor" ? 'selected' : '' }} value="bacoor" shipping="250">Bacoor</option>
-                <option {{ $user->city == "caloocan" ? 'selected' : '' }} value="caloocan" shipping="360">Caloocan</option>
-                <option {{ $user->city == "dasmarinas" ? 'selected' : '' }} value="dasmarinas" shipping="250">Dasmariñas</option>
-                <option {{ $user->city == "imus" ? 'selected' : '' }} value="imus" shipping="250">Imus</option>
-                <option {{ $user->city == "las pinas" ? 'selected' : '' }} value="las pinas" shipping="170">Las Piñas</option>
-                <option {{ $user->city == "makati" ? 'selected' : '' }} value="makati" shipping="220">Makati</option>
-                <option {{ $user->city == "malabon" ? 'selected' : '' }} value="malabon" shipping="360">Malabon</option>
-                <option {{ $user->city == "mandalayong" ? 'selected' : '' }} value="mandalayong" shipping="220">Mandaluyong</option>
-                <option {{ $user->city == "manila" ? 'selected' : '' }} value="manila" shipping="300">Manila</option>
-                <option {{ $user->city == "marikina" ? 'selected' : '' }} value="marikina" shipping="300">Marikina</option>
-                <option {{ $user->city == "muntinlupa" ? 'selected' : '' }} value="muntinlupa" shipping="170">Muntinlupa</option>
-                <option {{ $user->city == "paranaque" ? 'selected' : '' }} value="paranaque" shipping="170">Parañaque</option>
-                <option {{ $user->city == "pasay" ? 'selected' : '' }} value="pasay" shipping="220">Pasay</option>
-                <option {{ $user->city == "pasig" ? 'selected' : '' }} value="pasig" shipping="300">Pasig</option>
-                <option {{ $user->city == "quezon city" ? 'selected' : '' }} value="quezon city" shipping="300">Quezon City</option>
-                <option {{ $user->city == "san juan" ? 'selected' : '' }} value="san juan" shipping="300">San Juan</option>
-                <option {{ $user->city == "taguig" ? 'selected' : '' }} value="taguig" shipping="220">Taguig</option>
-                <option {{ $user->city == "valenzuela" ? 'selected' : '' }} value="valenzuela" shipping="360">Valenzuela</option>
-              </select>
-              <span class="text-sm text-crimson my-1">{{$errors->first('city')}}</span>
-            </div>
-            <div>
-              <input id="zip" name="zip_code" type="number" class="block w-full rounded-lg border {{ $errors->has('zip_code') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code" 
-              value="{{$user->zip_code }}">
-              <span class="text-sm text-crimson my-1">{{$errors->first('zip_code')}}</span>
-            </div>
-            <div class="col-span-2">
-              <input id="phone" type="number" name="phone" class="block w-full rounded-lg border {{ $errors->has('phone') ? 'border-red-500' : 'border-lavender' }} px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number" 
-              value="{{$user->phone }}">
-              <span class="text-sm text-crimson my-1">{{$errors->first('phone')}}</span>
-            </div>
+            <select id="city" name="city" type="text" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="City">
+              <option value=''>Select City</option>
+              <option {{ $user->city == 'Antipolo' ? 'selected' : '' }} value="Antipolo" shipping="360">Antipolo</option>
+              <option {{ $user->city == 'Bacoor' ? 'selected' : '' }} value="Bacoor" shipping="250">Bacoor</option>
+              <option {{ $user->city == 'Caloocan' ? 'selected' : '' }} value="Caloocan" shipping="360">Caloocan</option>
+              <option {{ $user->city == 'Dasmarinas' ? 'selected' : '' }} value="Dasmarinas" shipping="250">Dasmariñas</option>
+              <option {{ $user->city == 'Imus' ? 'selected' : '' }} value="Imus" shipping="250">Imus</option>
+              <option {{ $user->city == 'Las Pinas' ? 'selected' : '' }} value="Las Pinas" shipping="170">Las Piñas</option>
+              <option {{ $user->city == 'Makati' ? 'selected' : '' }} value="Makati" shipping="220">Makati</option>
+              <option {{ $user->city == 'Malabon' ? 'selected' : '' }} value="Malabon" shipping="360">Malabon</option>
+              <option {{ $user->city == 'Mandalayong' ? 'selected' : '' }} value="Mandalayong" shipping="220">Mandaluyong</option>
+              <option {{ $user->city == 'Manila' ? 'selected' : '' }} value="Manila" shipping="300">Manila</option>
+              <option {{ $user->city == 'Marikina' ? 'selected' : '' }} value="Marikina" shipping="300">Marikina</option>
+              <option {{ $user->city == 'Muntinlupa' ? 'selected' : '' }} value="Muntinlupa" shipping="170">Muntinlupa</option>
+              <option {{ $user->city == 'Paranaque' ? 'selected' : '' }} value="Paranaque" shipping="170">Parañaque</option>
+              <option {{ $user->city == 'Pasay' ? 'selected' : '' }} value="Pasay" shipping="220">Pasay</option>
+              <option {{ $user->city == 'Pasig' ? 'selected' : '' }} value="Pasig" shipping="300">Pasig</option>
+              <option {{ $user->city == 'Quezon City' ? 'selected' : '' }} value="Quezon City" shipping="300">Quezon City</option>
+              <option {{ $user->city == 'San Juan' ? 'selected' : '' }} value="San Juan" shipping="300">San Juan</option>
+              <option {{ $user->city == 'Taguig' ? 'selected' : '' }} value="Taguig" shipping="220">Taguig</option>
+              <option {{ $user->city == 'Valenzuela' ? 'selected' : '' }} value="Valenzuela" shipping="360">Valenzuela</option>
+            </select>
+            <input id="zip" name="zip_code" type="number" class="block w-full rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Zip Code"  value="{{$user->zip_code }}">
+            <input id="phone" type="number" name="phone" class="block w-full col-span-2 rounded-lg border border-lavender px-3.5 py-2.5 focus:ring-green-200/20 focus:border-green-200/20 placeholder-gray-500/70" placeholder="Phone Number"  value="{{$user->phone }}">
           </div>
         </div>
         <div>
@@ -218,6 +207,20 @@
   </div>
   <script>
     $(document).ready(function() {
+
+      $( window ).on( "load", function() {
+        if($('#city').val() != '') {
+          var selectedShippingCost = parseFloat($('option:selected', $('#city')).attr('shipping'));
+          var subtotal = parseFloat('{{ $subtotal }}');
+
+          var total = subtotal + selectedShippingCost;
+
+          $('#shipping_cost').text('Shipping: ₱' + selectedShippingCost);
+          $('input[name="shipping"]').val(selectedShippingCost);
+          $('#subtotal').first().text('₱' + subtotal.toFixed(2));
+          $('#total').text('₱' + total.toFixed(2));
+        }
+    });
 
       $('#city').on('change', function() {
         var selectedShippingCost = parseFloat($('option:selected', this).attr('shipping'));

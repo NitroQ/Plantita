@@ -61,10 +61,10 @@ class CareController extends Controller
      */
     public function show($id)
     {
-        $care = Product::find($id);
+        $product = Product::find($id);
 
         return view('pages.admin.plantcare.view', [
-            'care' => $care,
+            'product' => $product,
         ]);
     }
 

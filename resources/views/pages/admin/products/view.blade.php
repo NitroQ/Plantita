@@ -25,7 +25,7 @@
     </div>
     <div class="col-span-2 shadow-leftBottom p-5 rounded-md">
       <h3 class="text-2xl font-brandon-bold mb-3">Product Images</h3>
-      <div class="flex items-center justify-center w-full">
+      {{-- <div class="flex items-center justify-center w-full">
         <label for="dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-lavender border-dashed rounded-lg cursor-pointer">
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <div class="flex items-center">
@@ -40,11 +40,11 @@
           </div>
           <input id="dropzone-file" type="file" class="hidden" />
         </label>
-      </div>
-      <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p>
-      <div class="flex flex-wrap gap-5 mt-5">
+      </div> --}}
+      {{-- <p class="mt-2">(*.jpg, *.jpeg, *.png) 10MB max, up to 5 Photos <br /> 500x500 pixels recommended</p> --}}
+      <div class="flex flex-wrap gap-5 mt-5" id="images">
         @php $img = explode(', ', $product->image) @endphp
-        @for($i = 0; $i < count($img); $i++) 
+        @for($i = 0; $i < count($img); $i++)
           <img class="w-28 h-28 object-cover rounded" src="/uploads/products/{{ $img[$i] }}" alt="">
         @endfor
       </div>

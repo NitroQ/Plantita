@@ -15,7 +15,7 @@
             <select name="care_level" id="care-level" class="border {{ $errors->has('care_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Care Level</option>
               <option {{ $product->care_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
-              <option {{ $product->care_level == "Medium" ? 'selected' : '' }} value="Medium">Medium</option>
+              <option {{ $product->care_level == "Moderate" ? 'selected' : '' }} value="Moderate">Moderate</option>
               <option {{ $product->care_level == "High" ? 'selected' : '' }} value="High">High</option>
             </select>
             <span class="text-sm text-crimson my-1">{{$errors->first('care_level')}}</span>
@@ -29,7 +29,7 @@
             <select name="watering_level" id="watering-level" class="border {{ $errors->has('watering_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Watering Level</option>
               <option {{ $product->watering_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
-              <option {{ $product->watering_level == "Medium" ? 'selected' : '' }} value="Medium">Medium</option>
+              <option {{ $product->watering_level == "Moderate" ? 'selected' : '' }} value="Moderate">Moderate</option>
               <option {{ $product->watering_level == "High" ? 'selected' : '' }} value="High">High</option>
             </select>
             <span class="text-sm text-crimson my-1">{{$errors->first('watering_level')}}</span>
@@ -43,7 +43,7 @@
             <select name="sun_level" id="sunlight-level" class="border {{ $errors->has('sun_level') ? 'border-red-500' : 'border-lavender' }} rounded-lg focus:ring-green-200/20 focus:border-green-200/20 block w-full px-3.5 py-2.5">
               <option selected class="text-gray bg-gray-400 hover:bg-green-200/10">Choose Sunlight Level</option>
               <option {{ $product->sun_level == "Low" ? 'selected' : '' }} value="Low">Low</option>
-              <option {{ $product->sun_level == "Medium" ? 'selected' : '' }}  value="Medium">Medium</option>
+              <option {{ $product->sun_level == "Moderate" ? 'selected' : '' }}  value="Moderate">Moderate</option>
               <option {{ $product->sun_level == "High" ? 'selected' : '' }}  value="High">High</option>
             </select>
             <span class="text-sm text-crimson my-1">{{$errors->first('sun_level')}}</span>
